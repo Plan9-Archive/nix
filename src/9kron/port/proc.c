@@ -1036,6 +1036,7 @@ pexit(char *exitstr, int freemem)
 		free(up->syscalltrace);
 	up->syscalltrace = nil;
 	up->alarm = 0;
+
 	if (up->tt)
 		timerdel(up);
 	pt = proctrace;

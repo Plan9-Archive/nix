@@ -1,0 +1,35 @@
+syntax: regexp
+#^(?!src\/9kron|doc\/papers\/nix).*
+^(?!src|doc)
+^src/(?!9kron)
+^doc/(?!papers)
+^doc/papers/(?!nix)
+
+#(?!9kron|nix)
+^src/9kron/test.old/
+^src/9kron/test/
+^src/9kron[^/]+
+
+syntax: glob
+.DS_Store
+.git
+.gitignore
+*.[568ao]
+*.a[568ao]
+*.ao
+*.so
+*.pyc
+._*
+.nfs.*
+[568a].out
+*~
+*.orig
+*.rej
+*.exe
+*.old
+.*.swp
+core
+9k8cpu
+9k8cpu.elf
+9k8cpu.gz
+nvram

@@ -22622,3 +22622,4423 @@ init: got note 'sys: trap: fault read addr=0x0 pc=0x200b8a'
 execac: up 0xfffffffff03e5158 file /bin/rc
 execac: failing: '/bin/rc' does not exist
 init: child: exec error: '/bin/rc' does not exist
+
+Plan 9
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32203 upage 16101 kpage 58864624
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999890 max 1999998 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+127M memory: 65M kernel data, 62M user, 375M swap
+
+NIX kernel with 4K pages
+
+called: <1>
+called: <3>
+called: <2>
+called: <5>
+called: <4>
+called: <7>
+called: <9>
+called: <6>
+called: <10>
+called: <18>
+called: <16>
+called: <8>
+called: <17>
+called: <19>
+called: <11>
+called: <27>
+called: <25>
+called: <24>
+called: <26>
+called: <14>
+called: <13>
+called: <12>
+called: <15>
+called: <21>
+called: <30>
+called: <22>
+called: <20>
+called: <23>
+called: <31>
+called: <28>
+called: <29>
+bootcore: all cores done
+ipconfig...connect...
+version...time...
+booting CPU server
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; GETCTR: core 16 regno 0 
+GETCTR: core 16 regno 0 
+
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+m 0xfffffffff0246000 pml4 0xfffffffff0246040
+m 0xfffffffff0253000 pml4 0xfffffffff0253040
+m 0xfffffffff0262000 pml4 0xfffffffff0262040
+m 0xfffffffff026f000 pml4 0xfffffffff026f040
+m 0xfffffffff027c000 pml4 0xfffffffff027c040
+m 0xfffffffff0289000 pml4 0xfffffffff0289040
+m 0xfffffffff0296000 pml4 0xfffffffff0296040
+m 0xfffffffff02a3000 pml4 0xfffffffff02a3040
+m 0xfffffffff02b0000 pml4 0xfffffffff02b0040
+m 0xfffffffff02bd000 pml4 0xfffffffff02bd040
+m 0xfffffffff02ca000 pml4 0xfffffffff02ca040
+m 0xfffffffff02d7000 pml4 0xfffffffff02d7040
+m 0xfffffffff02e4000 pml4 0xfffffffff02e4040
+m 0xfffffffff02f1000 pml4 0xfffffffff02f1040
+m 0xfffffffff02fe000 pml4 0xfffffffff02fe040
+m 0xfffffffff030b000 pml4 0xfffffffff030b040
+m 0xfffffffff0318000 pml4 0xfffffffff0318040
+m 0xfffffffff0325000 pml4 0xfffffffff0325040
+m 0xfffffffff0332000 pml4 0xfffffffff0332040
+m 0xfffffffff0342000 pml4 0xfffffffff0342040
+m 0xfffffffff034f000 pml4 0xfffffffff034f040
+m 0xfffffffff035c000 pml4 0xfffffffff035c040
+m 0xfffffffff0369000 pml4 0xfffffffff0369040
+m 0xfffffffff0376000 pml4 0xfffffffff0376040
+m 0xfffffffff0383000 pml4 0xfffffffff0383040
+m 0xfffffffff0390000 pml4 0xfffffffff0390040
+m 0xfffffffff039d000 pml4 0xfffffffff039d040
+m 0xfffffffff03aa000 pml4 0xfffffffff03aa040
+m 0xfffffffff03b7000 pml4 0xfffffffff03b7040
+m 0xfffffffff03c4000 pml4 0xfffffffff03c4040
+m 0xfffffffff03d1000 pml4 0xfffffffff03d1040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022d5c0 big0 0xfffffffff0a378f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d2338
+
+NIX kernel with 4K/2M pages
+
+namec #/ 2 0
+cclose 0xfffffffff0a5f198 name=#/ ref=2
+pathclose 0xfffffffff0a5f338 #/ ref=3 => 0x0
+cclose 0xfffffffff0a5f198 name=#/ ref=1
+pathclose 0xfffffffff0a5f338 #/ ref=2 => 0x0
+pathclose 0xfffffffff0a5f338 #/ ref=1 => 0x0
+namec #e/terminal 5 1
+cclose 0xfffffffff0a6d7c8 name=#e ref=2
+pathclose 0xfffffffff0a6d968 #e ref=3 => 0x0
+cclose 0xfffffffff0a6d7c8 name=#e ref=1
+pathclose 0xfffffffff0a6d968 #e ref=2 => 0x0
+cpu0: registers for *init* 1
+ax	0x0000000000000000
+bx	0xfffffffff0a6d7c8
+cx	0x0000000000000000
+dx	0x0000000000000000
+di	0xfffffffff03d2b6c
+si	0xfffffffff01ac7b4
+bp	0xfffffffff01aaf0f
+r8	0xfffffffff01aaecf
+r9	0xfffffffff0a59297
+r10	0x0000000000000010
+r11	0x0000000000000000
+r12	0xfffffffff018bf5c
+r13	0x0000000000000000
+r14	0xffffffff00000028
+r15	0xfffffffff0174045
+ds  0x92b8   es  0xf0a5   fs  0xffff   gs  0xffff
+type	0xe
+error	0x0
+pc	0xfffffffff0174b57
+cs	0x8
+flags	0x10202
+sp	0xfffffffff0a591c8
+ss	0x0
+type	0xe
+m	0xfffffffff010b000
+up	0xfffffffff03d2338
+cr0	0x000000008001003b
+cr2	0x0000000000000038
+cr3	0x0000000000106000
+panic: fault: 0x38
+
+panic: fault: 0x38
+
+dumpstack
+ktrace /kernel/path 0xfffffffff01196c8 0xfffffffff0a58dd0
+estackx 0xfffffffff0a59658
+0xfffffffff0a58cf0=0xfffffffff01194a5 0xfffffffff0a58cf8=0xfffffffff0a58d10 
+0xfffffffff0a58d10=0xfffffffff015d242 0xfffffffff0a58d58=0xfffffffff015d377 
+0xfffffffff0a58da0=0xfffffffff01196c8 0xfffffffff0a58da8=0xfffffffff0a58e33 
+0xfffffffff0a58db8=0xfffffffff0a58dd0 0xfffffffff0a58dc0=0xfffffffff0a58e20 
+0xfffffffff0a58dc8=0xfffffffff01196c8 0xfffffffff0a58dd0=0xfffffffff01194ad 
+0xfffffffff0a58de0=0xfffffffff015d742 0xfffffffff0a58e00=0xfffffffff0a58f48 
+0xfffffffff0a58e10=0xfffffffff0a58e27 0xfffffffff0a58e18=0xfffffffff016327c 
+0xfffffffff0a58e38=0xfffffffff017ef9c 0xfffffffff0a58e40=0xfffffffff0a58e78 
+0xfffffffff0a58e58=0xfffffffff0118f4c 0xfffffffff0a58e70=0xfffffffff017f227 
+0xfffffffff0a58e80=0xfffffffff017f551 0xfffffffff0a58eb8=0xfffffffff0a58ee8 
+0xfffffffff0a58ed8=0xfffffffff01193e2 0xfffffffff0a58ef0=0xfffffffff0a58f20 
+0xfffffffff0a58f10=0xfffffffff011945d 0xfffffffff0a58f20=0xfffffffff0a58f48 
+0xfffffffff0a58f38=0xfffffffff0119876 0xfffffffff0a58f50=0xfffffffff0180f86 
+0xfffffffff0a58f98=0xfffffffff0163544 0xfffffffff0a58fb8=0xfffffffff017c746 
+0xfffffffff0a58fc0=0xfffffffff0112004 0xfffffffff0a58fd8=0xfffffffff0158b37 
+0xfffffffff0a58fe0=0xfffffffff0158baf 0xfffffffff0a58fe8=0xfffffffff0a59000 
+0xfffffffff0a59008=0xfffffffff0118ece 0xfffffffff0a59010=0xfffffffff0a59108 
+0xfffffffff0a59028=0xfffffffff016327c 0xfffffffff0a59068=0xfffffffff0a59198 
+0xfffffffff0a59088=0xfffffffff017f018 0xfffffffff0a59090=0xfffffffff017f551 
+0xfffffffff0a590b8=0xfffffffff0a59297 0xfffffffff0a590c0=0xfffffffff0a590d0 
+0xfffffffff0a590c8=0xfffffffff017f2e2 0xfffffffff0a590e0=0xfffffffff0118dc9 
+0xfffffffff0a590e8=0xfffffffff0a59108 0xfffffffff0a590f8=0xfffffffff011043e 
+0xfffffffff0a59100=0xfffffffff0a59108 0xfffffffff0a59148=0xfffffffff0a59297 
+0xfffffffff0a59178=0xfffffffff0174045 0xfffffffff0a59180=0xfffffffff0a592b8 
+0xfffffffff0a59198=0xfffffffff0174b57 0xfffffffff0a591b0=0xfffffffff0a591c8 
+0xfffffffff0a591c8=0xfffffffff016ac50 0xfffffffff0a591f0=0xfffffffff016f95a 
+0xfffffffff0a59220=0xfffffffff0a59238 0xfffffffff0a59230=0xfffffffff017c5bf 
+0xfffffffff0a59238=0xfffffffff0163233 0xfffffffff0a59240=0xfffffffff017c132 
+0xfffffffff0a59248=0xfffffffff017c132 0xfffffffff0a59258=0xfffffffff017c5bf 
+0xfffffffff0a59260=0xfffffffff0111814 0xfffffffff0a59270=0xfffffffff011182d 
+0xfffffffff0a592a8=0xfffffffff01437e3 0xfffffffff0a592e0=0xfffffffff0143582 
+0xfffffffff0a592e8=0xfffffffff0174a76 0xfffffffff0a592f0=0xfffffffff0175b65 
+0xfffffffff0a592f8=0xfffffffff01117e4 0xfffffffff0a59330=0xfffffffff0175d36 
+0xfffffffff0a59358=0xfffffffff0176452 0xfffffffff0a59360=0xfffffffff017dbb8 
+0xfffffffff0a593a0=0xfffffffff0a594d8 0xfffffffff0a593d8=0xfffffffff0177078 
+0xfffffffff0a593e0=0xfffffffff0a59520 0xfffffffff0a59410=0xfffffffff01830b5 
+0xfffffffff0a59418=0xfffffffff0a594a0 0xfffffffff0a59448=0xfffffffff0a595af 
+0xfffffffff0a59450=0xfffffffff0a59583 0xfffffffff0a59470=0xfffffffff0183df1 
+0xfffffffff0a59478=0xfffffffff01873e4 0xfffffffff0a59480=0xfffffffff0a594a0 
+0xfffffffff0a59490=0xfffffffff01830b5 0xfffffffff0a59498=0xfffffffff0a59520 
+0xfffffffff0a594a8=0xfffffffff0a59578 0xfffffffff0a594b0=0xfffffffff0a59583 
+0xfffffffff0a594b8=0xfffffffff0a595af 0xfffffffff0a59510=0xfffffffff0a59558 
+0xfffffffff0a59538=0xfffffffff0144296 0xfffffffff0a59560=0xfffffffff01c52dc 
+0xfffffffff0a59568=0x0000000000000000 0xfffffffff0a59570=0xfffffffff0181ef6 
+0xfffffffff0a59578=0x696d7265742f6523 0xfffffffff0a59580=0xffffffff006c616e 
+0xfffffffff0a59588=0xfffffffff01c52d0 0xfffffffff0a59590=0xfffffffff0a595d8 
+0xfffffffff0a59598=0xfffffffff018bd20 0xfffffffff0a595a0=0xfffffffff016ec32 
+0xfffffffff0a595a8=0xfffffffff0a595d8 0xfffffffff0a595b0=0x00000011f0a5f198 
+0xfffffffff0a595b8=0xfffffffff0114b72 0xfffffffff0a595c0=0xfffffffff0a5f478 
+0xfffffffff0a595c8=0xfffffffff0a595f8 0xfffffffff0a595d0=0xffffffff00000000 
+0xfffffffff0a595d8=0xfffffffff01c52d6 0xfffffffff0a595e0=0xfffffffff020cd70 
+0xfffffffff0a595e8=0x0000000000000000 0xfffffffff0a595f0=0x0000000000000000 
+0xfffffffff0a595f8=0x732f203436444d41 0xfffffffff0a59600=0x392f6372732f7379 
+0xfffffffff0a59608=0x386b2f326e6f726b 0xfffffffff0a59610=0x0000757063386b2f 
+0xfffffffff0a59618=0x0000000000000000 0xfffffffff0a59620=0x0000000000000000 
+0xfffffffff0a59628=0xfffffffff0114a6a 0xfffffffff0a59630=0x0000000000000000 
+0xfffffffff0a59638=0x0000000000000000 0xfffffffff0a59640=0x0000000000000000 
+0xfffffffff0a59648=0x0000000000000000 0xfffffffff0a59650=0x0000000000000000 
+cpu0: exiting
+
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 200000070 max 2000000 min 20000 div 10
+m 0xfffffffff0246000 pml4 0xfffffffff0246040
+m 0xfffffffff0253000 pml4 0xfffffffff0253040
+m 0xfffffffff0262000 pml4 0xfffffffff0262040
+m 0xfffffffff026f000 pml4 0xfffffffff026f040
+m 0xfffffffff027c000 pml4 0xfffffffff027c040
+m 0xfffffffff0289000 pml4 0xfffffffff0289040
+m 0xfffffffff0296000 pml4 0xfffffffff0296040
+m 0xfffffffff02a3000 pml4 0xfffffffff02a3040
+m 0xfffffffff02b0000 pml4 0xfffffffff02b0040
+m 0xfffffffff02bd000 pml4 0xfffffffff02bd040
+m 0xfffffffff02ca000 pml4 0xfffffffff02ca040
+m 0xfffffffff02d7000 pml4 0xfffffffff02d7040
+m 0xfffffffff02e4000 pml4 0xfffffffff02e4040
+m 0xfffffffff02f1000 pml4 0xfffffffff02f1040
+m 0xfffffffff02fe000 pml4 0xfffffffff02fe040
+m 0xfffffffff030b000 pml4 0xfffffffff030b040
+m 0xfffffffff0318000 pml4 0xfffffffff0318040
+m 0xfffffffff0325000 pml4 0xfffffffff0325040
+m 0xfffffffff0332000 pml4 0xfffffffff0332040
+m 0xfffffffff0342000 pml4 0xfffffffff0342040
+m 0xfffffffff034f000 pml4 0xfffffffff034f040
+m 0xfffffffff035c000 pml4 0xfffffffff035c040
+m 0xfffffffff0369000 pml4 0xfffffffff0369040
+m 0xfffffffff0376000 pml4 0xfffffffff0376040
+m 0xfffffffff0383000 pml4 0xfffffffff0383040
+m 0xfffffffff0390000 pml4 0xfffffffff0390040
+m 0xfffffffff039d000 pml4 0xfffffffff039d040
+m 0xfffffffff03aa000 pml4 0xfffffffff03aa040
+m 0xfffffffff03b7000 pml4 0xfffffffff03b7040
+m 0xfffffffff03c4000 pml4 0xfffffffff03c4040
+m 0xfffffffff03d1000 pml4 0xfffffffff03d1040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022d5c0 big0 0xfffffffff0a378f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d2338
+
+NIX kernel with 4K/2M pages
+
+namec #/ 2 0
+cclose 0xfffffffff0a5f198 name=#/ ref=2
+pathclose 0xfffffffff0a5f338 #/ ref=3 => 0x0
+cclose 0xfffffffff0a5f198 name=#/ ref=1
+pathclose 0xfffffffff0a5f338 #/ ref=2 => 0x0
+pathclose 0xfffffffff0a5f338 #/ ref=1 => 0x0
+namec #e/terminal 5 1
+cclose 0xfffffffff0a6d7c8 name=#e ref=2
+pathclose 0xfffffffff0a6d968 #e ref=3 => 0x0
+cclose 0xfffffffff0a6d7c8 name=#e ref=1
+pathclose 0xfffffffff0a6d968 #e ref=2 => 0x0
+cpu0: registers for *init* 1
+ax	0x0000000000000000
+bx	0xfffffffff0a6d7c8
+cx	0x0000000000000000
+dx	0x0000000000000000
+di	0xfffffffff03d2b6c
+si	0xfffffffff01ac7b4
+bp	0xfffffffff01aaf0f
+r8	0xfffffffff01aaecf
+r9	0xfffffffff0a59297
+r10	0x0000000000000010
+r11	0x0000000000000000
+r12	0xfffffffff018bf5c
+r13	0x0000000000000000
+r14	0xffffffff00000028
+r15	0xfffffffff0174045
+ds  0x92b8   es  0xf0a5   fs  0xffff   gs  0xffff
+type	0xe
+error	0x0
+pc	0xfffffffff0174b57
+cs	0x8
+flags	0x10202
+sp	0xfffffffff0a591c8
+ss	0x0
+type	0xe
+m	0xfffffffff010b000
+up	0xfffffffff03d2338
+cr0	0x000000008001003b
+cr2	0x0000000000000038
+cr3	0x0000000000106000
+panic: fault: 0x38
+
+panic: fault: 0x38
+
+dumpstack
+ktrace /kernel/path 0xfffffffff01196c8 0xfffffffff0a58dd0
+estackx 0xfffffffff0a59658
+0xfffffffff0a58cf0=0xfffffffff01194a5 0xfffffffff0a58cf8=0xfffffffff0a58d10 
+0xfffffffff0a58d10=0xfffffffff015d242 0xfffffffff0a58d58=0xfffffffff015d377 
+0xfffffffff0a58da0=0xfffffffff01196c8 0xfffffffff0a58da8=0xfffffffff0a58e33 
+0xfffffffff0a58db8=0xfffffffff0a58dd0 0xfffffffff0a58dc0=0xfffffffff0a58e20 
+0xfffffffff0a58dc8=0xfffffffff01196c8 0xfffffffff0a58dd0=0xfffffffff01194ad 
+0xfffffffff0a58de0=0xfffffffff015d742 0xfffffffff0a58e00=0xfffffffff0a58f48 
+0xfffffffff0a58e10=0xfffffffff0a58e27 0xfffffffff0a58e18=0xfffffffff016327c 
+0xfffffffff0a58e38=0xfffffffff017ef9c 0xfffffffff0a58e40=0xfffffffff0a58e78 
+0xfffffffff0a58e58=0xfffffffff0118f4c 0xfffffffff0a58e70=0xfffffffff017f227 
+0xfffffffff0a58e80=0xfffffffff017f551 0xfffffffff0a58eb8=0xfffffffff0a58ee8 
+0xfffffffff0a58ed8=0xfffffffff01193e2 0xfffffffff0a58ef0=0xfffffffff0a58f20 
+0xfffffffff0a58f10=0xfffffffff011945d 0xfffffffff0a58f20=0xfffffffff0a58f48 
+0xfffffffff0a58f38=0xfffffffff0119876 0xfffffffff0a58f50=0xfffffffff0180f86 
+0xfffffffff0a58f98=0xfffffffff0163544 0xfffffffff0a58fb8=0xfffffffff017c746 
+0xfffffffff0a58fc0=0xfffffffff0112004 0xfffffffff0a58fd8=0xfffffffff0158b37 
+0xfffffffff0a58fe0=0xfffffffff0158baf 0xfffffffff0a58fe8=0xfffffffff0a59000 
+0xfffffffff0a59008=0xfffffffff0118ece 0xfffffffff0a59010=0xfffffffff0a59108 
+0xfffffffff0a59028=0xfffffffff016327c 0xfffffffff0a59068=0xfffffffff0a59198 
+0xfffffffff0a59088=0xfffffffff017f018 0xfffffffff0a59090=0xfffffffff017f551 
+0xfffffffff0a590b8=0xfffffffff0a59297 0xfffffffff0a590c0=0xfffffffff0a590d0 
+0xfffffffff0a590c8=0xfffffffff017f2e2 0xfffffffff0a590e0=0xfffffffff0118dc9 
+0xfffffffff0a590e8=0xfffffffff0a59108 0xfffffffff0a590f8=0xfffffffff011043e 
+0xfffffffff0a59100=0xfffffffff0a59108 0xfffffffff0a59148=0xfffffffff0a59297 
+0xfffffffff0a59178=0xfffffffff0174045 0xfffffffff0a59180=0xfffffffff0a592b8 
+0xfffffffff0a59198=0xfffffffff0174b57 0xfffffffff0a591b0=0xfffffffff0a591c8 
+0xfffffffff0a591c8=0xfffffffff016ac50 0xfffffffff0a591f0=0xfffffffff016f95a 
+0xfffffffff0a59220=0xfffffffff0a59238 0xfffffffff0a59230=0xfffffffff017c5bf 
+0xfffffffff0a59238=0xfffffffff0163233 0xfffffffff0a59240=0xfffffffff017c132 
+0xfffffffff0a59248=0xfffffffff017c132 0xfffffffff0a59258=0xfffffffff017c5bf 
+0xfffffffff0a59260=0xfffffffff0111814 0xfffffffff0a59270=0xfffffffff011182d 
+0xfffffffff0a592a8=0xfffffffff01437e3 0xfffffffff0a592e0=0xfffffffff0143582 
+0xfffffffff0a592e8=0xfffffffff0174a76 0xfffffffff0a592f0=0xfffffffff0175b65 
+0xfffffffff0a592f8=0xfffffffff01117e4 0xfffffffff0a59330=0xfffffffff0175d36 
+0xfffffffff0a59358=0xfffffffff0176452 0xfffffffff0a59360=0xfffffffff017dbb8 
+0xfffffffff0a593a0=0xfffffffff0a594d8 0xfffffffff0a593d8=0xfffffffff0177078 
+0xfffffffff0a593e0=0xfffffffff0a59520 0xfffffffff0a59410=0xfffffffff01830b5 
+0xfffffffff0a59418=0xfffffffff0a594a0 0xfffffffff0a59448=0xfffffffff0a595af 
+0xfffffffff0a59450=0xfffffffff0a59583 0xfffffffff0a59470=0xfffffffff0183df1 
+0xfffffffff0a59478=0xfffffffff01873e4 0xfffffffff0a59480=0xfffffffff0a594a0 
+0xfffffffff0a59490=0xfffffffff01830b5 0xfffffffff0a59498=0xfffffffff0a59520 
+0xfffffffff0a594a8=0xfffffffff0a59578 0xfffffffff0a594b0=0xfffffffff0a59583 
+0xfffffffff0a594b8=0xfffffffff0a595af 0xfffffffff0a59510=0xfffffffff0a59558 
+0xfffffffff0a59538=0xfffffffff0144296 0xfffffffff0a59560=0xfffffffff01c52dc 
+0xfffffffff0a59568=0x0000000000000000 0xfffffffff0a59570=0xfffffffff0181ef6 
+0xfffffffff0a59578=0x696d7265742f6523 0xfffffffff0a59580=0xffffffff006c616e 
+0xfffffffff0a59588=0xfffffffff01c52d0 0xfffffffff0a59590=0xfffffffff0a595d8 
+0xfffffffff0a59598=0xfffffffff018bd20 0xfffffffff0a595a0=0xfffffffff016ec32 
+0xfffffffff0a595a8=0xfffffffff0a595d8 0xfffffffff0a595b0=0x00000011f0a5f198 
+0xfffffffff0a595b8=0xfffffffff0114b72 0xfffffffff0a595c0=0xfffffffff0a5f478 
+0xfffffffff0a595c8=0xfffffffff0a595f8 0xfffffffff0a595d0=0xffffffff00000000 
+0xfffffffff0a595d8=0xfffffffff01c52d6 0xfffffffff0a595e0=0xfffffffff020cd70 
+0xfffffffff0a595e8=0x0000000000000000 0xfffffffff0a595f0=0x0000000000000000 
+0xfffffffff0a595f8=0x732f203436444d41 0xfffffffff0a59600=0x392f6372732f7379 
+0xfffffffff0a59608=0x386b2f326e6f726b 0xfffffffff0a59610=0x0000757063386b2f 
+0xfffffffff0a59618=0x0000000000000000 0xfffffffff0a59620=0x0000000000000000 
+0xfffffffff0a59628=0xfffffffff0114a6a 0xfffffffff0a59630=0x0000000000000000 
+0xfffffffff0a59638=0x0000000000000000 0xfffffffff0a59640=0x0000000000000000 
+0xfffffffff0a59648=0x0000000000000000 0xfffffffff0a59650=0x0000000000000000 
+cpu0: exiting
+
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32203 upage 16101 kpage 58541472
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+m 0xfffffffff0245000 pml4 0xfffffffff0245040
+m 0xfffffffff0252000 pml4 0xfffffffff0252040
+m 0xfffffffff0261000 pml4 0xfffffffff0261040
+m 0xfffffffff026e000 pml4 0xfffffffff026e040
+m 0xfffffffff027b000 pml4 0xfffffffff027b040
+m 0xfffffffff0288000 pml4 0xfffffffff0288040
+m 0xfffffffff0295000 pml4 0xfffffffff0295040
+m 0xfffffffff02a2000 pml4 0xfffffffff02a2040
+m 0xfffffffff02af000 pml4 0xfffffffff02af040
+m 0xfffffffff02bc000 pml4 0xfffffffff02bc040
+m 0xfffffffff02c9000 pml4 0xfffffffff02c9040
+m 0xfffffffff02d6000 pml4 0xfffffffff02d6040
+m 0xfffffffff02e3000 pml4 0xfffffffff02e3040
+m 0xfffffffff02f0000 pml4 0xfffffffff02f0040
+m 0xfffffffff02fd000 pml4 0xfffffffff02fd040
+m 0xfffffffff030a000 pml4 0xfffffffff030a040
+m 0xfffffffff0317000 pml4 0xfffffffff0317040
+m 0xfffffffff0324000 pml4 0xfffffffff0324040
+m 0xfffffffff0331000 pml4 0xfffffffff0331040
+m 0xfffffffff0341000 pml4 0xfffffffff0341040
+m 0xfffffffff034e000 pml4 0xfffffffff034e040
+m 0xfffffffff035b000 pml4 0xfffffffff035b040
+m 0xfffffffff0368000 pml4 0xfffffffff0368040
+m 0xfffffffff0375000 pml4 0xfffffffff0375040
+m 0xfffffffff0382000 pml4 0xfffffffff0382040
+m 0xfffffffff038f000 pml4 0xfffffffff038f040
+m 0xfffffffff039c000 pml4 0xfffffffff039c040
+m 0xfffffffff03a9000 pml4 0xfffffffff03a9040
+m 0xfffffffff03b6000 pml4 0xfffffffff03b6040
+m 0xfffffffff03c3000 pml4 0xfffffffff03c3040
+m 0xfffffffff03d0000 pml4 0xfffffffff03d0040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022c4b0 big0 0xfffffffff0a368f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d1338
+
+NIX kernel with 4K/2M pages
+
+namec #/ 2 0
+namec #e/terminal 5 1
+namec #e/cputype 5 1
+namec #e/service 5 1
+namec #e/bootfile 5 1
+namec #ec/bootfile 5 1
+namec #e/nobootprompt 5 1
+namec #ec/nobootprompt 5 1
+namec #e/rootspec 5 1
+namec #ec/rootspec 5 1
+namec #ec/*nobiosprobe 5 1
+namec #ec/*nodiskprobe 5 1
+namec #ec/*nobiosload 5 1
+namec #e/mouseport 5 1
+namec #ec/mouseport 5 1
+namec #e/monitor 5 1
+namec #ec/monitor 5 1
+namec #e/sysname 5 1
+namec #ec/sysname 5 1
+namec #e/ether0 5 1
+namec #ec/ether0 5 1
+namec #e/partition 5 1
+namec #ec/partition 5 1
+namec #e/vgasize 5 1
+namec #ec/vgasize 5 1
+namec #e/location 5 1
+namec #ec/location 5 1
+namec #e/auth 5 1
+namec #ec/auth 5 1
+namec #e/fs 5 1
+namec #ec/fs 5 1
+namec #e/fileserver 5 1
+namec #ec/fileserver 5 1
+namec #ec/*kernelpercent 5 1
+namec #e/console 5 1
+namec #ec/console 5 1
+namec #e/nvram 5 1
+namec #ec/nvram 5 1
+namec #e/user 5 1
+namec #ec/user 5 1
+fixfault va 0x200028 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+namec #c/cons 3 0
+namec #c/cons 3 1
+namec #c/cons 3 1
+namec #c 1 0
+namec /dev 4 0
+namec #ec 1 0
+namec /env 4 0
+namec #e 1 0
+namec /env 4 0
+namec #s 1 0
+namec /srv 4 0
+execac: up 0xfffffffff03d1338 file /boot/boot
+namec /boot/boot 3 3
+execac: up 0xfffffffff03d1338 chan 0xfffffffff0a386d8 elem boot
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7ffffee00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411efb8 = 0x4600087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x2034b5 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x400080 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+namec #c 1 0
+namec /dev 4 0
+namec /dev/cons 3 0
+namec /dev/cons 3 1
+namec /dev/cons 3 1
+namec #ec 1 0
+namec /env 4 0
+namec #e 1 0
+namec /env 4 0
+namec #s 1 0
+namec /srv 4 0
+namec #e/cputype 3 0
+namec #u/usb/ctl 0 0
+namec #e/nobootprompt 3 0
+ipconfig...namec #I 1 0
+fixfault va 0x407c78 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200085
+namec /net 4 0
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x2064ad rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200087
+namec #l0 0 0
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411e010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x2063bd rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4400085
+namec #l0 1 0
+namec /net 4 0
+namec #l1 0 0
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+namec #l1 1 0
+namec /net 4 0
+namec #l2 0 0
+namec #l3 0 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4a00003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4a00087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4600003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4600087
+fixfault va 0x407b42 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/ipconfig
+namec /boot/ipconfig 3 3
+execac: up 0xfffffffff03dd218 chan 0xfffffffff16046e8 elem ipconfig
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122fb8 = 0x4c00087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x2073a4 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4600001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4600085
+fixfault va 0x4000a0 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+namec /dev/random 3 32
+namec /dev/bintime 3 32
+namec /env/cputype 3 0
+namec /env/sysname 3 0
+namec /net/ipifc 3 0
+namec /net/ipifc 0 0
+namec /net/ipifc/clone 3 2
+namec /net/ether0/clone 3 2
+namec /net/ether0/0/data 3 2
+namec /net/ether0/stats 3 0
+namec /net/ether0/clone 3 2
+namec /net/ether0/1/data 3 2
+namec /net/ether0/clone 3 2
+namec /net/ether0/2/data 3 2
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121ff8 = 0x4c00087
+fixfault va 0x211461 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4600001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f008 = 0x4600085
+fixfault va 0x400148 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00085
+fixfault va 0x400128 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00087
+namec /net/ether0/addr 3 0
+namec /net/cs 3 2
+namec /net/udp/clone 3 2
+namec /net/udp/0/data 3 2
+namec /dev/time 3 32
+namec /net/iproute 3 2
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03e11b8 mmuput 0x200000 0x4600001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124008 = 0x4600085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x7fffffe00000 0x5200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4126ff8 = 0x5200087
+fixfault va 0x400078 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x400000 0x5400003
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124010 = 0x5400087
+namec #c/pid 3 0
+namec #p/17/args 3 1
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4600001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4600085
+fixfault va 0x4000ec rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00085
+namec /net/ndb 3 0
+fixfault va 0x40640f rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec /net/ndb 3 17
+namec /net/dns 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec /net/ndb 3 0
+namec /net/ndb 3 0
+namec /env/kbmap 3 0
+namec /boot/factotum 3 3
+namec /env/debugfactotum 3 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4e00087
+fixfault va 0x4076f7 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/factotum
+namec /boot/factotum 3 3
+execac: up 0xfffffffff03dd218 chan 0xfffffffff1656948 elem factotum
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411ffb8 = 0x4c00087
+fixfault va 0x7fffffffef48 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4a00003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4a00087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4400085
+fixfault va 0x4000d8 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200087
+namec /mnt/factotum 0 0
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x20e150 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4e00085
+fixfault va 0x400118 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x5600087
+namec #c/pid 3 0
+namec #p/18/ctl 3 1
+devproc private request ignored
+devproc noswap request ignored
+namec #¤/caphash 3 1
+namec /env/nvram 3 0
+namec /env/cputype 3 0
+namec /boot/nvram 3 2
+namec /env/nvrlen 3 0
+namec /env/nvroff 3 0
+namec #c/hostowner 3 1
+namec /dev/user 3 0
+namec /net/tcp 0 0
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec /net/tcp/clone 3 2
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120ff8 = 0x4c00087
+fixfault va 0x21984b rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4122008 = 0x4e00085
+namec /net/tcp/0/data 3 2
+fixfault va 0x410298 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122010 = 0x5600087
+namec /net/tcp 0 0
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec /net/tcp/clone 3 2
+namec /net/tcp/0/data 3 2
+namec /dev/random 3 32
+namec /dev/bintime 3 32
+namec /mnt/factotum 0 0
+namec #| 2 0
+namec /srv/factotum 5 97
+fixfault va 0x21983c rd=1 put=1
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03e3188 mmuput 0x200000 0x4e00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff4128008 = 0x4e00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e3188 mmuput 0x7fffffe00000 0x5a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff412aff8 = 0x5a00087
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x400000 0x5600003
+up 0xfffffffff03e3188 new pte 0xfffffffff4128010 = 0x5600087
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4e00085
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x5600087
+namec /mnt 4 0
+namec /srv/factotum 0 0
+namec #c/pid 3 0
+namec /mnt/factotum 0 0
+connect...namec /net/cs 3 2
+namec #c/pid 3 0
+namec /net/tcp/clone 3 2
+namec /net/tcp/1/data 3 2
+namec /env/srvold9p 3 0
+
+version...namec #s/boot 5 1
+namec / 1 0
+namec / 4 0
+namec /env/rootspec 3 0
+namec /mnt/factotum/rpc 3 2
+namec /net/tcp 0 0
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec /net/tcp/clone 3 2
+namec /net/tcp/2/data 3 2
+namec /root 4 0
+namec /env/rootdir 3 0
+namec /root 1 0
+namec / 4 0
+namec #e/rootdir 5 1
+time...namec #s/boot 3 2
+namec /tmp 4 0
+namec /tmp 0 0
+namec /tmp 4 0
+namec #c/time 3 1
+
+namec #c/swap 3 1
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4a00003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4a00087
+fixfault va 0x20b0cb rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+namec /env/init 3 0
+execac: up 0xfffffffff03d1338 file /amd64/init
+namec /amd64/init 3 3
+execac: up 0xfffffffff03d1338 chan 0xfffffffff16636a8 elem init
+fixfault va 0x7fffffffef88 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411cff8 = 0x4200087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x200a6d rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4a00001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4a00085
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4120008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e4170 mmuput 0x7fffffe00000 0x4c00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x4081c9 rd=1 put=1
+newpage va 0x400000 pgsz 0x200000
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4a00001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4a00085
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e5158 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e5158 new pte 0xfffffffff412c008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e5158 mmuput 0x7fffffe00000 0x5e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e5158 new pte 0xfffffffff412eff8 = 0x5e00087
+fixfault va 0x400010 rd=1 put=1
+newpage va 0x400000 pgsz 0x200000
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4a00001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4a00085
+up 0xfffffffff03e4170 mmuput 0x400000 0x5c00001
+up 0xfffffffff03e4170 new pte 0xfffffffff4120010 = 0x5c00085
+execac: up 0xfffffffff03e4170 file /bin/rc
+namec /bin/rc 3 3
+execac: failing: '/bin/rc' does not exist
+fixfault va 0x400110 rd=0 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x5c00003
+up 0xfffffffff03e4170 new pte 0xfffffffff4120010 = 0x5c00087
+init: child: exec error: '/bin/rc' does not exist
+namec #c/pid 3 0
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4122008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e4170 mmuput 0x7fffffe00000 0x5c00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4121ff8 = 0x5c00087
+fixfault va 0x400010 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x6200001
+up 0xfffffffff03e4170 new pte 0xfffffffff4122010 = 0x6200085
+fixfault va 0x4000d4 rd=0 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x6200003
+up 0xfffffffff03e4170 new pte 0xfffffffff4122010 = 0x6200087
+init: got note 'sys: trap: fault read addr=0x0 pc=0x200b8a'fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4a00001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4a00085
+up 0xfffffffff03e5158 mmuput 0x400000 0x6000001
+up 0xfffffffff03e5158 new pte 0xfffffffff412c010 = 0x6000085
+fixfault va 0x4000d4 rd=0 put=1
+up 0xfffffffff03e5158 mmuput 0x400000 0x6000003
+up 0xfffffffff03e5158 new pte 0xfffffffff412c010 = 0x6000087
+init: got note 'sys: trap: fault read addr=0x0 pc=0x200b8a'
+execac: up 0xfffffffff03e4170 file /bin/rc
+namec /bin/rc 3 3
+execac: failing: '/bin/rc' does not exist
+
+execac: up 0xfffffffff03e5158 file /bin/rc
+namec /bin/rc 3 3
+execac: failing: '/bin/rc' does not exist
+init: child: exec error: '/bin/rc' does not existinit: child: exec error: '/bin/rc' does not exist
+namec #c/pid 3 0
+
+namec #c/pid 3 0
+namec /net/cs 3 2
+namec /net/udp/clone 3 2
+namec /net/udp/0/data 3 2
+
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32203 upage 16101 kpage 58541472
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+m 0xfffffffff0245000 pml4 0xfffffffff0245040
+m 0xfffffffff0252000 pml4 0xfffffffff0252040
+m 0xfffffffff0261000 pml4 0xfffffffff0261040
+m 0xfffffffff026e000 pml4 0xfffffffff026e040
+m 0xfffffffff027b000 pml4 0xfffffffff027b040
+m 0xfffffffff0288000 pml4 0xfffffffff0288040
+m 0xfffffffff0295000 pml4 0xfffffffff0295040
+m 0xfffffffff02a2000 pml4 0xfffffffff02a2040
+m 0xfffffffff02af000 pml4 0xfffffffff02af040
+m 0xfffffffff02bc000 pml4 0xfffffffff02bc040
+m 0xfffffffff02c9000 pml4 0xfffffffff02c9040
+m 0xfffffffff02d6000 pml4 0xfffffffff02d6040
+m 0xfffffffff02e3000 pml4 0xfffffffff02e3040
+m 0xfffffffff02f0000 pml4 0xfffffffff02f0040
+m 0xfffffffff02fd000 pml4 0xfffffffff02fd040
+m 0xfffffffff030a000 pml4 0xfffffffff030a040
+m 0xfffffffff0317000 pml4 0xfffffffff0317040
+m 0xfffffffff0324000 pml4 0xfffffffff0324040
+m 0xfffffffff0331000 pml4 0xfffffffff0331040
+m 0xfffffffff0341000 pml4 0xfffffffff0341040
+m 0xfffffffff034e000 pml4 0xfffffffff034e040
+m 0xfffffffff035b000 pml4 0xfffffffff035b040
+m 0xfffffffff0368000 pml4 0xfffffffff0368040
+m 0xfffffffff0375000 pml4 0xfffffffff0375040
+m 0xfffffffff0382000 pml4 0xfffffffff0382040
+m 0xfffffffff038f000 pml4 0xfffffffff038f040
+m 0xfffffffff039c000 pml4 0xfffffffff039c040
+m 0xfffffffff03a9000 pml4 0xfffffffff03a9040
+m 0xfffffffff03b6000 pml4 0xfffffffff03b6040
+m 0xfffffffff03c3000 pml4 0xfffffffff03c3040
+m 0xfffffffff03d0000 pml4 0xfffffffff03d0040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022c4c0 big0 0xfffffffff0a368f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d1338
+
+NIX kernel with 4K/2M pages
+
+namec #/ 2 0
+namec returns 0xfffffffff0a5e478
+namec #e/terminal 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/cputype 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/service 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/bootfile 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/bootfile 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/nobootprompt 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/nobootprompt 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/rootspec 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/rootspec 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nobiosprobe 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nodiskprobe 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nobiosload 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/mouseport 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/mouseport 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/monitor 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/monitor 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/sysname 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/sysname 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/ether0 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/ether0 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/partition 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/partition 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/vgasize 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/vgasize 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/location 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/location 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/auth 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/auth 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/fs 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/fs 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/fileserver 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/fileserver 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*kernelpercent 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/console 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/console 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/nvram 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/nvram 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/user 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/user 5 1
+namec returns 0xfffffffff0a6ad78
+fixfault va 0x200028 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+namec #c/cons 3 0
+namec returns 0xfffffffff0a6b098
+namec #c/cons 3 1
+namec returns 0xfffffffff0a6f788
+namec #c/cons 3 1
+namec returns 0xfffffffff0a37d18
+namec #c 1 0
+namec returns 0xfffffffff0a6d628
+namec /dev 4 0
+namec returns 0xfffffffff0a6ad78
+namec #ec 1 0
+namec returns 0xfffffffff0a6fdc8
+namec /env 4 0
+namec returns 0xfffffffff0a6f3a8
+namec #e 1 0
+namec returns 0xfffffffff0a38a98
+namec /env 4 0
+namec returns 0xfffffffff0a387b8
+namec #s 1 0
+namec returns 0xfffffffff0a75108
+namec /srv 4 0
+namec returns 0xfffffffff0a387b8
+execac: up 0xfffffffff03d1338 file /boot/boot
+namec /boot/boot 3 3
+namec returns 0xfffffffff0a75d28
+execac: up 0xfffffffff03d1338 chan 0xfffffffff0a75d28 elem boot
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7ffffee00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411efb8 = 0x4600087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x2034b5 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x400080 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+namec #c 1 0
+namec returns 0xfffffffff0a78628
+namec /dev 4 0
+namec returns 0xfffffffff0a782c8
+namec /dev/cons 3 0
+namec returns 0xfffffffff0a782c8
+namec /dev/cons 3 1
+namec returns 0xfffffffff0a79368
+namec /dev/cons 3 1
+namec returns 0xfffffffff0a798c8
+namec #ec 1 0
+namec returns 0xfffffffff0a7a088
+namec /env 4 0
+namec returns 0xfffffffff0a79d28
+namec #e 1 0
+namec returns 0xfffffffff0a38a98
+namec /env 4 0
+namec returns 0xfffffffff0a79d28
+namec #s 1 0
+namec returns 0xfffffffff0a6fdc8
+namec /srv 4 0
+namec returns 0xfffffffff0a79d28
+namec #e/cputype 3 0
+namec returns 0xfffffffff0a75108
+namec #u/usb/ctl 0 0
+namec #e/nobootprompt 3 0
+namec returns 0xfffffffff0a79d28
+ipconfig...namec #I 1 0
+namec returns 0xfffffffff0a75108
+fixfault va 0x407c78 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200085
+namec /net 4 0
+namec returns 0xfffffffff0a79d28
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x2064ad rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200087
+namec #l0 0 0
+namec returns 0xfffffffff0a6e808
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411e010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x2063bd rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4400085
+namec #l0 1 0
+namec returns 0xfffffffff0a6e4e8
+namec /net 4 0
+namec returns 0xfffffffff0a6e808
+namec #l1 0 0
+namec returns 0xfffffffff0a771a8
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+namec #l1 1 0
+namec returns 0xfffffffff0a6e808
+namec /net 4 0
+namec returns 0xfffffffff0a771a8
+namec #l2 0 0
+namec #l3 0 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4a00087
+fixfault va 0x407b42 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/ipconfig
+namec /boot/ipconfig 3 3
+namec returns 0xfffffffff0a771a8
+execac: up 0xfffffffff03dd218 chan 0xfffffffff0a771a8 elem ipconfig
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122fb8 = 0x4c00087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x2073a4 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4a00085
+fixfault va 0x4000a0 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+namec /dev/random 3 32
+namec returns 0xfffffffff160efa8
+namec /dev/bintime 3 32
+namec returns 0xfffffffff160f588
+namec /env/cputype 3 0
+namec returns 0xfffffffff160fba8
+namec /env/sysname 3 0
+namec returns 0xfffffffff160fba8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+namec /net/ipifc 3 0
+namec returns 0xfffffffff160fba8
+namec /net/ipifc 0 0
+namec returns 0xfffffffff160fba8
+namec /net/ipifc/clone 3 2
+namec returns 0xfffffffff160fba8
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff16121e8
+namec /net/ether0/0/data 3 2
+namec returns 0xfffffffff1612b08
+namec /net/ether0/stats 3 0
+namec returns 0xfffffffff16132e8
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff16132e8
+namec /net/ether0/1/data 3 2
+namec returns 0xfffffffff1613f68
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff16132e8
+namec /net/ether0/2/data 3 2
+namec returns 0xfffffffff1614bc8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121ff8 = 0x4c00087
+fixfault va 0x211461 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f008 = 0x4a00085
+fixfault va 0x400148 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00085
+fixfault va 0x400128 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00087
+namec /net/ether0/addr 3 0
+namec returns 0xfffffffff1621e28
+namec /net/cs 3 2
+namec /net/udp/clone 3 2
+namec returns 0xfffffffff1621e28
+namec /net/udp/0/data 3 2
+namec returns 0xfffffffff1643768
+namec /net/iproute 3 2
+namec returns 0xfffffffff1643768
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03e11b8 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x7fffffe00000 0x5200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4126ff8 = 0x5200087
+fixfault va 0x400078 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x400000 0x5400003
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124010 = 0x5400087
+namec #c/pid 3 0
+namec returns 0xfffffffff1621e28
+namec #p/17/args 3 1
+namec returns 0xfffffffff1643768
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4a00085
+fixfault va 0x4000ec rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00085
+namec /net/ndb 3 0
+namec returns 0xfffffffff1643768
+fixfault va 0x40640f rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec /net/ndb 3 17
+namec returns 0xfffffffff1643768
+namec /net/dns 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1621e28
+namec /net/ndb 3 0
+namec returns 0xfffffffff1621e28
+namec /net/ndb 3 0
+namec returns 0xfffffffff1621e28
+namec /env/kbmap 3 0
+namec /boot/factotum 3 3
+namec returns 0xfffffffff1621e28
+namec /env/debugfactotum 3 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4e00087
+fixfault va 0x4076f7 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/factotum
+namec /boot/factotum 3 3
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4400085
+fixfault va 0x4000d8 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200085
+fixfault va 0x407e58 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4c00003
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4c00087
+namec /mnt/factotum 0 0
+namec returns 0xfffffffff1621e28
+execac: up 0xfffffffff03dd218 chan 0xfffffffff1621e28 elem factotum
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff411ffb8 = 0x5600087
+fixfault va 0x7fffffffef48 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x5600087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x20e150 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4200085
+fixfault va 0x400118 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec #c/pid 3 0
+namec returns 0xfffffffff165ddc8
+namec #p/18/ctl 3 1
+namec returns 0xfffffffff1643768
+devproc private request ignored
+devproc noswap request ignored
+namec #¤/caphash 3 1
+namec returns 0xfffffffff165ddc8
+namec /env/nvram 3 0
+namec returns 0xfffffffff1643768
+namec /env/cputype 3 0
+namec returns 0xfffffffff1643768
+namec /boot/nvram 3 2
+namec returns 0xfffffffff1643768
+namec /env/nvrlen 3 0
+namec /env/nvroff 3 0
+namec #c/hostowner 3 1
+namec returns 0xfffffffff165f5a8
+namec /dev/user 3 0
+namec returns 0xfffffffff165f5a8
+namec /net/tcp 0 0
+namec returns 0xfffffffff165f5a8
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1643768
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1643768
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120ff8 = 0x5600087
+fixfault va 0x21984b rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4122008 = 0x4200085
+namec /net/tcp/0/data 3 2
+namec returns 0xfffffffff165f5a8
+fixfault va 0x410298 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122010 = 0x4e00087
+namec /net/tcp 0 0
+namec returns 0xfffffffff165f5a8
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1643768
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1643768
+namec /net/tcp/1/data 3 2
+namec returns 0xfffffffff165f5a8
+namec /mnt/factotum 0 0
+namec /dev/random 3 32
+namec returns 0xfffffffff1643768
+namec /dev/bintime 3 32
+namec returns 0xfffffffff1657608
+namec /mnt/factotum 0 0
+namec #| 2 0
+namec returns 0xfffffffff160d248
+namec /srv/factotum 5 97
+namec returns 0xfffffffff165e0e8
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x200000 0x4200001
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff4128008 = 0x4200085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x5a00087
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4200085
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+up 0xfffffffff03e3188 mmuput 0x7fffffe00000 0x5600003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff412aff8 = 0x5600087
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x400000 0x4e00003
+up 0xfffffffff03e3188 new pte 0xfffffffff4128010 = 0x4e00087
+namec /mnt 4 0
+namec returns 0xfffffffff165ee28
+namec /srv/factotum 0 0
+namec returns 0xfffffffff166ca68
+namec #c/pid 3 0
+namec returns 0xfffffffff166d0a8
+namec /mnt/factotum 0 0
+namec returns 0xfffffffff166d0a8
+connect...namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff166ca68
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff166ca68
+namec /net/tcp/2/data 3 2
+namec returns 0xfffffffff166d0a8
+namec /env/srvold9p 3 0
+
+version...namec #s/boot 5 1
+namec returns 0xfffffffff166ca68
+namec / 1 0
+namec returns 0xfffffffff166ca68
+namec / 4 0
+namec returns 0xfffffffff160e4a8
+namec /env/rootspec 3 0
+namec returns 0xfffffffff165f9a8
+namec /mnt/factotum/rpc 3 2
+namec returns 0xfffffffff160e728
+namec /net/tcp 0 0
+namec returns 0xfffffffff165ec88
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1655dc8
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1655dc8
+namec /net/tcp/3/data 3 2
+namec returns 0xfffffffff165ec88
+namec /root 4 0
+namec returns 0xfffffffff165ec88
+namec /env/rootdir 3 0
+namec /root 1 0
+namec returns 0xfffffffff160e728
+namec / 4 0
+namec returns 0xfffffffff1655dc8
+namec #e/rootdir 5 1
+namec returns 0xfffffffff1655dc8
+time...namec #s/boot 3 2
+namec returns 0xfffffffff166d0a8
+namec /tmp 4 0
+namec returns 0xfffffffff1655dc8
+namec /tmp 0 0
+namec returns 0xfffffffff1656cc8
+namec /tmp 4 0
+namec returns 0xfffffffff1656cc8
+namec #c/time 3 1
+namec returns 0xfffffffff1655dc8
+
+namec #c/swap 3 1
+namec returns 0xfffffffff1655dc8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+fixfault va 0x20b0cb rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+boot 1: suicide: sys: trap: fault read addr=0x0 pc=0x20337d
+boot process died: sys: trap: fault read addr=0x0 pc=0x20337d
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32203 upage 16101 kpage 58541472
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+m 0xfffffffff0245000 pml4 0xfffffffff0245040
+m 0xfffffffff0252000 pml4 0xfffffffff0252040
+m 0xfffffffff0261000 pml4 0xfffffffff0261040
+m 0xfffffffff026e000 pml4 0xfffffffff026e040
+m 0xfffffffff027b000 pml4 0xfffffffff027b040
+m 0xfffffffff0288000 pml4 0xfffffffff0288040
+m 0xfffffffff0295000 pml4 0xfffffffff0295040
+m 0xfffffffff02a2000 pml4 0xfffffffff02a2040
+m 0xfffffffff02af000 pml4 0xfffffffff02af040
+m 0xfffffffff02bc000 pml4 0xfffffffff02bc040
+m 0xfffffffff02c9000 pml4 0xfffffffff02c9040
+m 0xfffffffff02d6000 pml4 0xfffffffff02d6040
+m 0xfffffffff02e3000 pml4 0xfffffffff02e3040
+m 0xfffffffff02f0000 pml4 0xfffffffff02f0040
+m 0xfffffffff02fd000 pml4 0xfffffffff02fd040
+m 0xfffffffff030a000 pml4 0xfffffffff030a040
+m 0xfffffffff0317000 pml4 0xfffffffff0317040
+m 0xfffffffff0324000 pml4 0xfffffffff0324040
+m 0xfffffffff0331000 pml4 0xfffffffff0331040
+m 0xfffffffff0341000 pml4 0xfffffffff0341040
+m 0xfffffffff034e000 pml4 0xfffffffff034e040
+m 0xfffffffff035b000 pml4 0xfffffffff035b040
+m 0xfffffffff0368000 pml4 0xfffffffff0368040
+m 0xfffffffff0375000 pml4 0xfffffffff0375040
+m 0xfffffffff0382000 pml4 0xfffffffff0382040
+m 0xfffffffff038f000 pml4 0xfffffffff038f040
+m 0xfffffffff039c000 pml4 0xfffffffff039c040
+m 0xfffffffff03a9000 pml4 0xfffffffff03a9040
+m 0xfffffffff03b6000 pml4 0xfffffffff03b6040
+m 0xfffffffff03c3000 pml4 0xfffffffff03c3040
+m 0xfffffffff03d0000 pml4 0xfffffffff03d0040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022c4c0 big0 0xfffffffff0a368f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d1338
+
+NIX kernel with 4K/2M pages
+
+namec #/ 2 0
+namec returns 0xfffffffff0a5e478
+namec #e/terminal 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/cputype 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/service 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/bootfile 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/bootfile 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/nobootprompt 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/nobootprompt 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/rootspec 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/rootspec 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nobiosprobe 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nodiskprobe 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*nobiosload 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/mouseport 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/mouseport 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/monitor 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/monitor 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/sysname 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/sysname 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/ether0 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/ether0 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/partition 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/partition 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/vgasize 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/vgasize 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/location 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/location 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/auth 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/auth 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/fs 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/fs 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/fileserver 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/fileserver 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/*kernelpercent 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/console 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/console 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/nvram 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/nvram 5 1
+namec returns 0xfffffffff0a6ad78
+namec #e/user 5 1
+namec returns 0xfffffffff0a6ad78
+namec #ec/user 5 1
+namec returns 0xfffffffff0a6ad78
+fixfault va 0x200028 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+namec #c/cons 3 0
+namec returns 0xfffffffff0a6b098
+namec #c/cons 3 1
+namec returns 0xfffffffff0a6faa8
+namec #c/cons 3 1
+namec returns 0xfffffffff0a37d18
+namec #c 1 0
+namec returns 0xfffffffff0a6ebe8
+namec /dev 4 0
+namec returns 0xfffffffff0a6ad78
+namec #ec 1 0
+namec returns 0xfffffffff0a701e8
+namec /env 4 0
+namec returns 0xfffffffff0a6fdc8
+namec #e 1 0
+namec returns 0xfffffffff0a38658
+namec /env 4 0
+namec returns 0xfffffffff0a38478
+namec #s 1 0
+namec returns 0xfffffffff0a74ea8
+namec /srv 4 0
+namec returns 0xfffffffff0a38478
+execac: up 0xfffffffff03d1338 file /boot/boot
+namec /boot/boot 3 3
+namec returns 0xfffffffff0a75b88
+execac: up 0xfffffffff03d1338 chan 0xfffffffff0a75b88 elem boot
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7ffffee00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411efb8 = 0x4600087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x2034b5 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x400080 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+namec #c 1 0
+namec returns 0xfffffffff0a784a8
+namec /dev 4 0
+namec returns 0xfffffffff0a78148
+namec /dev/cons 3 0
+namec returns 0xfffffffff0a78148
+namec /dev/cons 3 1
+namec returns 0xfffffffff0a79128
+namec /dev/cons 3 1
+namec returns 0xfffffffff0a79688
+namec #ec 1 0
+namec returns 0xfffffffff0a79f08
+namec /env 4 0
+namec returns 0xfffffffff0a79ba8
+namec #e 1 0
+namec returns 0xfffffffff0a38658
+namec /env 4 0
+namec returns 0xfffffffff0a79ba8
+namec #s 1 0
+namec returns 0xfffffffff0a701e8
+namec /srv 4 0
+namec returns 0xfffffffff0a79ba8
+namec #e/cputype 3 0
+namec returns 0xfffffffff0a74ea8
+namec #u/usb/ctl 0 0
+namec #e/nobootprompt 3 0
+namec returns 0xfffffffff0a79ba8
+ipconfig...namec #I 1 0
+namec returns 0xfffffffff0a74ea8
+fixfault va 0x407c78 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200085
+namec /net 4 0
+namec returns 0xfffffffff0a79ba8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x2064ad rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200087
+namec #l0 0 0
+namec returns 0xfffffffff0a6e4e8
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411e010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x2063bd rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4400085
+namec #l0 1 0
+namec returns 0xfffffffff0a6e1c8
+namec /net 4 0
+namec returns 0xfffffffff0a6e4e8
+namec #l1 0 0
+namec returns 0xfffffffff0a75768
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+namec #l1 1 0
+namec returns 0xfffffffff0a6e4e8
+namec /net 4 0
+namec returns 0xfffffffff0a75768
+namec #l2 0 0
+namec #l3 0 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4a00087
+fixfault va 0x407b42 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/ipconfig
+namec /boot/ipconfig 3 3
+namec returns 0xfffffffff0a75768
+execac: up 0xfffffffff03dd218 chan 0xfffffffff0a75768 elem ipconfig
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122fb8 = 0x4c00087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x2073a4 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4a00085
+fixfault va 0x4000a0 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+namec /dev/random 3 32
+namec returns 0xfffffffff160f428
+namec /dev/bintime 3 32
+namec returns 0xfffffffff160f948
+namec /env/cputype 3 0
+namec returns 0xfffffffff160ff88
+namec /env/sysname 3 0
+namec returns 0xfffffffff160ff88
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+namec /net/ipifc 3 0
+namec returns 0xfffffffff160ff88
+namec /net/ipifc 0 0
+namec returns 0xfffffffff160ff88
+namec /net/ipifc/clone 3 2
+namec returns 0xfffffffff160ff88
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff16124e8
+namec /net/ether0/0/data 3 2
+namec returns 0xfffffffff1612e68
+namec /net/ether0/stats 3 0
+namec returns 0xfffffffff1613668
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff1613668
+namec /net/ether0/1/data 3 2
+namec returns 0xfffffffff16142a8
+namec /net/ether0/clone 3 2
+namec returns 0xfffffffff1613668
+namec /net/ether0/2/data 3 2
+namec returns 0xfffffffff1614ee8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121ff8 = 0x4c00087
+fixfault va 0x211461 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f008 = 0x4a00085
+fixfault va 0x400148 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00085
+fixfault va 0x400128 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00087
+namec /net/ether0/addr 3 0
+namec returns 0xfffffffff1622228
+namec /net/cs 3 2
+namec /net/udp/clone 3 2
+namec returns 0xfffffffff1622228
+namec /net/udp/0/data 3 2
+namec returns 0xfffffffff1643a68
+namec /net/iproute 3 2
+namec returns 0xfffffffff1643a68
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03e11b8 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x7fffffe00000 0x5200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4126ff8 = 0x5200087
+fixfault va 0x400078 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x400000 0x5400003
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124010 = 0x5400087
+namec #c/pid 3 0
+namec returns 0xfffffffff1622228
+namec #p/17/args 3 1
+namec returns 0xfffffffff1643a68
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4a00085
+fixfault va 0x4000ec rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00085
+namec /net/ndb 3 0
+namec returns 0xfffffffff1643a68
+fixfault va 0x40640f rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec /net/ndb 3 17
+namec returns 0xfffffffff1643a68
+namec /net/dns 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1622228
+namec /net/ndb 3 0
+namec returns 0xfffffffff1622228
+namec /net/ndb 3 0
+namec returns 0xfffffffff1622228
+namec /env/kbmap 3 0
+namec /boot/factotum 3 3
+namec returns 0xfffffffff1622228
+namec /env/debugfactotum 3 0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4e00087
+fixfault va 0x4076f7 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/factotum
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4400085
+fixfault va 0x4000d8 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200085
+fixfault va 0x407e58 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4c00003
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4c00087
+namec /mnt/factotum 0 0
+namec /boot/factotum 3 3
+namec returns 0xfffffffff1622228
+execac: up 0xfffffffff03dd218 chan 0xfffffffff1622228 elem factotum
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff411ffb8 = 0x5600087
+fixfault va 0x7fffffffef48 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x5600087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x20e150 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4200085
+fixfault va 0x400118 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec #c/pid 3 0
+namec returns 0xfffffffff165dea8
+namec #p/18/ctl 3 1
+namec returns 0xfffffffff1643a68
+devproc private request ignored
+devproc noswap request ignored
+namec #¤/caphash 3 1
+namec returns 0xfffffffff165dea8
+namec /env/nvram 3 0
+namec returns 0xfffffffff1643a68
+namec /env/cputype 3 0
+namec returns 0xfffffffff1643a68
+namec /boot/nvram 3 2
+namec returns 0xfffffffff1643a68
+namec /env/nvrlen 3 0
+namec /env/nvroff 3 0
+namec #c/hostowner 3 1
+namec returns 0xfffffffff165f708
+namec /dev/user 3 0
+namec returns 0xfffffffff165f708
+namec /net/tcp 0 0
+namec returns 0xfffffffff165f708
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1643a68
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1643a68
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120ff8 = 0x5600087
+fixfault va 0x21984b rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4122008 = 0x4200085
+namec /net/tcp/0/data 3 2
+namec returns 0xfffffffff165f708
+fixfault va 0x410298 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122010 = 0x4e00087
+namec /net/tcp 0 0
+namec returns 0xfffffffff165f708
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1643a68
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1643a68
+namec /net/tcp/1/data 3 2
+namec returns 0xfffffffff165f708
+namec /dev/random 3 32
+namec returns 0xfffffffff1643a68
+namec /dev/bintime 3 32
+namec returns 0xfffffffff1656b28
+namec /mnt/factotum 0 0
+namec /mnt/factotum 0 0
+namec #| 2 0
+namec returns 0xfffffffff1657008
+namec /srv/factotum 5 97
+namec returns 0xfffffffff160a628
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x200000 0x4200001
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x5a00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x5a00087
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4200085
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff4128008 = 0x4200085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03e3188 mmuput 0x7fffffe00000 0x5600003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff412aff8 = 0x5600087
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x400000 0x4e00003
+up 0xfffffffff03e3188 new pte 0xfffffffff4128010 = 0x4e00087
+namec /mnt 4 0
+namec returns 0xfffffffff1657ee8
+namec /srv/factotum 0 0
+namec returns 0xfffffffff1658748
+namec #c/pid 3 0
+namec returns 0xfffffffff166bc48
+namec /mnt/factotum 0 0
+namec returns 0xfffffffff166bc48
+connect...namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff1658748
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff1658748
+namec /net/tcp/2/data 3 2
+namec returns 0xfffffffff166bc48
+namec /env/srvold9p 3 0
+
+version...namec #s/boot 5 1
+namec returns 0xfffffffff1658748
+namec / 1 0
+namec returns 0xfffffffff1658748
+namec / 4 0
+namec returns 0xfffffffff165e808
+namec /env/rootspec 3 0
+namec returns 0xfffffffff16661c8
+namec /mnt/factotum/rpc 3 2
+namec returns 0xfffffffff1666428
+namec /net/tcp 0 0
+namec returns 0xfffffffff16571a8
+namec /net/cs 0 0
+namec #s/cs 3 2
+namec /net/cs 3 2
+namec #c/pid 3 0
+namec returns 0xfffffffff160eae8
+namec /net/tcp/clone 3 2
+namec returns 0xfffffffff160eae8
+namec /net/tcp/3/data 3 2
+namec returns 0xfffffffff16571a8
+namec /root 4 0
+namec returns 0xfffffffff16571a8
+namec /env/rootdir 3 0
+namec /root 1 0
+namec returns 0xfffffffff1666428
+namec / 4 0
+namec returns 0xfffffffff160eae8
+namec #e/rootdir 5 1
+namec returns 0xfffffffff160eae8
+time...namec #s/boot 3 2
+namec returns 0xfffffffff166bc48
+namec /tmp 4 0
+namec returns 0xfffffffff160eae8
+namec /tmp 0 0
+namec returns 0xfffffffff166b9a8
+namec /tmp 4 0
+namec returns 0xfffffffff166b9a8
+namec #c/time 3 1
+namec returns 0xfffffffff160eae8
+
+namec #c/swap 3 1
+namec returns 0xfffffffff160eae8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+fixfault va 0x20b0cb rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+boot 1: suicide: sys: trap: fault read addr=0x0 pc=0x20337d
+boot process died: sys: trap: fault read addr=0x0 pc=0x20337dttrcpu0: exiting
+
+Plan 9
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+pm 0 base 0x411b000 npgs 0x3ee5
+bigbase 0x4200000
+pm 1 base 0x0 npgs 0x0
+bigbase 0x0
+pm 2 base 0x0 npgs 0x0
+bigbase 0x0
+pm 3 base 0x0 npgs 0x0
+bigbase 0x0
+pm 4 base 0x0 npgs 0x0
+bigbase 0x0
+pm 5 base 0x0 npgs 0x0
+bigbase 0x0
+pm 6 base 0x0 npgs 0x0
+bigbase 0x0
+pm 7 base 0x0 npgs 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+127M memory: 65M kernel data, 62M user, 375M swap
+big page 0x4200000 split
+
+NIX kernel with 4K pages
+
+called: <1>
+called: <3>
+called: <2>
+called: <5>
+called: <4>
+called: <6>
+called: <7>
+called: <8>
+called: <10>
+called: <11>
+called: <18>
+called: <9>
+called: <16>
+called: <17>
+called: <19>
+called: <25>
+called: <24>
+called: <26>
+called: <27>
+called: <12>
+called: <15>
+called: <13>
+called: <21>
+called: <20>
+called: <22>
+called: <23>
+called: <29>
+called: <14>
+called: <28>
+called: <30>
+called: <31>
+bootcore: all cores done
+ipconfig...1 pexit 13
+2 pexit 13
+3 pexit 13
+4 pexit 13
+1 pexit 18
+2 pexit 18
+3 pexit 18
+4 pexit 18
+connect...
+version...time...
+1 pexit 24
+2 pexit 24
+3 pexit 24
+4 pexit 24
+1 pexit 25
+2 pexit 25
+3 pexit 25
+4 pexit 25
+booting CPU server
+1 pexit 26
+2 pexit 26
+3 pexit 26
+4 pexit 26
+1 pexit 27
+2 pexit 27
+3 pexit 27
+4 pexit 27
+1 pexit 29
+2 pexit 29
+3 pexit 29
+4 pexit 29
+1 pexit 30
+2 pexit 30
+3 pexit 30
+4 pexit 30
+1 pexit 32
+2 pexit 32
+3 pexit 32
+4 pexit 32
+1 pexit 33
+2 pexit 33
+3 pexit 33
+4 pexit 33
+1 pexit 35
+2 pexit 35
+3 pexit 35
+4 pexit 35
+1 pexit 36
+2 pexit 36
+3 pexit 36
+4 pexit 36
+1 pexit 38
+2 pexit 38
+3 pexit 38
+4 pexit 38
+1 pexit 40
+2 pexit 40
+3 pexit 40
+4 pexit 40
+big page 0x4400000 split
+1 pexit 41
+2 pexit 41
+3 pexit 41
+4 pexit 41
+1 pexit 44
+2 pexit 44
+3 pexit 44
+4 pexit 44
+1 pexit 45
+2 pexit 45
+3 pexit 45
+4 pexit 45
+1 pexit 47
+2 pexit 47
+1 pexit 48
+2 pexit 48
+3 pexit 48
+4 pexit 48
+3 pexit 47
+4 pexit 47
+1 pexit 51
+2 pexit 51
+3 pexit 51
+4 pexit 51
+1 pexit 50
+2 pexit 50
+3 pexit 50
+4 pexit 50
+1 pexit 49
+2 pexit 49
+3 pexit 49
+4 pexit 49
+1 pexit 54
+2 pexit 54
+3 pexit 54
+4 pexit 54
+1 pexit 55
+2 pexit 55
+3 pexit 55
+4 pexit 55
+1 pexit 58
+2 pexit 58
+3 pexit 58
+4 pexit 58
+1 pexit 60
+2 pexit 60
+3 pexit 60
+4 pexit 60
+1 pexit 61
+2 pexit 61
+3 pexit 61
+4 pexit 61
+1 pexit 62
+2 pexit 62
+3 pexit 62
+4 pexit 62
+1 pexit 63
+2 pexit 63
+3 pexit 63
+4 pexit 63
+1 pexit 64
+2 pexit 64
+3 pexit 64
+4 pexit 64
+1 pexit 65
+2 pexit 65
+3 pexit 65
+4 pexit 65
+1 pexit 66
+2 pexit 66
+3 pexit 66
+4 pexit 66
+1 pexit 67
+2 pexit 67
+3 pexit 67
+4 pexit 67
+1 pexit 68
+2 pexit 68
+3 pexit 68
+4 pexit 68
+1 pexit 69
+2 pexit 69
+3 pexit 69
+4 pexit 69
+1 pexit 70
+2 pexit 70
+3 pexit 70
+4 pexit 70
+1 pexit 71
+2 pexit 71
+3 pexit 71
+4 pexit 71
+1 pexit 72
+2 pexit 72
+3 pexit 72
+4 pexit 72
+1 pexit 73
+2 pexit 73
+3 pexit 73
+4 pexit 73
+1 pexit 74
+2 pexit 74
+3 pexit 74
+4 pexit 74
+1 pexit 75
+2 pexit 75
+3 pexit 75
+4 pexit 75
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+1 pexit 76
+2 pexit 76
+3 pexit 76
+4 pexit 76
+1 pexit 78
+2 pexit 78
+3 pexit 78
+4 pexit 78
+1 pexit 79
+2 pexit 79
+3 pexit 79
+4 pexit 79
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios1 pexit 80
+2 pexit 80
+3 pexit 80
+4 pexit 80
+#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+1 pexit 23
+2 pexit 23
+3 pexit 23
+4 pexit 23
+1 pexit 22
+2 pexit 22
+3 pexit 22
+4 pexit 22
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; 1 pexit 57
+2 pexit 57
+3 pexit 57
+4 pexit 57
+1 pexit 56
+2 pexit 56
+3 pexit 56
+4 pexit 56
+1 pexit 53
+2 pexit 53
+3 pexit 53
+4 pexit 53
+1 pexit 99
+2 pexit 99
+3 pexit 99
+4 pexit 99
+1 pexit 100
+2 pexit 100
+3 pexit 100
+4 pexit 100
+1 pexit 101
+2 pexit 101
+3 pexit 101
+4 pexit 101
+1 pexit 102
+2 pexit 102
+3 pexit 102
+4 pexit 102
+1 pexit 104
+2 pexit 104
+3 pexit 104
+4 pexit 104
+1 pexit 105
+2 pexit 105
+3 pexit 105
+4 pexit 105
+1 pexit 106
+2 pexit 106
+3 pexit 106
+4 pexit 106
+1 pexit 107
+2 pexit 107
+3 pexit 107
+4 pexit 107
+big page 0x4600000 split
+1 pexit 109
+1 pexit 108
+2 pexit 108
+3 pexit 108
+4 pexit 108
+2 pexit 109
+3 pexit 109
+4 pexit 109
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+1 pexit 113
+2 pexit 113
+3 pexit 113
+4 pexit 113
+cpu0: exiting
+
+Plan 9
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+pm 0 base 0x411b000 npgs 0x3ee5
+bigbase 0x4200000
+pm 1 base 0x0 npgs 0x0
+bigbase 0x0
+pm 2 base 0x0 npgs 0x0
+bigbase 0x0
+pm 3 base 0x0 npgs 0x0
+bigbase 0x0
+pm 4 base 0x0 npgs 0x0
+bigbase 0x0
+pm 5 base 0x0 npgs 0x0
+bigbase 0x0
+pm 6 base 0x0 npgs 0x0
+bigbase 0x0
+pm 7 base 0x0 npgs 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+127M memory: 65M kernel data, 62M user, 375M swap
+big page 0x4200000 split
+
+NIX kernel with 4K pages
+
+called: <1>
+called: <2>
+called: <3>
+called: <4>
+called: <5>
+called: <6>
+called: <8>
+called: <9>
+called: <7>
+called: <11>
+called: <10>
+called: <16>
+called: <17>
+called: <18>
+called: <25>
+called: <19>
+called: <27>
+called: <26>
+called: <24>
+called: <13>
+called: <14>
+called: <12>
+called: <15>
+called: <22>
+called: <20>
+called: <23>
+called: <21>
+called: <30>
+called: <29>
+called: <28>
+called: <31>
+bootcore: all cores done
+ipconfig...1 pexit 13
+2 pexit 13
+3 pexit 13
+4 pexit 13
+1 pexit 18
+2 pexit 18
+3 pexit 18
+4 pexit 18
+connect...
+version...time...
+1 pexit 24
+2 pexit 24
+3 pexit 24
+4 pexit 24
+1 pexit 25
+2 pexit 25
+3 pexit 25
+4 pexit 25
+booting CPU server
+1 pexit 26
+2 pexit 26
+3 pexit 26
+4 pexit 26
+1 pexit 27
+2 pexit 27
+3 pexit 27
+4 pexit 27
+1 pexit 29
+2 pexit 29
+3 pexit 29
+4 pexit 29
+1 pexit 30
+2 pexit 30
+3 pexit 30
+4 pexit 30
+1 pexit 32
+2 pexit 32
+3 pexit 32
+4 pexit 32
+1 pexit 33
+2 pexit 33
+3 pexit 33
+4 pexit 33
+1 pexit 35
+2 pexit 35
+3 pexit 35
+4 pexit 35
+1 pexit 36
+2 pexit 36
+3 pexit 36
+4 pexit 36
+1 pexit 38
+2 pexit 38
+3 pexit 38
+4 pexit 38
+1 pexit 40
+2 pexit 40
+3 pexit 40
+4 pexit 40
+big page 0x4400000 split
+1 pexit 41
+2 pexit 41
+3 pexit 41
+4 pexit 41
+1 pexit 44
+2 pexit 44
+3 pexit 44
+4 pexit 44
+1 pexit 45
+2 pexit 45
+3 pexit 45
+4 pexit 45
+1 pexit 47
+2 pexit 47
+3 pexit 47
+4 pexit 47
+1 pexit 48
+2 pexit 48
+3 pexit 48
+4 pexit 48
+1 pexit 51
+2 pexit 51
+3 pexit 51
+4 pexit 51
+1 pexit 50
+2 pexit 50
+3 pexit 50
+4 pexit 50
+1 pexit 49
+2 pexit 49
+3 pexit 49
+4 pexit 49
+1 pexit 54
+1 pexit 55
+2 pexit 55
+3 pexit 55
+4 pexit 55
+2 pexit 54
+3 pexit 54
+4 pexit 54
+1 pexit 58
+2 pexit 58
+3 pexit 58
+4 pexit 58
+1 pexit 60
+2 pexit 60
+3 pexit 60
+4 pexit 60
+1 pexit 61
+2 pexit 61
+3 pexit 61
+4 pexit 61
+1 pexit 62
+2 pexit 62
+3 pexit 62
+4 pexit 62
+1 pexit 63
+2 pexit 63
+3 pexit 63
+4 pexit 63
+1 pexit 64
+2 pexit 64
+3 pexit 64
+4 pexit 64
+1 pexit 65
+2 pexit 65
+3 pexit 65
+4 pexit 65
+1 pexit 66
+2 pexit 66
+3 pexit 66
+4 pexit 66
+1 pexit 67
+2 pexit 67
+3 pexit 67
+4 pexit 67
+1 pexit 68
+2 pexit 68
+3 pexit 68
+4 pexit 68
+1 pexit 69
+2 pexit 69
+3 pexit 69
+4 pexit 69
+1 pexit 70
+2 pexit 70
+3 pexit 70
+4 pexit 70
+1 pexit 71
+2 pexit 71
+3 pexit 71
+4 pexit 71
+1 pexit 72
+2 pexit 72
+3 pexit 72
+4 pexit 72
+1 pexit 73
+2 pexit 73
+3 pexit 73
+4 pexit 73
+1 pexit 74
+2 pexit 74
+3 pexit 74
+4 pexit 74
+1 pexit 75
+2 pexit 75
+3 pexit 75
+4 pexit 75
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+1 pexit 76
+2 pexit 76
+3 pexit 76
+4 pexit 76
+1 pexit 77
+2 pexit 77
+3 pexit 77
+4 pexit 77
+1 pexit 78
+2 pexit 78
+3 pexit 78
+4 pexit 78
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios1 pexit 79
+2 pexit 79
+3 pexit 79
+4 pexit 79
+#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+1 pexit 23
+2 pexit 23
+3 pexit 23
+4 pexit 23
+1 pexit 22
+2 pexit 22
+3 pexit 22
+4 pexit 22
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; 1 pexit 57
+2 pexit 57
+3 pexit 57
+4 pexit 57
+1 pexit 56
+2 pexit 56
+3 pexit 56
+4 pexit 56
+1 pexit 53
+2 pexit 53
+3 pexit 53
+4 pexit 53
+
+Plan 9
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32203 upage 16101 kpage 58864624
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+127M memory: 65M kernel data, 62M user, 375M swap
+
+NIX kernel with 4K pages
+
+called: <2>
+called: <1>
+called: <3>
+called: <4>
+called: <6>
+called: <5>
+called: <7>
+called: <8>
+called: <10>
+called: <9>
+called: <11>
+called: <18>
+called: <16>
+called: <17>
+called: <19>
+called: <25>
+called: <27>
+called: <24>
+called: <26>
+called: <12>
+called: <13>
+called: <14>
+called: <15>
+called: <20>
+called: <21>
+called: <30>
+called: <22>
+called: <23>
+called: <29>
+called: <28>
+called: <31>
+bootcore: all cores done
+ipconfig...connect...
+version...time...
+booting CPU server
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; pmcupdate
+pmcupdate, ctr 4c0d4a38
+pmcupdate, ctr ffffffffc7c4de2d
+pmcupdate, ctr fffffffface5ae37
+pmcupdate, ctr 53400f13
+GETCTR: core 8 regno 0 
+GETCTR: core 8 regno 0 
+cpu0: exiting
+
+Plan 9
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+pm 0 base 0x411b000 npgs 0x3ee5
+bigbase 0x4200000
+pm 1 base 0x0 npgs 0x0
+bigbase 0x0
+pm 2 base 0x0 npgs 0x0
+bigbase 0x0
+pm 3 base 0x0 npgs 0x0
+bigbase 0x0
+pm 4 base 0x0 npgs 0x0
+bigbase 0x0
+pm 5 base 0x0 npgs 0x0
+bigbase 0x0
+pm 6 base 0x0 npgs 0x0
+bigbase 0x0
+pm 7 base 0x0 npgs 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+127M memory: 65M kernel data, 62M user, 375M swap
+big page 0x4200000 split
+
+NIX kernel with 4K pages
+
+called: <1>
+called: <2>
+called: <3>
+called: <5>
+called: <4>
+called: <7>
+called: <6>
+called: <16>
+called: <19>
+called: <8>
+called: <18>
+called: <9>
+called: <17>
+called: <10>
+called: <11>
+called: <24>
+called: <26>
+called: <25>
+called: <27>
+called: <13>
+called: <15>
+called: <12>
+called: <14>
+called: <22>
+called: <21>
+called: <23>
+called: <30>
+called: <20>
+called: <31>
+called: <29>
+called: <28>
+bootcore: all cores done
+ipconfig...sysexits begin pid 13
+sysexits end pid 13
+sysexits begin pid 18
+sysexits end pid 18
+connect...
+version...time...
+sysexits begin pid 24
+sysexits end pid 24
+sysexits begin pid 25
+sysexits end pid 25
+booting CPU server
+sysexits begin pid 26
+sysexits end pid 26
+sysexits begin pid 27
+sysexits end pid 27
+sysexits begin pid 29
+sysexits end pid 29
+sysexits begin pid 30
+sysexits end pid 30
+sysexits begin pid 32
+sysexits end pid 32
+sysexits begin pid 33
+sysexits end pid 33
+sysexits begin pid 35
+sysexits end pid 35
+sysexits begin pid 36
+sysexits end pid 36
+sysexits begin pid 38
+sysexits end pid 38
+sysexits begin pid 40
+sysexits end pid 40
+big page 0x4400000 split
+sysexits begin pid 41
+sysexits end pid 41
+sysexits begin pid 44
+sysexits end pid 44
+sysexits begin pid 45
+sysexits end pid 45
+sysexits begin pid 47
+sysexits end pid 47
+sysexits begin pid 48
+sysexits end pid 48
+sysexits begin pid 51
+sysexits end pid 51
+sysexits begin pid 50
+sysexits end pid 50
+sysexits begin pid 49
+sysexits end pid 49
+sysexits begin pid 54
+sysexits begin pid 55
+sysexits end pid 55
+sysexits end pid 54
+sysexits begin pid 56
+sysexits end pid 56
+sysexits begin pid 60
+sysexits end pid 60
+sysexits begin pid 61
+sysexits end pid 61
+sysexits begin pid 62
+sysexits end pid 62
+sysexits begin pid 63
+sysexits end pid 63
+sysexits begin pid 64
+sysexits end pid 64
+sysexits begin pid 65
+sysexits end pid 65
+sysexits begin pid 66
+sysexits end pid 66
+sysexits begin pid 67
+sysexits end pid 67
+sysexits begin pid 68
+sysexits end pid 68
+sysexits begin pid 69
+sysexits end pid 69
+sysexits begin pid 70
+sysexits end pid 70
+sysexits begin pid 71
+sysexits end pid 71
+sysexits begin pid 72
+sysexits end pid 72
+sysexits begin pid 73
+sysexits end pid 73
+sysexits begin pid 74
+sysexits end pid 74
+sysexits begin pid 75
+sysexits end pid 75
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+sysexits begin pid 76
+sysexits end pid 76
+sysexits begin pid 77
+sysexits end pid 77
+sysexits begin pid 78
+sysexits end pid 78
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbiossysexits begin pid 79
+sysexits end pid 79
+#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+sysexits begin pid 23
+sysexits end pid 23
+sysexits begin pid 22
+sysexits end pid 22
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; sysexits begin pid 99
+sysexits end pid 99
+sysexits begin pid 100
+sysexits end pid 100
+sysexits begin pid 101
+sysexits end pid 101
+big page 0x4600000 split
+sysexits begin pid 102
+sysexits end pid 102
+sysexits begin pid 104
+sysexits end pid 104
+sysexits begin pid 105
+sysexits end pid 105
+sysexits begin pid 106
+sysexits end pid 106
+sysexits begin pid 107
+sysexits end pid 107
+sysexits begin pid 109
+sysexits end pid 109
+sysexits begin pid 108
+sysexits end pid 108
+sysexits begin pid 58
+sysexits end pid 58
+sysexits begin pid 57
+sysexits end pid 57
+sysexits begin pid 53
+sysexits end pid 53
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+sysexits begin pid 113
+sysexits end pid 113
+sysexits begin pid 117
+sysexits end pid 117
+sysexits begin pid 118
+sysexits end pid 118
+sysexits begin pid 119
+sysexits end pid 119
+sysexits begin pid 120
+sysexits end pid 120
+sysexits begin pid 122
+sysexits end pid 122
+sysexits begin pid 123
+sysexits end pid 123
+sysexits begin pid 124
+sysexits end pid 124
+sysexits begin pid 125
+sysexits end pid 125
+sysexits begin pid 127
+sysexits end pid 127
+sysexits begin pid 126
+sysexits end pid 126
+sysexits begin pid 130
+sysexits end pid 130
+sysexits begin pid 131
+sysexits end pid 131
+sysexits begin pid 132
+sysexits end pid 132
+sysexits begin pid 133
+sysexits end pid 133
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+sysexits begin pid 134
+sysexits end pid 134
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0xe 
+runacore: syscall 0x33 
+runacore: returning, from syscall
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+sysexits begin pid 136
+sysexits end pid 136
+sysexits begin pid 140
+sysexits end pid 140
+sysexits begin pid 141
+sysexits end pid 141
+sysexits begin pid 142
+sysexits end pid 142
+sysexits begin pid 143
+sysexits end pid 143
+sysexits begin pid 145
+sysexits end pid 145
+sysexits begin pid 146
+sysexits end pid 146
+sysexits begin pid 147
+sysexits end pid 147
+sysexits begin pid 148
+sysexits end pid 148
+sysexits begin pid 150
+sysexits end pid 150
+sysexits begin pid 149
+sysexits end pid 149
+sysexits begin pid 153
+sysexits end pid 153
+
+Plan 9
+ramscan 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+start: pa 0x400000 maxpa 0x8000000
+finish: pa 0x8000000 maxpa 0x8000000
+start: pa 0x100000000 maxpa 0x8000000
+finish: pa 0x100000000 maxpa 0x8000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+maxpa = 0xffff -> 0x40ffc00, maxpa1 = 0xffff maxpa2 = 0x280
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+unallocated unbacked physical memory
+	0x00000000d7e60000 0x000000000000e000 0x00000000d7e6e000
+	0x00000000d7ee0000 0x000000000000d000 0x00000000d7eed000
+	0x00000000d8000000 0x0000000027e00000 0x00000000ffe00000
+npage 32203 upage 16101 kpage 58541472
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+m 0xfffffffff0245000 pml4 0xfffffffff0245040
+m 0xfffffffff0252000 pml4 0xfffffffff0252040
+m 0xfffffffff0261000 pml4 0xfffffffff0261040
+m 0xfffffffff026e000 pml4 0xfffffffff026e040
+m 0xfffffffff027b000 pml4 0xfffffffff027b040
+m 0xfffffffff0288000 pml4 0xfffffffff0288040
+m 0xfffffffff0295000 pml4 0xfffffffff0295040
+m 0xfffffffff02a2000 pml4 0xfffffffff02a2040
+m 0xfffffffff02af000 pml4 0xfffffffff02af040
+m 0xfffffffff02bc000 pml4 0xfffffffff02bc040
+m 0xfffffffff02c9000 pml4 0xfffffffff02c9040
+m 0xfffffffff02d6000 pml4 0xfffffffff02d6040
+m 0xfffffffff02e3000 pml4 0xfffffffff02e3040
+m 0xfffffffff02f0000 pml4 0xfffffffff02f0040
+m 0xfffffffff02fd000 pml4 0xfffffffff02fd040
+m 0xfffffffff030a000 pml4 0xfffffffff030a040
+m 0xfffffffff0317000 pml4 0xfffffffff0317040
+m 0xfffffffff0324000 pml4 0xfffffffff0324040
+m 0xfffffffff0331000 pml4 0xfffffffff0331040
+m 0xfffffffff0341000 pml4 0xfffffffff0341040
+m 0xfffffffff034e000 pml4 0xfffffffff034e040
+m 0xfffffffff035b000 pml4 0xfffffffff035b040
+m 0xfffffffff0368000 pml4 0xfffffffff0368040
+m 0xfffffffff0375000 pml4 0xfffffffff0375040
+m 0xfffffffff0382000 pml4 0xfffffffff0382040
+m 0xfffffffff038f000 pml4 0xfffffffff038f040
+m 0xfffffffff039c000 pml4 0xfffffffff039c040
+m 0xfffffffff03a9000 pml4 0xfffffffff03a9040
+m 0xfffffffff03b6000 pml4 0xfffffffff03b6040
+m 0xfffffffff03c3000 pml4 0xfffffffff03c3040
+m 0xfffffffff03d0000 pml4 0xfffffffff03d0040
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+bigbase 0x4200000
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+bigpalloc 0xfffffffff022c4e0 big0 0xfffffffff0a368f8
+127M memory: 65M kernel data, 62M user, 375M swap
+newpage va 0x7fffffdff000 pgsz 0x200000
+newpage va 0x200000 pgsz 0x200000
+ready 0xfffffffff03d1338
+
+NIX kernel with 4K/2M pages
+
+namec: up 0xfffffffff03d1338: #/ 2 0; sp 0xfffffffff0a584b0
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a5e498
+namec: up 0xfffffffff03d1338: #e/terminal 5 1; sp 0xfffffffff0a58430
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/cputype 5 1; sp 0xfffffffff0a58430
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/service 5 1; sp 0xfffffffff0a58430
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/bootfile 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/bootfile 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/nobootprompt 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/nobootprompt 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/rootspec 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/rootspec 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/*nobiosprobe 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/*nodiskprobe 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/*nobiosload 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/mouseport 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/mouseport 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/monitor 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/monitor 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/sysname 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/sysname 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/ether0 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/ether0 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/partition 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/partition 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/vgasize 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/vgasize 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/location 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/location 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/auth 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/auth 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/fs 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/fs 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/fileserver 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/fileserver 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/*kernelpercent 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/console 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/console 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/nvram 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/nvram 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #e/user 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec/user 5 1; sp 0xfffffffff0a583f8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+fixfault va 0x200028 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+namec: up 0xfffffffff03d1338: #c/cons 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a5df18
+namec: up 0xfffffffff03d1338: #c/cons 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a6fad8
+namec: up 0xfffffffff03d1338: #c/cons 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a6fdf8
+namec: up 0xfffffffff03d1338: #c 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a70118
+namec: up 0xfffffffff03d1338: /dev 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59a38
+namec: up 0xfffffffff03d1338: #ec 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a709d8
+namec: up 0xfffffffff03d1338: /env 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a70778
+namec: up 0xfffffffff03d1338: #e 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a711b8
+namec: up 0xfffffffff03d1338: /env 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a70e18
+namec: up 0xfffffffff03d1338: #s 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a71538
+namec: up 0xfffffffff03d1338: /srv 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a70e18
+execac: up 0xfffffffff03d1338 file /boot/boot
+namec: up 0xfffffffff03d1338: /boot/boot 3 3; sp 0xfffffffff0a58238
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a71c38
+execac: up 0xfffffffff03d1338 chan 0xfffffffff0a71c38 elem boot
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7ffffee00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411efb8 = 0x4600087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x2034b5 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+fixfault va 0x400080 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+namec: up 0xfffffffff03d1338: #c 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a74218
+namec: up 0xfffffffff03d1338: /dev 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73e78
+namec: up 0xfffffffff03d1338: /dev/cons 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73e78
+namec: up 0xfffffffff03d1338: /dev/cons 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a59fd8
+namec: up 0xfffffffff03d1338: /dev/cons 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a738b8
+namec: up 0xfffffffff03d1338: #ec 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73cb8
+namec: up 0xfffffffff03d1338: /env 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73a58
+namec: up 0xfffffffff03d1338: #e 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a711b8
+namec: up 0xfffffffff03d1338: /env 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73a58
+namec: up 0xfffffffff03d1338: #s 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a709d8
+namec: up 0xfffffffff03d1338: /srv 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73a58
+namec: up 0xfffffffff03d1338: #e/cputype 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a71538
+namec: up 0xfffffffff03d1338: #u/usb/ctl 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: #e/nobootprompt 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73a58
+ipconfig...namec: up 0xfffffffff03d1338: #I 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a71538
+fixfault va 0x407c78 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200085
+namec: up 0xfffffffff03d1338: /net 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a73a58
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x2064ad rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411d010 = 0x4200087
+namec: up 0xfffffffff03d1338: #l0 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a8e2f8
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411e010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x2063bd rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4400085
+namec: up 0xfffffffff03d1338: #l0 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a8ee58
+namec: up 0xfffffffff03d1338: /net 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a8e2f8
+namec: up 0xfffffffff03d1338: #l1 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1600808
+fixfault va 0x408838 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411c010 = 0x4200087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+namec: up 0xfffffffff03d1338: #l1 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff0a8e2f8
+namec: up 0xfffffffff03d1338: /net 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1600808
+namec: up 0xfffffffff03d1338: #l2 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: #l3 0 0; sp 0xfffffffff0a583c0
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4a00087
+fixfault va 0x407b42 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/ipconfig
+namec: up 0xfffffffff03dd218: /boot/ipconfig 3 3; sp 0xfffffffff1604ba8
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1600808
+execac: up 0xfffffffff03dd218 chan 0xfffffffff1600808 elem ipconfig
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122fb8 = 0x4c00087
+fixfault va 0x7fffffffef90 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x2073a4 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4a00085
+fixfault va 0x4000a0 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x4e00087
+namec: up 0xfffffffff03dd218: /dev/random 3 32; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1608588
+namec: up 0xfffffffff03dd218: /dev/bintime 3 32; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1606ec8
+namec: up 0xfffffffff03dd218: /env/cputype 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1607388
+namec: up 0xfffffffff03dd218: /env/sysname 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1607388
+namec: up 0xfffffffff03dd218: /net/ipifc 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1607388
+namec: up 0xfffffffff03dd218: /net/ipifc 0 0; sp 0xfffffffff1604d30
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1607388
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4400085
+namec: up 0xfffffffff03dd218: /net/ipifc/clone 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1607388
+namec: up 0xfffffffff03dd218: /net/ether0/clone 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1606048
+namec: up 0xfffffffff03dd218: /net/ether0/0/data 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1608ea8
+namec: up 0xfffffffff03dd218: /net/ether0/stats 3 0; sp 0xfffffffff1604af0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16093a8
+namec: up 0xfffffffff03dd218: /net/ether0/clone 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16093a8
+namec: up 0xfffffffff03dd218: /net/ether0/1/data 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1609968
+namec: up 0xfffffffff03dd218: /net/ether0/clone 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16093a8
+namec: up 0xfffffffff03dd218: /net/ether0/2/data 3 2; sp 0xfffffffff16048e0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1609fa8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121ff8 = 0x4c00087
+fixfault va 0x211461 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f008 = 0x4a00085
+fixfault va 0x400148 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00085
+fixfault va 0x400128 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411f010 = 0x4e00087
+namec: up 0xfffffffff03dd218: /net/ether0/addr 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03dd218: /net/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: /net/udp/clone 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03dd218: /net/udp/0/data 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03dd218: /net/iproute 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03e11b8 mmuput 0x200000 0x4a00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124008 = 0x4a00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x7fffffe00000 0x5200003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e11b8 new pte 0xfffffffff4126ff8 = 0x5200087
+fixfault va 0x400078 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03e11b8 mmuput 0x400000 0x5400003
+up 0xfffffffff03e11b8 new pte 0xfffffffff4124010 = 0x5400087
+namec: up 0xfffffffff03e11b8: #c/pid 3 0; sp 0xfffffffff16535e8
+namec: up 0xfffffffff03e11b8: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03e11b8: #p/17/args 3 1; sp 0xfffffffff16535e8
+namec: up 0xfffffffff03e11b8: returns 0xfffffffff16375c8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x20ae61 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4a00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4a00085
+fixfault va 0x4000ec rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00085
+namec: up 0xfffffffff03dd218: /net/ndb 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+fixfault va 0x40640f rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4e00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4e00087
+namec: up 0xfffffffff03dd218: /net/ndb 3 17; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03dd218: /net/dns 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: /net/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: #c/pid 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03d1338: /net/ndb 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03d1338: /net/ndb 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03d1338: /env/kbmap 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: /boot/factotum 3 3; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16164a8
+namec: up 0xfffffffff03d1338: /env/debugfactotum 3 0; sp 0xfffffffff0a583d8
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4400001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4400085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4e00087
+fixfault va 0x4076f7 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x4200001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x4200085
+execac: up 0xfffffffff03dd218 file /boot/factotum
+namec: up 0xfffffffff03dd218: /boot/factotum 3 3; sp 0xfffffffff1604ba8
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16164a8
+execac: up 0xfffffffff03dd218 chan 0xfffffffff16164a8 elem factotum
+fixfault va 0x7ffffeffefd8 rd=0 put=1
+newpage va 0x7ffffee00000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x7ffffee00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411ffb8 = 0x4c00087
+fixfault va 0x7fffffffef48 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122ff8 = 0x4c00087
+execac: up 0xfffffffff03dd218 done
+fixfault va 0x20e150 rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4121008 = 0x4e00085
+fixfault va 0x400118 rd=0 put=1
+newpage va 0x400000 pgsz 0x200000
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4121010 = 0x5600087
+namec: up 0xfffffffff03dd218: #c/pid 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1657488
+namec: up 0xfffffffff03dd218: #p/18/ctl 3 1; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+devproc private request ignored
+devproc noswap request ignored
+namec: up 0xfffffffff03dd218: #¤/caphash 3 1; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1657488
+namec: up 0xfffffffff03dd218: /env/nvram 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4600087
+fixfault va 0x20b0bc rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4400085
+fixfault va 0x4000d8 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200085
+fixfault va 0x407e58 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x400000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411b010 = 0x4200087
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /env/cputype 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /boot/nvram 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /env/nvrlen 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: /env/nvroff 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: #c/hostowner 3 1; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /dev/user 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/tcp 0 0; sp 0xfffffffff1604d30
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/cs 0 0; sp 0xfffffffff1604d30
+namec: up 0xfffffffff03dd218: #s/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: /net/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: #c/pid 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/tcp/clone 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+up 0xfffffffff03dd218 new pte 0xfffffffff4120ff8 = 0x4c00087
+fixfault va 0x21984b rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4122008 = 0x4e00085
+namec: up 0xfffffffff03dd218: /net/tcp/0/data 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+fixfault va 0x410298 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4122010 = 0x5600087
+namec: up 0xfffffffff03dd218: /net/tcp 0 0; sp 0xfffffffff1604d30
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/cs 0 0; sp 0xfffffffff1604d30
+namec: up 0xfffffffff03dd218: #s/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: /net/cs 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: #c/pid 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/tcp/clone 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /net/tcp/1/data 3 2; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1656188
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /dev/random 3 32; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03dd218: returns 0xfffffffff16375c8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /dev/bintime 3 32; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1606a88
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: #| 2 0; sp 0xfffffffff1604d38
+namec: up 0xfffffffff03dd218: returns 0xfffffffff165c248
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /srv/factotum 5 97; sp 0xfffffffff1604d38
+namec: up 0xfffffffff03dd218: returns 0xfffffffff165cdc8
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x200000 0x4e00001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff4128008 = 0x4e00085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e3188 mmuput 0x7fffffe00000 0x5a00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e3188 new pte 0xfffffffff412aff8 = 0x5a00087
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03e3188 mmuput 0x400000 0x5600003
+up 0xfffffffff03e3188 new pte 0xfffffffff4128010 = 0x5600087
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03dd218 mmuput 0x7fffffe00000 0x4c00003
+up 0xfffffffff03dd218 new pte 0xfffffffff411fff8 = 0x4c00087
+fixfault va 0x21983c rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x200000 0x4e00001
+up 0xfffffffff03dd218 new pte 0xfffffffff4120008 = 0x4e00085
+fixfault va 0x400360 rd=1 put=1
+up 0xfffffffff03dd218 mmuput 0x400000 0x5600003
+up 0xfffffffff03dd218 new pte 0xfffffffff4120010 = 0x5600087
+namec: up 0xfffffffff03dd218: /mnt 4 0; sp 0xfffffffff1604c98
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1664308
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03dd218: /srv/factotum 0 0; sp 0xfffffffff1604d38
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1664628
+namec: up 0xfffffffff03d1338: /mnt/factotum 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664aa8
+connect...namec: up 0xfffffffff03d1338: /net/cs 3 2; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: #c/pid 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664fc8
+namec: up 0xfffffffff03d1338: /net/tcp/clone 3 2; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664fc8
+namec: up 0xfffffffff03d1338: /net/tcp/0/data 3 2; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664628
+namec: up 0xfffffffff03d1338: /env/srvold9p 3 0; sp 0xfffffffff0a583d8
+
+version...namec: up 0xfffffffff03dd218: #c/pid 3 0; sp 0xfffffffff1604d48
+namec: up 0xfffffffff03d1338: #s/boot 5 1; sp 0xfffffffff0a583c8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664fc8
+namec: up 0xfffffffff03d1338: / 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664fc8
+namec: up 0xfffffffff03d1338: / 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16659a8
+namec: up 0xfffffffff03d1338: /env/rootspec 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16651e8
+namec: up 0xfffffffff03dd218: returns 0xfffffffff1664aa8
+namec: up 0xfffffffff03d1338: /mnt/factotum/rpc 3 2; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16620e8
+namec: up 0xfffffffff03e3188: /net/tcp 0 0; sp 0xfffffffff1660cd0
+namec: up 0xfffffffff03e3188: returns 0xfffffffff1664aa8
+namec: up 0xfffffffff03e3188: /net/cs 0 0; sp 0xfffffffff1660cd0
+namec: up 0xfffffffff03e3188: #s/cs 3 2; sp 0xfffffffff1660ce8
+namec: up 0xfffffffff03e3188: /net/cs 3 2; sp 0xfffffffff1660ce8
+namec: up 0xfffffffff03e3188: #c/pid 3 0; sp 0xfffffffff1660ce8
+namec: up 0xfffffffff03e3188: returns 0xfffffffff1655548
+namec: up 0xfffffffff03e3188: /net/tcp/clone 3 2; sp 0xfffffffff1660ce8
+namec: up 0xfffffffff03e3188: returns 0xfffffffff1655548
+namec: up 0xfffffffff03e3188: /net/tcp/1/data 3 2; sp 0xfffffffff1660ce8
+namec: up 0xfffffffff03e3188: returns 0xfffffffff1664aa8
+namec: up 0xfffffffff03d1338: /root 4 0; sp 0xfffffffff0a58328
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664aa8
+namec: up 0xfffffffff03d1338: /env/rootdir 3 0; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: /root 1 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff16620e8
+namec: up 0xfffffffff03d1338: / 4 0; sp 0xfffffffff0a58330
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+namec: up 0xfffffffff03d1338: #e/rootdir 5 1; sp 0xfffffffff0a583c8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+time...namec: up 0xfffffffff03d1338: #s/boot 3 2; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1664628
+namec: up 0xfffffffff03d1338: /tmp 4 0; sp 0xfffffffff0a58328
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+namec: up 0xfffffffff03d1338: /tmp 0 0; sp 0xfffffffff0a583c0
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1662468
+namec: up 0xfffffffff03d1338: /tmp 4 0; sp 0xfffffffff0a583c8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1662468
+namec: up 0xfffffffff03d1338: #c/time 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+
+namec: up 0xfffffffff03d1338: #c/swap 3 1; sp 0xfffffffff0a583d8
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4600003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4600087
+fixfault va 0x20b0cb rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4400001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4400085
+namec: up 0xfffffffff03d1338: /env/init 3 0; sp 0xfffffffff0a583d8
+execac: up 0xfffffffff03d1338 file /amd64/init
+namec: up 0xfffffffff03d1338: /amd64/init 3 3; sp 0xfffffffff0a58238
+namec: up 0xfffffffff03d1338: returns 0xfffffffff1655548
+execac: up 0xfffffffff03d1338 chan 0xfffffffff1655548 elem init
+fixfault va 0x7fffffffef88 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411cff8 = 0x4200087
+execac: up 0xfffffffff03d1338 done
+fixfault va 0x200a6d rd=1 put=1
+newpage va 0x200000 pgsz 0x200000
+up 0xfffffffff03d1338 mmuput 0x200000 0x4600001
+up 0xfffffffff03d1338 new pte 0xfffffffff411e008 = 0x4600085
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x200000 0x4600001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4120008 = 0x4600085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e4170 mmuput 0x7fffffe00000 0x4c00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4122ff8 = 0x4c00087
+fixfault va 0x4081c9 rd=1 put=1
+newpage va 0x400000 pgsz 0x200000
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411bff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4600001
+up 0xfffffffff03e4170 mmuput 0x400000 0x5c00001
+up 0xfffffffff03e4170 new pte 0xfffffffff4120010 = 0x5c00085
+execac: up 0xfffffffff03e4170 file /bin/rc
+namec: up 0xfffffffff03e4170: /bin/rc 3 3; sp 0xfffffffff166bb48
+execac: failing: '/bin/rc' does not exist
+fixfault va 0x400110 rd=0 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x5c00003
+up 0xfffffffff03e4170 new pte 0xfffffffff4120010 = 0x5c00087
+init: child: exec error: '/bin/rc' does not exist
+namec: up 0xfffffffff03e4170: #c/pid 3 0; sp 0xfffffffff166bce8
+namec: up 0xfffffffff03e4170: returns 0xfffffffff1662468
+up 0xfffffffff03d1338 new pte 0xfffffffff411c008 = 0x4600085
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x200000 0x4600001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4122008 = 0x4600085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e4170 mmuput 0x7fffffe00000 0x5c00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4121ff8 = 0x5c00087
+fixfault va 0x400010 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x5e00001
+up 0xfffffffff03e4170 new pte 0xfffffffff4122010 = 0x5e00085
+fixfault va 0x4000d4 rd=0 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x5e00003
+up 0xfffffffff03e4170 new pte 0xfffffffff4122010 = 0x5e00087
+init: got note 'sys: trap: fault read addr=0x0 pc=0x200b8a'
+execac: up 0xfffffffff03e4170 file /bin/rc
+namec: up 0xfffffffff03e4170: /bin/rc 3 3; sp 0xfffffffff166bb48
+execac: failing: '/bin/rc' does not exist
+init: child: exec error: '/bin/rc' does not exist
+namec: up 0xfffffffff03e4170: #c/pid 3 0; sp 0xfffffffff166bce8
+namec: up 0xfffffffff03e4170: returns 0xfffffffff16651e8
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411dff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4600001
+up 0xfffffffff03d1338 new pte 0xfffffffff411b008 = 0x4600085
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x200000 0x4600001
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff4121008 = 0x4600085
+fixfault va 0x7fffffffefe0 rd=0 put=1
+newpage va 0x7fffffe00000 pgsz 0x200000
+up 0xfffffffff03e4170 mmuput 0x7fffffe00000 0x5e00003
+newpage va 0x0 pgsz 0x1000
+newpage va 0x0 pgsz 0x1000
+up 0xfffffffff03e4170 new pte 0xfffffffff411fff8 = 0x5e00087
+fixfault va 0x400010 rd=1 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x4c00001
+up 0xfffffffff03e4170 new pte 0xfffffffff4121010 = 0x4c00085
+fixfault va 0x4000d4 rd=0 put=1
+up 0xfffffffff03e4170 mmuput 0x400000 0x4c00003
+up 0xfffffffff03e4170 new pte 0xfffffffff4121010 = 0x4c00087
+init: got note 'sys: trap: fault read addr=0x0 pc=0x200b8a'
+execac: up 0xfffffffff03e4170 file /bin/rc
+namec: up 0xfffffffff03e4170: /bin/rc 3 3; sp 0xfffffffff166bb48
+execac: failing: '/bin/rc' does not exist
+init: child: exec error: '/bin/rc' does not exist
+namec: up 0xfffffffff03e4170: #c/pid 3 0; sp 0xfffffffff166bce8
+namec: up 0xfffffffff03e4170: returns 0xfffffffff1662468
+fixfault va 0x7fffffffefe0 rd=0 put=1
+up 0xfffffffff03d1338 mmuput 0x7fffffe00000 0x4200003
+up 0xfffffffff03d1338 new pte 0xfffffffff411eff8 = 0x4200087
+fixfault va 0x202fb0 rd=1 put=1
+up 0xfffffffff03d1338 mmuput 0x200000 0x4600001
+up 0xfffffffff03d1338 new pte 0xfffffffff411d008 = 0x4600085
+
+Plan 9
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000235000 0x00000000d7c2b000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32203 upage 16101 kpage 58864624
+127 holes free
+00235000 0411b000 65953792
+65953792 bytes free
+apic16: hz 199999980 max 1999999 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+127M memory: 65M kernel data, 62M user, 375M swap
+
+NIX kernel with 4K pages
+
+called: <3>
+called: <2>
+called: <1>
+called: <5>
+called: <4>
+called: <7>
+called: <6>
+called: <16>
+called: <8>
+called: <18>
+called: <17>
+called: <10>
+called: <9>
+called: <19>
+called: <11>
+called: <27>
+called: <26>
+called: <25>
+called: <24>
+called: <21>
+called: <22>
+called: <20>
+called: <23>
+called: <30>
+called: <28>
+called: <29>
+called: <14>
+called: <13>
+called: <12>
+called: <15>
+called: <31>
+bootcore: all cores done
+ipconfig...connect...
+version...time...
+booting CPU server
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; GETCTR: core 3 regno 1 
+intrac: ipi to cpu3
+GETCTR: core 3 regno 1 
+intrac: ipi to cpu3
+cpu0: exiting
+
+Plan 9
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+physical memory
+	0x0000000000236000 0x00000000d7c2a000 0x00000000d7e60000
+	0x0000000100000000 0x0000000f28000000 0x0000001028000000
+meminit - lost 68583555072 bytes
+npage 32202 upage 16101 kpage 58537376
+127 holes free
+00236000 0411b000 65949696
+65949696 bytes free
+apic16: hz 199999890 max 1999998 min 19999 div 10
+pcirouting: ignoring south bridge PCI.0.20.3 1002/439D
+#l0: igbepcie: 1000Mbps port 0xdff60000 irq 10: 003048ff2106
+#l1: igbepcie: 1000Mbps port 0xdffe0000 irq 11: 003048ff2107
+pm 0 base 0x411b000 npgs 0x3ee5
+bigbase 0x4200000
+pm 1 base 0x0 npgs 0x0
+bigbase 0x0
+pm 2 base 0x0 npgs 0x0
+bigbase 0x0
+pm 3 base 0x0 npgs 0x0
+bigbase 0x0
+pm 4 base 0x0 npgs 0x0
+bigbase 0x0
+pm 5 base 0x0 npgs 0x0
+bigbase 0x0
+pm 6 base 0x0 npgs 0x0
+bigbase 0x0
+pm 7 base 0x0 npgs 0x0
+bigbase 0x0
+30 big pages; 741 small pages
+127M memory: 65M kernel data, 62M user, 375M swap
+big page 0x4200000 split
+
+NIX kernel with 4K pages
+
+called: <1>
+called: <3>
+called: <2>
+called: <5>
+called: <4>
+called: <8>
+called: <17>
+called: <16>
+called: <6>
+called: <7>
+called: <18>
+called: <19>
+called: <26>
+called: <9>
+called: <11>
+called: <10>
+called: <25>
+called: <27>
+called: <24>
+called: <12>
+called: <13>
+called: <14>
+called: <15>
+called: <20>
+called: <23>
+called: <22>
+called: <30>
+called: <29>
+called: <21>
+called: <28>
+called: <31>
+bootcore: all cores done
+ipconfig...connect...
+version...time...
+booting CPU server
+big page 0x4400000 split
+aux/mouse: can't open /dev/mousectl - '/dev/mousectl' file does not exist
+mkvbe: '/dev/realmode' file does not exist
+aux/vga: controller not in /lib/vgadb, not vesa
+aux/vga: short bios read in dumpbios#v/vgactl: rc (cpurc): can't open: unknown device in # filename
+init: rc exit status: rc 22: cpurc 23: error
+
+init: starting /bin/rc
+;; big page 0x4600000 split
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 
+runacore: syscall 0x33 
+runacore: syscall 0x33 
+runacore: syscall 0xe 
+runacore: syscall 0x32 
+runacore: syscall 0x4 

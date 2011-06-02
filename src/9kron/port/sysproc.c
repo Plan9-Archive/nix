@@ -714,7 +714,6 @@ sysexits(Ar0*, va_list list)
 	 * void exits(char *msg);
 	 */
 	status = va_arg(list, char*);
-
 	if(status){
 		if(waserror())
 			status = inval;
