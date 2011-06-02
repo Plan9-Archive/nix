@@ -73,7 +73,7 @@ print("pm %d base %#ullx npgs %#ulx\n", i, pm->base, pm->npage);
 
 		base = BIGPGROUND(pm->base);
 		print("bigbase %#ullx\n", base);
-if(1)
+if(0)
 		for(j = (base-pm->base)/PGSZ; j + PGSPERBIG < pm->npage; ){
 			/*
 			 * unlink all pages within a big page.

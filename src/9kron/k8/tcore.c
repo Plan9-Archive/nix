@@ -232,6 +232,7 @@ runacore(void)
 		case ICCTRAP:
 			s = splhi();
 			m->cr2 = up->ac->cr2;
+iprint("runacore: entering icctrap %ulld cr2 %#ullx ureg %#p\n", ureg->type, m->cr2, ureg);
 			DBG("runacore: trap %ulld cr2 %#ullx ureg %#p\n",
 				ureg->type, m->cr2, ureg);
 			switch(ureg->type){
@@ -243,7 +244,7 @@ runacore(void)
 					 *  to procctl, then syscall,  to 
 					 *  be back in the TC
 					 */
-print("runacore: returning, from icctrap ipi\n");
+iprint("runacore: returning, from icctrap ipi\n");
 					return;
 				}
 				kexit(up->dbgreg);
@@ -273,7 +274,7 @@ print("runacore: returning, from icctrap ipi\n");
 			DBG("runacore: syscall ax %#ullx ureg %#p\n",
 				ureg->ax, ureg);
 			cr3put(m->pml4->pa);
-print("runacore: syscall %#ullx \n", ureg->ax);
+iprint("runacore: syscall %#ullx \n", ureg->ax);
 			syscall(ureg->ax, ureg);
 			flush = 1;
 			fn = acsysret;
@@ -282,7 +283,7 @@ print("runacore: syscall %#ullx \n", ureg->ax);
 				 *  to procctl, then syscall,  to 
 				 *  be back in the TC
 				 */
-print("runacore: returning, from syscall\n");
+iprint("runacore: returning, from syscall\n");
 				return;	
 			}
 			break;

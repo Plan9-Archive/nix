@@ -33,3 +33,4 @@ core
 9k8cpu.elf
 9k8cpu.gz
 nvram
+ppxeloadacid

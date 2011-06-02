@@ -607,6 +607,9 @@ execac(Ar0* ar0, int core, char *ufile, char **argv)
 		up->procctl = Proc_toac;
 		up->prepagemem = 1;
 	}
+for(i = 0; i < nelem(up->seg); i++)
+if(up->seg[i] != nil)
+print("after execac: seg %d %#ullx %#ullx\n", i, up->seg[i]->base, up->seg[i]->top);
 }
 
 void
