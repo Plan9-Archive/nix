@@ -1,0 +1,16 @@
+
+
+awk '{print $1 "  " $4}' < cycles.core.amd64 > rat.cycles.core.amd64
+echo "Plan 9, amd64 core Blue" >> rat.cycles.core.amd64
+awk '{print $1 "  " $3}' < cycles.core.amd64 > mf.cycles.core.amd64
+echo "Plan 9, amd64 core Blue" >> mf.cycles.core.amd64
+
+awk '{print $1 "  " $4}' < cycles.amd64 > rat.cycles.amd64
+echo "Plan 9, amd64 core Red" >> rat.cycles.amd64
+awk '{print $1 "  " $3}' < cycles.amd64 > mf.cycles.amd64
+echo "Plan 9, amd64 core Red" >> mf.cycles.amd64
+
+{cat graphtc ; awk '{print $1 "  " $4}' < cycles.amd64 ; echo .G2} > rat.cycles.amd64.grap
+
+{cat graphac ; awk '{print $1 "  " $4}' < cycles.core.amd64 ; echo .G2} > rat.cycles.core.amd64.grap
+

@@ -1,0 +1,9 @@
+
+all:V: nix.pdf
+
+%.ps:D:	%.ms
+	eval `{doctype $stem.ms } | lp -dstdout >$stem.ps
+
+%.pdf:D: %.ps
+	ps2pdf $stem.ps >$stem.pdf
+

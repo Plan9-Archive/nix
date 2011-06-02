@@ -1,0 +1,76 @@
+
+To compile and use it you have to:
+
+!	bind -c libc /sys/src/libc
+!	bind  -b include /sys/include
+
+[ N.B. This is another version for ../9k from jmk,
+adjusted by rminnich
+to boot in the supermicro board w/ 32 cores. 
+We should probably dump ../9k in favor of this tree.
+--nemo
+]
+
+There are 2 sub-trees:
+
+	9k	a complete 9k kernel source tree for th k8;
+		it was made by taking the 386, boot, ip, mk, and port
+		directories from /n/go/sys/src/9k, and adding in
+		a k8 directory.
+	[NB. 9k is now . --nemo ]
+
+	w	contains the pxeload boot loader, basically
+		/sys/src/boot/pc decluttered and modified for the k8.
+	[NB. We can use /sys/src/kamd64/boot --nemo]
+
+One source of problems might be that I changed the Plan 9 user programme
+start address from 0x1028 to 0x200028, and the rounding between test and
+data segments 0x200000, i.e. you could use big pages once you recompile
+all your binaries; the changes to 6l to make this the default should be
+on sources in a day or so, but in the meantime, or if you don't want to
+recompile your /amd64 tree, revert the following changes (actually, you
+don't need to revert the l64syscall.s change as it will get the right
+value from the mem.h change).
+
+diff /n/dump/2011/0428/usr/jmk/9k/k8/l64syscall.s /usr/jmk/9k/k8/l64syscall.s
+17c17
+< 	MOVQ	$0x1028, CX			/* ip */
+---
+> 	MOVQ	$(UTZERO+0x28), CX		/* ip */
+diff /n/dump/2011/0428/usr/jmk/9k/k8/mem.h /usr/jmk/9k/k8/mem.h
+51,52c51,52
+< #define UTZERO		(0+BY2PG)		/* first address in user text */
+< #define UTROUND(t)	ROUNDUP((t), BY2PG)
+---
+> #define UTZERO		(0+2*MiB)		/* first address in user text */
+> #define UTROUND(t)	ROUNDUP((t), 2*MiB)
+
+So what should you do:
+1) extract the tarball (you will have done this already in order to
+   read this);
+2) cd $EXTRACTEDTARBALLROOT/w/pxeload
+   mk
+   copy the resulting ppxeload binary to wherever your system will
+   obtain its PXE boot programme (e.g. /amd64/ppxeload, and the correspondingly
+   in the ndb entry for the system you are booting);
+3) cd $EXTRACTEDTARBALLROOT/9k/k8
+   mk
+   and you should have two kernels, 9k8cpu and 9k8cpu.elf;
+   the latter is useful if you are using QEMU or somesuch.
+4) boot it:
+   at the 'boot from: ' prompt on your system, which has reset and
+   downloaded the aforementioned ppxeload, type something like
+   	ether0!/usr/ron/tarball/9k/k8/9k8cpu
+   and see what happens. Adding the '-x' flag to the above will
+   print some debugging information from the application processors
+   if they boot. You will have a Plan 9 system, but only one processor
+   will show up in /dev/systat because all the application processors
+   are just spinning.
+   Other useful boot flags are
+	-A	apic info
+	-I	ioapic info
+	-M	MP table info
+	-V	cpuid info
+   They can be verbose.
+
+Good luck.
