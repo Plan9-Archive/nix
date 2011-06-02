@@ -34,3 +34,4 @@ core
 9k8cpu.gz
 nvram
 ppxeloadacid
+src/9kron/k8/log

@@ -103,6 +103,15 @@ schedinit(void)		/* never returns */
 	sched();
 }
 
+static void
+stackok(void)
+{
+	char dummy;
+
+	if(&dummy < (char*)up->kstack + 4*KiB)
+		panic("kernel stack overflow");
+}
+
 /*
  *  If changing this routine, look also at sleep().  It
  *  contains a copy of the guts of sched().
@@ -150,6 +159,8 @@ sched(void)
 
 		/* statistics */
 		m->cs++;
+
+		stackok();
 
 		procsave(up);
 		if(setlabel(&up->sched)){
