@@ -13,9 +13,7 @@ Ron Minnich
 Francisco J. Ballesteros
 Gorka Guardiola
 Enrique Soriano
-Jim McKie
-Charles Forsyth
-Noah Evans
+(want your name here? Just ask!)
 .AB
 This paper describes NIX, a prototype operating system for future
 manycore CPUs.  NIX features a heterogeneous CPU model and a change
@@ -652,6 +650,52 @@ the same in both the TC and the AC, no change is needed in the C library (other
 than a new system for using the new service). All system calls may proceed,
 transparently for the user, in both kinds of cores.
 .NH 1
+Queue based system calls?
+.HP
+As an experiment, we implemented a small thread library supporting queue-based
+system calls similar to those in [5]. Threads are cooperatively scheduled within
+the process and not known
+to the kernel.
+.PP
+Each process has been provided with two queues: one to record system call requests,
+and another to record system call replies. When a thread issues a system call,
+it fills up an slot in the system call queue, instead of making an actual system call.
+At that point, the thread library marks the thread as blocked and proceeds to
+execute other threads. When all the threads are blocked, the process waits for replies
+in the reply queue.
+.PP
+Before using the queue mechanism, the process issues a real system call to
+let the kernel know. In response to this call, the kernel creates a (kernel) process
+sharing all segments with the caller. This process is responsible for executing
+the queued system calls and placing replies for them in the reply queue.
+.PP
+With this implementation, we made several performance measurements before
+proceeding further. In particular, we measured how long it takes for a program with
+50 threads to execute 5000 system calls in each thread. For the experiment,
+the system call used does not block and does nothing.
+.PP
+It takes this program 0.17 seconds to complete when run on the TC using the
+queue based mechanism. However, it takes only 0.06 seconds to complete
+when using the standard system call mechanism. Therefore, at least for this program,
+the mechanism is more an overhead than a benefit. It is likely that the total number of
+system calls per second that could be performed in the machine might increase
+due to the smaller number of domain crossings. However, for a single program,
+that does not seem to be the case.
+.PP
+As another experiment, running the same program on the AC takes
+240.3 seconds when using the standard system call mechanism, and 0.17 seconds
+when using queue-based system calls. The AC is not meant to perform system calls.
+A system call made while running on it implies a trip to the TC and another trip back
+to the AC. As a result, issuing system calls from the AC is utterly expensive.
+Looking at the second time, it is similar to one for running in the TC. Therefore,
+we may conclude that queue based system calls may make system calls affordable
+even for ACs.
+.PP
+However, a more simple mechanism is to keep in the TC those processes
+that did not consume all its quantum at user level, and move to ACs only those
+processes that do so. As a result, we have decided not to include queue based
+system calls (although tubes can still be used for IPC).
+.NH 1
 Things not done yet
 .HP
 There are a few other things that have to be done. To name a few:
@@ -858,4 +902,7 @@ References (for goodness sake let's use refer!)
 [3] KItten paper
 .LP
 [4] FTQ paper
+.LP
+[5] FlexSC paper
+
 
