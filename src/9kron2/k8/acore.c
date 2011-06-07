@@ -9,6 +9,7 @@
 #include "amd64.h"
 #include "ureg.h"
 #include "io.h"
+#include "../port/pmc.h"
 
 /*
  * NIX code run at the AC.
@@ -134,6 +135,9 @@ actrap(Ureg *u)
 	ACVctl *v;
 
 	n = nil;
+
+	pmcupdate(m);
+
 	if(u->type < nelem(acvctl)){
 		v = acvctl[u->type];
 		if(v != nil){
@@ -169,6 +173,7 @@ Post:
 	memmove(m->proc->dbgreg, u, sizeof *u);
 	m->icc->note = n;
 	fpuprocsave(m->proc);
+	pmcupdate(m);
 	mfence();
 	m->icc->fn = nil;
 	ready(m->proc);

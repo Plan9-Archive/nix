@@ -5,20 +5,29 @@ pmc \- performance monitoring counters
 .nf
 .B bind '#ε' /dev
 
-.BI #ε/ctrdesc
-.BI #ε/ctr00
-.BI #ε/ctr00ctl
-.BI #ε/ctr01
-.BI #ε/ctr01ctl
+.BI #ε/core0000/ctrdesc
+.BI #ε/core0000/ctr00
+.BI #ε/core0000/ctr00ctl
+.BI #ε/core0000/ctr01
+.BI #ε/core0000/ctr01ctl
+ ...
+.BI #ε/core0001/ctr00
+.BI #ε/core0001/ctr00ctl
+.BI #ε/core0001/ctr01
+.BI #ε/core0001/ctr01ctl
  ...
 .fi
 .SH DESCRIPTION
 .PP
 The
 .I pmc
-device serves a one-level directory, giving
-access to the hardware counters on the processor
-the process reading or writing them is reading from.
+device serves a two-level directory, giving
+access to the hardware counters on the
+different cores.
+There is a directory per core,
+.B coreNNNN,
+containing files
+pertaining to that core.
 .PP
 The
 .B ctrNN
@@ -36,7 +45,7 @@ The counter only runs when the processor is in user space.
 .B os
 The counter only runs when the processor is in the kernel.
 .TP
-.BI set configuration
+.BI "set configuration
 Sets the counter configuration. The detail of what the configuration
 means is left to the specific implementation of the counter. Reading the
 .B ctrdesc
@@ -47,6 +56,11 @@ this particular driver and processor, one per line.
 Enables the counter which both makes it to start running and enables
 any other way to access the counter from user space, like special
 instructions.
+.PP
+Any change to or from the counters or the configurations is seen
+as soon as possible. In the worst case, it is guaranteed that the values
+read or set are at least as fresh as the last time a process went in or out
+of the kernel on that core.
 .PP
 Configure the counter 0 to count L2 misses in the kernel.
 .EX
@@ -66,11 +80,11 @@ Configure the counter 0 to count L2 misses in the kernel.
 		L2 ITLB miss
 		DRAM access
 		L3 miss
-	% echo reset > /dev/ctr00ctl
-	% echo kernel > /dev/ctr00ctl
-	% echo set L2 miss > /dev/ctr00ctl
-	% echo enable > /dev/ctr00ctl
-	% cat /dev/ctr00
+	% echo reset > /dev/core0000/ctr00ctl
+	% echo kernel > /dev/core0000/ctr00ctl
+	% echo set L2 miss > /dev/core0000/ctr00ctl
+	% echo enable > /dev/core0000/ctr00ctl
+	% cat /dev/core0000/ctr00
 		0x00000000000003e5
 	%
 .EE

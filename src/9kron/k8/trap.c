@@ -9,6 +9,7 @@
 #include	"ureg.h"
 
 #include	"io.h"
+#include	"../port/pmc.h"
 
 extern int notify(Ureg*);
 
@@ -270,7 +271,7 @@ kexit(Ureg*)
 		mp = m;
 	tos->core = mp->machno;	
 	tos->nixtype = mp->nixtype;
-
+	pmcupdate(m);	
 	/*
 	 * The process may change its core.
 	 * Be sure it has the right cyclefreq.
@@ -319,6 +320,8 @@ trap(Ureg* ureg)
 
 	if(up != nil)
 		up->ntrap++;	/* stats only, races ok */
+
+	pmcupdate(m);
 
 	vno = ureg->type;
 	if(ctl = vctl[vno]){

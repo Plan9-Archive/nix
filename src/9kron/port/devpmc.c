@@ -13,11 +13,14 @@
 
 enum{
 	Qdir		= 0,
+	Qgctl,
+	Qcore,
+
+	Qctr,
 	Qdata,
 	Qctl,
-	Qgctl,
 
-	PmcRdStr = 4*1024,
+	PmcCtlRdStr = 4*1024,
 };
 
 #define PMCTYPE(x)	(((unsigned)x)&0xffful)
@@ -26,22 +29,21 @@ enum{
 
 Dirtab *pmctab;
 static int npmctab;
+Dirtab *toptab;
+static int ntoptab;
 int pmcdebug;
 
 static void
-pmcinit(void)
+topdirinit(int ncores)
 {
-	int nr, i;
+	int i;
 	Dirtab *d;
 
-	nr = pmcnregs();
-		
-	npmctab = 2 + 2*nr;
-	pmctab = malloc(npmctab * sizeof(Dirtab));
-	if (pmctab == nil)
+	ntoptab = 1 + ncores;
+	toptab = malloc(ntoptab * sizeof(Dirtab));
+	if (toptab == nil)
 		return;
-	
-	d = pmctab;
+	d = toptab;
 	strncpy(d->name, ".", KNAMELEN);
 	mkqid(&d->qid, Qdir, 0, QTDIR);
 	d->perm = DMDIR|0555;
@@ -49,18 +51,76 @@ pmcinit(void)
 	strncpy(d->name, "ctrdesc", KNAMELEN);
 	mkqid(&d->qid, Qgctl, 0, 0);
 	d->perm = 0444;
-	for (i = 2; i < nr + 2; i++) {
+	for (i = 2; i < ncores + 2; i++) {
+		d = &toptab[i];
+		snprint(d->name, KNAMELEN, "core%4.4ud", i - 2);
+		mkqid(&d->qid, PMCQID(i - 2, Qcore), 0, QTDIR);
+		d->perm = DMDIR|0555;
+	}
+
+}
+
+static void
+ctrdirinit(void)
+{
+	int nr, i;
+	Dirtab *d;
+
+	nr = pmcnregs();
+		
+	npmctab = 1 + 2*nr;
+	pmctab = malloc(npmctab * sizeof(Dirtab));
+	if (pmctab == nil){
+		free(toptab);
+		toptab = nil;
+		return;
+	}
+
+	d = pmctab;
+	strncpy(d->name, ".", KNAMELEN);
+	mkqid(&d->qid, Qctr, 0, QTDIR);
+	d->perm = DMDIR|0555;
+	for (i = 1; i < nr + 1; i++) {
 		d = &pmctab[i];
-		snprint(d->name, KNAMELEN, "ctr%2.2ud", i - 2);
-		mkqid(&d->qid, PMCQID(i - 2, Qdata), 0, 0);
+		snprint(d->name, KNAMELEN, "ctr%2.2ud", i - 1);
+		mkqid(&d->qid, PMCQID(i - 1, Qdata), 0, 0);
 		d->perm = 0600;
 
 		d = &pmctab[nr + i];
-		snprint(d->name, KNAMELEN, "ctr%2.2udctl", i - 2);
-		mkqid(&d->qid, PMCQID(i - 2, Qctl), 0, 0);
+		snprint(d->name, KNAMELEN, "ctr%2.2udctl", i - 1);
+		mkqid(&d->qid, PMCQID(i - 1, Qctl), 0, 0);
 		d->perm = 0600;
 	}	
 	
+}
+
+static void
+pmcnull(PmcCtl *p)
+{
+	memset(p, 0xff, sizeof(PmcCtl));
+	p->enab = PmcCtlNullval;
+	p->user = PmcCtlNullval;
+	p->os = PmcCtlNullval;
+	p->reset = PmcCtlNullval;
+	p->nodesc = 1;
+}
+
+static void
+pmcinit(void)
+{
+	int i, j, ncores, nr;
+	Mach *mp;
+
+	ncores = 0;
+	nr = pmcnregs();
+	for(i = 0; i < MACHMAX; i++) {
+		if((mp = sys->machptr[i]) != nil && mp->online != 0)
+			ncores++;
+		for(j = 0; j < nr; j++)
+			pmcnull(&mp->pmc[j]);
+	}
+	topdirinit(ncores);
+	ctrdirinit();
 }
 
 static Chan *
@@ -70,17 +130,63 @@ pmcattach(char *spec)
 		error(Enomem);
 	return devattach(L'ε', spec);
 }
+int
+pmcgen(Chan *c, char *name, Dirtab*, int, int s, Dir *dp)
+{
+	int t, i, n;
+	Dirtab *l, *d;
+
+	if(s == DEVDOTDOT){
+		devdir(c, (Qid){Qdir, 0, QTDIR}, "#ε", 0, eve, 0555, dp);
+		c->aux = nil;
+		return 1;
+	}
+	/* first, for directories, generate children */
+	switch((int)PMCTYPE(c->qid.path)){
+	case Qdir:
+		return devgen(c, name, toptab, ntoptab, s, dp);
+	case Qctr:
+		return devgen(c, name, pmctab, npmctab, s, dp);
+	case Qcore:
+		return devgen(c, name, pmctab, npmctab, s, dp);
+	default:
+		if(s != 0)
+			return -1;
+
+		t = PMCTYPE(c->qid.path);
+		if(t < Qctr){
+			i = t;
+			l = toptab;
+			n = ntoptab;
+		}else{
+			i = PMCID(t);
+			if (t == Qctl)
+				i += (npmctab - 1)/2;
+			l = pmctab;
+			n = npmctab;
+		}
+		if(i >=n)
+			return -1;
+
+		d = &l[i];
+		
+		devdir(c, d->qid, d->name, d->length, eve, d->perm, dp);
+		return 1;
+	}
+}
 
 static Walkqid*
 pmcwalk(Chan *c, Chan *nc, char **name, int nname)
 {
-	return devwalk(c, nc, name, nname, pmctab, npmctab, devgen);
+	if(PMCTYPE(c->qid.path) == Qcore)
+		c->aux = (void *)PMCID(c->qid.path);		/* core no */
+	return devwalk(c, nc, name, nname, nil, 0, pmcgen);
 }
 
 static long
 pmcstat(Chan *c, uchar *dp, long n)
 {
-	return devstat(c, dp, n, pmctab, npmctab, devgen);
+	return devstat(c, dp, n, nil, 0, pmcgen);
 }
 
 static Chan*
@@ -88,69 +194,56 @@ pmcopen(Chan *c, int omode)
 {
 	if (!iseve())
 		error(Eperm);
-	return devopen(c, omode, pmctab, npmctab, devgen);
+	return devopen(c, omode, nil, 0, pmcgen);
 }
 
 static void
-pmcclose(Chan *c)
+pmcclose(Chan *)
 {
-	if (c->aux) {
-		free(c->aux);
-		c->aux = nil;
-	}
 }
 
 
-int
-pmcanyenab(void)
-{
-	int i;
-	Pmc p;
-
-	for (i = 0; i < pmcnregs(); i++) {
-		if (pmcgetctl(&p, i) < 0)
-			return -1;
-		if (p.enab)
-			return 1;
-	}
-
-	return 0;
-	
-}
 
 static long
 pmcread(Chan *c, void *a, long n, vlong offset)
 {
 	ulong type, id;
-	Pmc p;
+	PmcCtl p;
 	char *s;
 	u64int v;
+	u64int coreno;
 
-	if (c->qid.type == QTDIR)
-		return devdirread(c, a, n, pmctab, npmctab, devgen);
+	type = PMCTYPE(c->qid.path);
+	id = PMCID(c->qid.path);
 
-	s = malloc(PmcRdStr);
+	switch(type){
+	case Qcore:
+	case Qdir:
+	case Qctr:
+		return devdirread(c, a, n, nil, 0, pmcgen);
+	}
+
+	s = malloc(PmcCtlRdStr);
 	if(waserror()){
 		free(s);
 		nexterror();
 	}
-	type = PMCTYPE(c->qid.path);
-	id = PMCID(c->qid.path);
+
+	coreno = (u64int)c->aux;
+	p.coreno = coreno;
 	switch(type){
 	case Qdata:
-		if (up->ac != nil)
-			error("unimplemented yet");
-		v = pmcgetctr(id);
-		snprint(s, PmcRdStr, "%#ullx", v);
+		v = pmcgetctr(coreno, id);
+		snprint(s, PmcCtlRdStr, "%#ullx", v);
 		break;
 	case Qctl:
-		if (pmcgetctl(&p, id) < 0)
+		if (pmcgetctl(coreno, &p, id) < 0)
 			error("bad ctr");
-		if (pmcctlstr(s, PmcRdStr, &p) < 0)
+		if (pmcctlstr(s, PmcCtlRdStr, &p) < 0)
 			error("bad pmc");
 		break;
 	case Qgctl:
-		if (pmcdescstr(s, PmcRdStr) < 0)
+		if (pmcdescstr(s, PmcCtlRdStr) < 0)
 			error("bad pmc");
 		break;
 	default:
@@ -181,29 +274,49 @@ static Cmdtab pmcctlmsg[] =
 	Debug, 		"debug",	0,
 };
 
-static void
-pmcnull(Pmc *p)
-{
-	memset(p, 0xff, sizeof(Pmc));
-	p->enab = PmcNullval;
-	p->user = PmcNullval;
-	p->os = PmcNullval;
-}
-
 typedef void (*APfunc)(void);
+
+typedef struct AcPmcArg AcPmcArg;
+struct AcPmcArg {
+	int regno;
+	int coreno;
+	PmcCtl;
+};
+
+typedef struct AcCtrArg AcCtrArg;
+struct AcCtrArg {
+	int regno;
+	int coreno;
+	u64int v;
+};
 
 void
 acpmcsetctl(void)
 {
-	Pmc p;
+	AcPmcArg p;
 	Mach *mp;
 
 	mp = up->ac;
-	memmove(&p, mp->icc->data, sizeof(Pmc));
+	memmove(&p, mp->icc->data, sizeof(AcPmcArg));
 	
-	mp->icc->rc = pmcsetctl(&p);
+	mp->icc->rc = pmcsetctl(p.coreno, &p, p.regno);
 	return;
 }
+
+void
+acpmcsetctr(void)
+{
+	AcCtrArg ctr;
+	Mach *mp;
+
+	mp = up->ac;
+	memmove(&ctr, mp->icc->data, sizeof(AcCtrArg));
+	
+	mp->icc->rc = pmcsetctr(ctr.coreno, ctr.v, ctr.regno);
+	return;
+}
+
+
 static long
 pmcwrite(Chan *c, void *a, long n, vlong)
 {
@@ -211,7 +324,10 @@ pmcwrite(Chan *c, void *a, long n, vlong)
 	Cmdtab *ct;
 	ulong type;
 	char str[64];	/* 0x0000000000000000\0 */
-	Pmc p;
+	AcPmcArg p;
+	AcCtrArg ctr;
+	u64int coreno;
+	Mach *mp;
 
 	if (c->qid.type == QTDIR)
 		error(Eperm);
@@ -221,12 +337,25 @@ pmcwrite(Chan *c, void *a, long n, vlong)
 		error(Ebadctl);
 
 	pmcnull(&p);
+	coreno = (u64int)c->aux;
+	p.coreno = coreno;
 	type = PMCTYPE(c->qid.path);
 	p.regno = PMCID(c->qid.path);
 	memmove(str, a, n);
 	str[n] = '\0';
+	mp = up->ac;
+
+	ctr.coreno = coreno;
+	ctr.regno = p.regno;
 	if (type == Qdata) {
-		pmcsetctr(atoi(str), p.regno);
+		/* I am a handler for a proc in the core, run an RPC*/
+		if (mp != nil && mp->machno == coreno) {
+			if (runac(mp, acpmcsetctr, 0, &ctr, sizeof(AcCtrArg)) < 0)
+				n = -1;
+		} else {
+		if (pmcsetctr(coreno, strtoull(str, 0, 0), p.regno) < 0)
+			n = -1;
+		}
 		return n;
 	}
 
@@ -234,6 +363,7 @@ pmcwrite(Chan *c, void *a, long n, vlong)
 	/* TODO: should iterate through multiple lines */
 	if (strncmp(str, "set ", 4) == 0){
 		memmove(p.descstr, (char *)str + 4, n - 4);
+		p.descstr[n - 4] = '\0';
 		p.nodesc = 0;
 	} else {
 		cb = parsecmd(a, n);
@@ -268,11 +398,12 @@ pmcwrite(Chan *c, void *a, long n, vlong)
 		free(cb);
 		poperror();
 	}
-	if (up->ac != nil) {
-		if (runac(up->ac, acpmcsetctl, 0, &p, sizeof(Pmc)) < 0)
+	/* I am a handler for a proc in the core, run an RPC*/
+	if (mp != nil && mp->machno == coreno) {
+		if (runac(mp, acpmcsetctl, 0, &p, sizeof(AcPmcArg)) < 0)
 			n = -1;
 	} else {
-		if (pmcsetctl(&p) < 0)
+		if (pmcsetctl(coreno, &p, p.regno) < 0)
 			n = -1;
 	}
 	return n;

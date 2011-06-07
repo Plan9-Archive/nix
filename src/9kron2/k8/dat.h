@@ -23,6 +23,8 @@ typedef struct Sys Sys;
 typedef struct Ureg Ureg;
 typedef struct Vctl Vctl;
 typedef struct ACVctl ACVctl;
+typedef struct PmcCtr PmcCtr;
+typedef struct PmcCtl PmcCtl;
 
 #pragma incomplete Ureg
 
@@ -183,6 +185,35 @@ struct ICC
 };
 
 /*
+ * hw perf counters
+ */
+struct PmcCtl {
+	u32int coreno;
+	int enab;
+	int user;
+	int os;
+	int nodesc;
+	char descstr[KNAMELEN];
+	int reset;
+};
+
+struct PmcCtr{
+	int stale;
+	Rendez r;
+	u64int ctr;
+	int ctrset;
+	PmcCtl;
+	int ctlset;
+};
+
+enum {
+	PmcMaxCtrs = 4,
+	PmcIgn = 0,
+	PmcGet = 1,
+	PmcSet = 2,
+};
+
+/*
  * Per processor information.
  *
  * The offsets of the first few elements may be known
@@ -237,6 +268,9 @@ struct Mach
 
 	MFPU;
 	MCPU;
+
+	Lock pmclock;
+	PmcCtr pmc[PmcMaxCtrs];
 
 	NIX;
 };

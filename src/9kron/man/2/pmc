@@ -7,7 +7,7 @@ confpmc, rdpmc \- access to perfomance counters on this processor
 .B #include <libc.h>
 .PP
 .B
-int confpmc(int index, int mode, char *desc)
+int confpmc(int core, int index, int mode, char *desc)
 .PP
 .B
 uvlong rdpmc(int index)
@@ -15,6 +15,8 @@ uvlong rdpmc(int index)
 .I Confpmc
 configures the counter
 .I index
+on core
+.I core
 setting the configuration according to the configuration string,
 .I desc
 whic is architecture dependant and the

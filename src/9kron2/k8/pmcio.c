@@ -12,8 +12,6 @@
 #include	"../port/pmc.h"
 
 
-static QLock pmclck;
-
 /* non portable, for intel will be CPUID.0AH.EDX */
 
 enum {
@@ -23,6 +21,9 @@ enum {
 int
 pmcnregs(void)
 {
+	/* could run CPUID to see if there are registers,
+	 * PmcMaxCtrs
+ 	*/
 	return PeNreg;
 }
 
@@ -48,7 +49,7 @@ pmcuserenab(int enable)
 	return cr4&Pce;
 }
 
-PmcCtrId pmcids[] = {
+PmcCtlCtrId pmcids[] = {
 	{"locked instr", "0x024 0x0"},
 	{"SMI intr", "0x02b 0"},
 	{"data access", "0x040 0x0"},
@@ -67,9 +68,9 @@ PmcCtrId pmcids[] = {
 };
 
 int
-pmctrans(Pmc *p)
+pmctrans(PmcCtl *p)
 {
-	PmcCtrId *pi;
+	PmcCtlCtrId *pi;
 
 	for (pi = &pmcids[0]; pi->portdesc[0] != '\0'; pi++){
 		if ( strncmp(p->descstr, pi->portdesc, strlen(pi->portdesc)) == 0){
@@ -80,13 +81,12 @@ pmctrans(Pmc *p)
 	return 1;
 }
 
-int
-pmcgetctl(Pmc *p, u32int regno)
+static int
+getctl(PmcCtl *p, u32int regno)
 {
 	u64int r, e, u;
 
 	r = rdmsr(regno + PerfEvtbase);
-	p->regno = regno;
 	p->enab = (r&PeCtEna) != 0;
 	p->user = (r&PeUsr) != 0;
 	p->os = (r&PeOS) != 0;
@@ -94,91 +94,117 @@ pmcgetctl(Pmc *p, u32int regno)
 	u = GetUMsk(r);
 	//TODO inverse translation
 	snprint(p->descstr, KNAMELEN, "%#ullx %#ullx", e, u);
+	p->nodesc = 0;
+	return 0;
+}
+
+int
+pmcanyenab(void)
+{
+	int i;
+	PmcCtl p;
+
+	for (i = 0; i < pmcnregs(); i++) {
+		if (getctl(&p, i) < 0)
+			return -1;
+		if (p.enab)
+			return 1;
+	}
+
 	return 0;
 }
 
 extern int pmcdebug;
 
-int
-pmcsetctl(Pmc *p)
+static int
+setctl(PmcCtl *p, int regno)
 {
 	u64int v, e, u;
 	char *toks[2];
+	char str[KNAMELEN];
 
-	if (p->regno >= pmcnregs())
+	if (regno >= pmcnregs())
 		error("invalid reg");
 
-	qlock(&pmclck);
-	v = rdmsr(p->regno + PerfEvtbase);
+	v = rdmsr(regno + PerfEvtbase);
 	v &= PeEvMskH|PeEvMskL|PeCtEna|PeOS|PeUsr|PeUnMsk;
-	if (p->enab != PmcNullval)
+	if (p->enab != PmcCtlNullval){
 		if (p->enab)
 			v |= PeCtEna;
 		else
 			v &= ~PeCtEna;
-	if (p->user != PmcNullval)
+		p->enab = PmcCtlNullval;
+	}
+	if (p->user != PmcCtlNullval){
 		if (p->user)
 			v |= PeUsr;
 		else
 			v &= ~PeUsr;
-	if (p->os != PmcNullval)
+		p->user = PmcCtlNullval;
+	}
+	if (p->os != PmcCtlNullval){
 		if (p->os)
 			v |= PeOS;
 		else
 			v &= ~PeOS;
-	if (pmctrans(p) < 0){
-		qunlock(&pmclck);
-		return -1;
+		p->os = PmcCtlNullval;
 	}
+	if (pmctrans(p) < 0)
+		return -1;
 
-	if (!p->nodesc) {
-		if (tokenize(p->descstr, toks, 2) != 2)
+	if (p->nodesc == 0) {
+		memmove(str, p->descstr, KNAMELEN);
+		if (tokenize(str, toks, 2) != 2)
 			return -1;
 		e = atoi(toks[0]);
 		u = atoi(toks[1]);
 		v &= ~(PeEvMskL|PeEvMskH|PeUnMsk);
 		v |= SetEvMsk(v, e);
 		v |= SetUMsk(v, u);
+		p->nodesc = 1;
 	}
-	if (p->reset == 1){
+	if (p->reset != PmcCtlNullval && p->reset) {
 		v = 0;
-		wrmsr(p->regno+ PerfCtrbase, 0);
+		wrmsr(regno+ PerfCtrbase, 0);
+		p->reset = PmcCtlNullval;
 	}
-	wrmsr(p->regno+ PerfEvtbase, v);
+	wrmsr(regno+ PerfEvtbase, v);
 	pmcuserenab(pmcanyenab());
 	if (pmcdebug) {
-		v = rdmsr(p->regno+ PerfEvtbase);
-		print("conf pmc[%#ux]: %#llux\n", p->regno, v);
+		v = rdmsr(regno+ PerfEvtbase);
+		print("conf pmc[%#ux]: %#llux\n", regno, v);
 	}
-	qunlock(&pmclck);
 	return 0;
 }
 
 int
-pmcctlstr(char *str, int nstr, Pmc *p)
+pmcctlstr(char *str, int nstr, PmcCtl *p)
 {
 	int ns;
 
 	ns = 0;
-	if (p->enab)
+	if (p->enab && p->enab != PmcCtlNullval)
 		ns += snprint(str + ns, nstr - ns, "enable\n");
 	else
 		ns += snprint(str + ns, nstr - ns, "disable\n");
 		
-	if (p->user)
+	if (p->user && p->user != PmcCtlNullval)
 		ns += snprint(str + ns, nstr - ns, "user\n");
-	if (p->os)
+	if (p->os && p->user != PmcCtlNullval)
 		ns += snprint(str + ns, nstr - ns, "os\n");
 	
 	//TODO, inverse pmctrans?
-	ns += snprint(str + ns, nstr - ns, "%s\n", p->descstr);
+	if(!p->nodesc)
+		ns += snprint(str + ns, nstr - ns, "%s\n", p->descstr);
+	else 
+		ns += snprint(str + ns, nstr - ns, "no desc\n");
 	return ns;
 }
 
 int
 pmcdescstr(char *str, int nstr)
 {
-	PmcCtrId *pi;
+	PmcCtlCtrId *pi;
 	int ns;
 
 	ns = 0;
@@ -188,25 +214,159 @@ pmcdescstr(char *str, int nstr)
 	return ns;
 }
 
-u64int
-pmcgetctr(u32int regno)
+static u64int
+getctr(u32int regno)
 {
 	return rdmsr(regno + PerfCtrbase);
 }
 
-int
-pmcsetctr(u64int v, u32int regno)
+static int
+setctr(u64int v, u32int regno)
 {
 	wrmsr(regno + PerfCtrbase, v);
 	return 0;
 }
 
+int
+notstale(void *x)
+{
+	PmcCtr *p;
+	p = (PmcCtr *)x;
+	return !p->stale;
+}
 
+u64int
+pmcgetctr(u32int coreno, u32int regno)
+{
+	PmcCtr *p;
+	Mach *mp;
 
+	if(coreno == m->machno)
+		return getctr(regno);
 
+	mp = sys->machptr[coreno];
+	p = &mp->pmc[regno];
+	ilock(&m->pmclock);
+	p->ctrset |= PmcGet;
+	p->stale = 1;
+	iunlock(&m->pmclock);
+	if(mp->proc != nil || mp->nixtype != NIXAC){
+		apicipi(mp->apicno);
+		sleep(&p->r, notstale, p);
+	}
+	return p->ctr;
+}
 
+int
+pmcsetctr(u32int coreno, u64int v, u32int regno)
+{
+	PmcCtr *p;
+	Mach *mp;
 
+	if(coreno == m->machno)
+		return setctr(v, regno);
 
+	mp = sys->machptr[coreno];
+	p = &mp->pmc[regno];
+	ilock(&m->pmclock);
+	p->ctr = v;
+	p->ctrset |= PmcSet;
+	p->stale = 1;
+	iunlock(&m->pmclock);
+	if(mp->proc != nil || mp->nixtype != NIXAC){
+		apicipi(mp->apicno);
+		sleep(&p->r, notstale, p);
+	}
+	return 0;
+}
 
+static void
+ctl2ctl(PmcCtl *dctl, PmcCtl *sctl)
+{
+	if(sctl->enab != PmcCtlNullval)
+		dctl->enab = sctl->enab;
+	if(sctl->user != PmcCtlNullval)
+		dctl->user = sctl->user;
+	if(sctl->os != PmcCtlNullval)
+		dctl->os = sctl->os;
+	if(sctl->nodesc == 0) {
+		memmove(dctl->descstr, sctl->descstr, KNAMELEN);
+		dctl->nodesc = 0;
+	}
+}
 
+int
+pmcsetctl(u32int coreno, PmcCtl *pctl, u32int regno)
+{
+	PmcCtr *p;
+	Mach *mp;
+
+	if(coreno == m->machno)
+		return setctl(pctl, regno);
+
+	mp = sys->machptr[coreno];
+	p = &mp->pmc[regno];
+	ilock(&m->pmclock);
+	ctl2ctl(&p->PmcCtl, pctl);
+	p->ctlset |= PmcSet;
+	p->stale = 1;
+	iunlock(&m->pmclock);
+	if(mp->proc != nil || mp->nixtype != NIXAC){
+		apicipi(mp->apicno);
+		sleep(&p->r, notstale, p);
+	}
+	return 0;
+}
+
+int
+pmcgetctl(u32int coreno, PmcCtl *pctl, u32int regno)
+{
+	PmcCtr *p;
+	Mach *mp;
+
+	if(coreno == m->machno)
+		return getctl(pctl, regno);
+
+	mp = sys->machptr[coreno];
+	p = &mp->pmc[regno];
+
+	ilock(&m->pmclock);
+	p->ctlset |= PmcGet;
+	p->stale = 1;
+	iunlock(&m->pmclock);
+	if(mp->proc != nil || mp->nixtype != NIXAC){
+		apicipi(mp->apicno);
+		sleep(&p->r, notstale, p);
+	}
+	ilock(&m->pmclock);
+	memmove(pctl, &p->PmcCtl, sizeof(PmcCtl));
+	iunlock(&m->pmclock);
+	return 0;
+}
+
+void
+pmcupdate(Mach *m)
+{
+	PmcCtr *p;
+	int i, maxct, wk;
+
+	maxct = pmcnregs();
+	for (i = 0; i < maxct; i++) {
+		p = &m->pmc[i];
+		ilock(&m->pmclock);
+		if(p->ctrset & PmcSet)
+			setctr(p->ctr, i);
+		if(p->ctlset & PmcSet)
+			setctl(p, i);
+		p->ctr = getctr(i);
+		getctl(p, i);
+		p->ctrset = PmcIgn;
+		p->ctlset = PmcIgn;
+		wk = p->stale;
+		p->stale = 0;
+		iunlock(&m->pmclock);
+		if(wk)
+			wakeup(&p->r);
+	}
+}
 

@@ -1,34 +1,23 @@
 
 enum{
-	PmcNullval = 0xdead,
+	PmcCtlNullval = 0xdead,
 };
 
-typedef struct PmcCtrId PmcCtrId;
-struct PmcCtrId {
+typedef struct PmcCtlCtrId PmcCtlCtrId;
+
+
+struct PmcCtlCtrId {
 	char portdesc[KNAMELEN];
 	char archdesc[KNAMELEN];
 };
 
-
-typedef struct Pmc Pmc;
-struct Pmc{
-	u32int regno;
-	int enab;
-	int user;
-	int os;
-	int nodesc;
-	char descstr[KNAMELEN];
-	int reset;
-};
-
 int		pmcnregs(void);
-int		pmcsetctl(Pmc *p);
-int		pmctrans(Pmc *p);
-int		pmcgetctl(Pmc *p, u32int regno);
+int		pmcsetctl(u32int coreno, PmcCtl *p, u32int regno);
+int		pmctrans(PmcCtl *p);
+int		pmcgetctl(u32int coreno, PmcCtl *p, u32int regno);
 int		pmcdescstr(char *str, int nstr);
-int		pmcctlstr(char *str, int nstr, Pmc *p);
-u64int	pmcgetctr(u32int regno);
-int		pmcsetctr(u64int v, u32int regno);
+int		pmcctlstr(char *str, int nstr, PmcCtl *p);
+u64int	pmcgetctr(u32int coreno, u32int regno);
+int		pmcsetctr(u32int coreno, u64int v, u32int regno);
 
-int		pmcanyenab(void);
-
+void		pmcupdate(Mach *m);

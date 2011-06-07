@@ -743,7 +743,7 @@ enum
 	PmcEnable = 4,
 };
 
-extern int confpmc(int, int, char *);
+extern int confpmc(int, int, int, char *);
 extern uvlong rdpmc(int);
 
 #pragma	varargck	argpos	werrstr	1
