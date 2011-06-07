@@ -182,6 +182,23 @@ nixsquids(void)
 }
 
 void
+DONE(void)
+{
+	print("DONE\n");
+	prflush();
+	delay(10000);
+	ndnr();
+}
+
+void
+HERE(void)
+{
+	print("here\n");
+	prflush();
+	delay(5000);
+}
+
+void
 main(u32int ax, u32int bx)
 {
 	vlong hz;
@@ -225,7 +242,7 @@ main(u32int ax, u32int bx)
 	active.exiting = 0;
 
 	fmtinit();
-	print("\nPlan 9\n");
+	print("\nNIX with 4K pages\n");
 	if(vflag){
 		print("&ax = %#p, ax = %#ux, bx = %#ux\n", &ax, ax, bx);
 		multiboot(ax, bx, vflag);
@@ -320,6 +337,7 @@ init0(void)
 			ksetenv("service", "cpu", 0);
 		else
 			ksetenv("service", "terminal", 0);
+		ksetenv("pgsz", "4096", 0);
 		confsetenv();
 		poperror();
 	}
@@ -446,9 +464,8 @@ confinit(void)
 	conf.nproc = 100 + ((conf.npage*BY2PG)/MB)*5;
 	if(cpuserver)
 		conf.nproc *= 3;
-	if(conf.nproc > 2000)
-//		conf.nproc = 2000;
-conf.nproc = 1000;
+	if(conf.nproc > 1000)
+		conf.nproc = 1000;
 	conf.nimage = 200;
 	conf.nswap = conf.nproc*80;
 	conf.nswppo = 4096;

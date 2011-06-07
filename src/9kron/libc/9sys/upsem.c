@@ -42,7 +42,7 @@ upsem(int *s)
 	typesok();
 	n = ainc(s);
 	dprint(2, "upsem: %#p = %d\n", s, n);
-	if(n < 0){
+	if(n <= 0){
 		ainc(&c.kup);
 		semwakeup(s);
 	}else

@@ -31,7 +31,6 @@ CFILES=\
 	getcallerpc.c\
 	getfields.c\
 	getuser.c\
-	getcore.c\
 	hangup.c\
 	hypot.c\
 	lnrand.c\

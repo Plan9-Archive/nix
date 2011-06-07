@@ -6,7 +6,7 @@
 
 #include "amd64.h"
 
-#define PTEX(pi, l)	(((pi)>>((((l)-1)*9)+12)) & ((1<<PTPGSHFT)-1))
+#define PTEX(pi, lvl)	(((pi)>>((((lvl)-1)*9)+12)) & ((1<<PTPGSHFT)-1))
 
 static Page mach0pml4;
 
@@ -14,9 +14,15 @@ static Page mach0pml4;
  * Nemo: NB:
  * m->pml4 is always the same.
  * sched->procsave->flushtbl zeroes the entries in pml4 up to
- * pml4->daddr (which is the number of entries used by the user).
+ * pml4->daddr (which is the number of entries used by the user, or
+ * the index in the upper page table for this entry)
  * the new process will fault and we populate again the page table
  * as needed.
+ *
+ * mmuptp[0] is used to keep a free list of pages.
+ * mmuptp[1-3] are used to keep PT pages for each level
+ * 4K pages: pml4 -> lvl3 -> lvl2 -> lvl1 ->pg
+ * 2M pages: pml4 -> lvl3 -> lvl2 -> pg
  *
  * Therefore, we can't use pml4 in other processors. Each one
  * has to play the same trick at least, using its own pml4.
@@ -24,6 +30,16 @@ static Page mach0pml4;
  * so it wont fault.
  */
 
+void
+iprintva(char *s, uintptr addr)
+{
+	iprint("%s = %#ullx = %#ullx:%#ullx:%#ullx:%#ullx:%#ullx", s, addr,
+			(addr >> (12+9+9+9)) & 0x1FF,
+			(addr >> (12+9+9)) & 0x1FF,
+			(addr >> (12+9)) & 0x1FF,
+			(addr >> 12) & 0x1FF,
+			addr & 0xFFF);
+}
 
 void
 mmuinit(void)
@@ -35,7 +51,9 @@ mmuinit(void)
 	if(m->machno == 0)
 		page = &mach0pml4;
 	else{
-		/* NIX: KLUDGE: Has to go when each mach is using its own page table */
+		/* NIX: KLUDGE: Has to go when each mach is using
+		 * its own page table
+		 */
 		p = UINT2PTR(m->stack);
 		p += MACHSTKSZ;
 		memmove(p, UINT2PTR(mach0pml4.va), PTPGSZ);
@@ -108,6 +126,56 @@ mmuptpfree(Proc* proc, int clear)
 	}
 
 	m->pml4->daddr = 0;
+}
+
+static void
+tabs(int n)
+{
+	int i;
+
+	for(i = 0; i < n; i++)
+		print("  ");
+}
+
+void
+dumpptepg(int lvl, uintptr pa)
+{
+	PTE *pte;
+	int tab, i;
+
+	tab = 4 - lvl;
+	pte = UINT2PTR(KADDR(pa));
+	for(i = 0; i < PTPGSZ/sizeof(PTE); i++)
+		if(pte[i] & PteP){
+			tabs(tab);
+			print("l%d[%#05x]:\t%#ullx\n", lvl, i, pte[i]);
+			if(lvl == 3 && i == 0x1FF){
+				/* don't print lvl 2 kernel entries */
+				tabs(tab+1);
+				print("...kern...\n");
+				continue;
+			}
+			if(lvl > 2 || (lvl == 2 && (pte[i]&PtePS) == 0))
+				dumpptepg(lvl-1, PPN(pte[i]));
+		}
+	print("\n");
+}
+
+void
+dumpmmu(Proc *p)
+{
+	int i;
+	Page *pg;
+
+	print("proc %#p\n", p);
+	for(i = 3; i > 0; i--){
+		print("mmuptp[%d]:\n", i);
+		for(pg = p->mmuptp[i]; pg != nil; pg = pg->next)
+			print("\tva %#ullx ppn %#ullx d %#ulx\n",
+				pg->va, pg->pa, pg->daddr);
+	}
+	print("pml4 %#ullx\n", m->pml4->pa);
+	dumpptepg(4, m->pml4->pa);
 }
 
 void

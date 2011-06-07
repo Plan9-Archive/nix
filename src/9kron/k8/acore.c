@@ -41,6 +41,23 @@ extern void _actrapret(void);
 ACVctl *acvctl[256];
 
 /*
+ * Check if the AC kernel (mach) stack has more than 4*KiB free.
+ * Do not call panic, the stack is gigantic.
+ */
+static void
+acstackok(void)
+{
+	char dummy;
+	char *sstart;
+
+	sstart = (char *)m - PGSZ - 4*PTPGSZ - MACHSTKSZ;
+	if(&dummy < sstart + 4*KiB){
+		print("ac kernel stack overflow, cpu%d stopped\n", m->machno);
+		DONE();
+	}
+}
+
+/*
  * Main scheduling loop done by the application core.
  * Some of functions run will not return.
  * The system call handler will reset the stack and
@@ -48,11 +65,13 @@ ACVctl *acvctl[256];
  * We loop because some functions may return and we should
  * wait for another call.
  */
+
 void
 acsched(void)
 {
 	acmmuswitch();
 	for(;;){
+		acstackok();
 		m->load = 0;
 		while(*m->icc->fn == nil)
 			;

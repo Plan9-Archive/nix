@@ -80,7 +80,7 @@ sysrfork(Ar0* ar0, va_list list)
 		if(flag & (RFPREPAGE|RFCPREPAGE))
 			up->prepagemem = flag&RFPREPAGE;
 		if(flag & RFCORE){
-			pickac(up, -1);
+			up->ac = getac(up, -1);
 			up->procctl = Proc_toac;
 		}else if(flag & RFCCORE){
 			if(up->ac != nil)
@@ -95,7 +95,7 @@ sysrfork(Ar0* ar0, va_list list)
 
 	if(flag & RFCORE){
 		if(!waserror()){
-			pickac(p, -1);
+			p->ac = getac(p, -1);
 			p->procctl = Proc_toac;
 			poperror();
 		}else{
@@ -278,6 +278,7 @@ execac(Ar0* ar0, int core, char *ufile, char **argv)
 	chan = nil;
 	mp = nil;
 	if(waserror()){
+		DBG("execac: failing: %s\n", up->errstr);
 		if(file)
 			free(file);
 		if(elem)
@@ -286,14 +287,17 @@ execac(Ar0* ar0, int core, char *ufile, char **argv)
 			cclose(chan);
 		if(core > 0 && mp != nil)
 			mp->proc = nil;
+		if(core != 0)
+			up->ac = nil;
 		nexterror();
 	}
 
 	if(core != 0)
-		pickac(up, core);
+		up->ac = getac(up, core);
 
 	argc = 0;
 	file = validnamedup(ufile, 1);
+	DBG("execac: up %#p file %s\n", up, file);
 	chan = namec(file, Aopen, OEXEC, 0);
 	kstrdup(&elem, up->genbuf);
 
@@ -607,9 +611,11 @@ execac(Ar0* ar0, int core, char *ufile, char **argv)
 		up->procctl = Proc_toac;
 		up->prepagemem = 1;
 	}
-for(i = 0; i < nelem(up->seg); i++)
-if(up->seg[i] != nil)
-print("after execac: seg %d %#ullx %#ullx\n", i, up->seg[i]->base, up->seg[i]->top);
+
+	DBG("execac up %#p done\n"
+		"textsz %lx datasz %lx bsssz %lx hdrsz %lx\n"
+		"textlim %ullx datalim %ullx bsslim %ullx\n", up,
+		textsz, datasz, bsssz, hdrsz, textlim, datalim, bsslim);
 }
 
 void

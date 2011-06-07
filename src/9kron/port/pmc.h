@@ -27,7 +27,7 @@ int		pmctrans(Pmc *p);
 int		pmcgetctl(Pmc *p, u32int regno);
 int		pmcdescstr(char *str, int nstr);
 int		pmcctlstr(char *str, int nstr, Pmc *p);
-int		pmcgetctr(u32int regno);
+u64int	pmcgetctr(u32int regno);
 int		pmcsetctr(u64int v, u32int regno);
 
 int		pmcanyenab(void);

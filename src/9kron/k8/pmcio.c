@@ -188,7 +188,7 @@ pmcdescstr(char *str, int nstr)
 	return ns;
 }
 
-int
+u64int
 pmcgetctr(u32int regno)
 {
 	return rdmsr(regno + PerfCtrbase);

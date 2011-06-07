@@ -1546,21 +1546,23 @@ procctlreq(Proc *p, char *va, int n)
 		break;
 	case CMcore:
 		core = atoi(cb->f[1]);
-		if(core < 0 || core >= MAXMACH)
+		if(core >= MAXMACH)
 			error("wrong core number");
 		else if(core == 0){
-			if(p->ac != nil){
-				p->procctl = Proc_totc;
-				if(p != up && p->state == Exotic){
-					/* see the comment in postnote */
-					intrac(p);
-				}
-			}else
-				error("the proc is not running in an ac");
+			if(p->ac == nil)
+				error("not running in an ac");
+			p->procctl = Proc_totc;
+			if(p != up && p->state == Exotic){
+				/* see the comment in postnote */
+				intrac(p);
+			}
 		}else{
 			if(p->ac != nil)
-				error("proc already running in an ac");
-			pickac(p, core);
+				error("running in an ac");
+			if(core < 0)
+				p->ac = getac(p, -1);
+			else
+				p->ac = getac(p, core);
 			p->procctl = Proc_toac;
 			p->prepagemem = 1;
 		}

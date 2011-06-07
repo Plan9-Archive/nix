@@ -289,7 +289,6 @@ _semainc:
 	JNZ	_semainc
 
 	MOVL	BX, AX
-	CMPL	AX, $0				/* overflow if -ve or 0 */
 	RET
 
 /*
@@ -306,7 +305,6 @@ _semadec:
 	JNZ	_semadec
 
 	MOVL	BX, AX
-
 	RET
 
 TEXT adec(SB), 1, $-4				/* int adec(int*); */

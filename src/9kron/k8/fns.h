@@ -25,6 +25,8 @@ u32int	cpuid(u32int, u32int[4]);
 int	dbgprint(char*, ...);
 int	decref(Ref*);
 void	delay(int);
+void	dumpmmu(Proc*);
+void	dumpptepg(int lvl,uintptr pa);
 #define	evenaddr(x)				/* x86 doesn't care */
 int	fpudevprocio(Proc*, void*, long, uintptr, int);
 void	fpuinit(void);
@@ -35,6 +37,7 @@ void	fpuprocsave(Proc*);
 void	fpusysprocsetup(Proc*);
 void	fpusysrfork(Ureg*);
 void	fpusysrforkchild(Proc*, Proc*);
+Mach*	getac(Proc *, int);
 char*	getconf(char*);
 void	halt(void);
 void hardhalt(void);
@@ -64,6 +67,7 @@ int	iounused(int, int);
 int	ioalloc(int, int, int, char*);
 int	ioreserve(int, int, int, char*);
 int	iprint(char*, ...);
+void	iprintva(char *tag, uintptr pa);
 int	isaconfig(char*, int, ISAConf*);
 void	kbdenable(void);
 void	kbdinit(void);
@@ -114,8 +118,8 @@ void	pcisetbme(Pcidev*);
 void	pcisetioe(Pcidev*);
 void	pcisetmwi(Pcidev*);
 int	pcisetpms(Pcidev*, int);
-int	pickac(Proc *, int);
 void	printcpufreq(void);
+void	putac(Mach*);
 void	runapcore(int);
 int	screenprint(char*, ...);			/* debugging */
 void	sfence(void);
@@ -124,7 +128,7 @@ u64int	splhi(void);
 u64int	spllo(void);
 void	splx(u64int);
 void	splxpc(u64int);
-void	stopac(Proc *);
+void	stopac(void);
 void	syncclock(void);
 void syscall(int scallnr, Ureg* ureg);
 void*	sysexecregs(uintptr, ulong, ulong);
@@ -227,3 +231,9 @@ extern void mpsinit(int);
  * sipi.c
  */
 extern void sipi(void);
+
+/*
+ * debug
+ */
+void HERE(void);
+void DONE(void);

@@ -2,7 +2,8 @@ CONF=k8cpu
 CONFLIST=k8aoe k8cpu k8root
 
 HACK=`{ bind -c ../libc /sys/src/libc;\
-	bind  ../include/libc.h /sys/include/libc.h}
+	unmount /sys/include>[2]/dev/null;\
+	bind  -b ../include /sys/include}
 
 objtype=amd64
 </$objtype/mkfile

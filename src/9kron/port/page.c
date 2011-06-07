@@ -16,7 +16,6 @@
 struct	Palloc palloc;
 struct	Palloc bigpalloc;
 
-#define	BIGPGSZ		(2ULL*MiB)
 #define	BIGPGSHFT	21U
 #define	BIGPGROUND(x)	ROUNDUP((x), BIGPGSZ)
 #define	PGSPERBIG	(BIGPGSZ/PGSZ)
@@ -69,11 +68,13 @@ pageinit(void)
 			palloc.user++;
 		}
 		palloc.tail = lastp;
-print("pm %d base %#ullx npgs %#ulx\n", i, pm->base, pm->npage);
 
 		base = BIGPGROUND(pm->base);
 		print("bigbase %#ullx\n", base);
-if(0)
+if(1){
+USED(bigp);
+USED(pmp0);
+}else
 		for(j = (base-pm->base)/PGSZ; j + PGSPERBIG < pm->npage; ){
 			/*
 			 * unlink all pages within a big page.
@@ -294,7 +295,7 @@ pp=&palloc;
 	}
 
 	/* First try for our colour */
-	for(p = palloc.head; p; p = p->next)
+	for(p = pp->head; p; p = p->next)
 		if(p->color == color)
 			break;
 

@@ -142,7 +142,6 @@ semalt(Sem *ss[], int n)
 	DBG("semalt up %#p ss[0] %#p\n", up, ss[0]->np);
 	r = -1;
 	for(i = 0; i < n; i++){
-	DBG("semalt1 %#p\n", up);
 		s = ss[i];
 		n = semadec(s->np);
 		if(n >= 0){

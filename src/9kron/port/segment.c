@@ -202,7 +202,7 @@ segpage(Segment *s, Page *p)
 	Page **pg;
 
 	if(p->va < s->base || p->va >= s->top)
-		panic("segpage");
+		panic("segpage: p->va < s->base || p->va >= s->top");
 
 	soff = p->va - s->base;
 	pte = &s->map[soff/PTEMAPMEM];

@@ -125,6 +125,9 @@ notify(Ureg* ureg)
 	uintptr sp;
 	NFrame *nf;
 
+	/*
+	 * Calls procctl splhi, see comment in procctl for the reasoning.
+	 */
 	if(up->procctl)
 		procctl(up);
 	if(up->nnote == 0)
@@ -266,6 +269,7 @@ syscall(int scallnr, Ureg* ureg)
 		systab[scallnr].f(&ar0, (va_list)up->arg);
 		if(scallnr == SYSR1){
 			/*
+			 * BUG: must go when ron binaries go.
 			 * NIX: Returning from execac().
 			 * This means that the process is back to the
 			 * time sharing core. However, the process did

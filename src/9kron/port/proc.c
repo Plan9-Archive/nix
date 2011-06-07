@@ -78,7 +78,7 @@ schedinit(void)		/* never returns */
 			break;
 		case Moribund:
 			up->state = Dead;
-			stopac(up);
+			stopac();
 			edfstop(up);
 			if (up->edf)
 				free(up->edf);
@@ -103,13 +103,19 @@ schedinit(void)		/* never returns */
 	sched();
 }
 
+/*
+ * Check if the stack has more than 4*KiB free.
+ * Do not call panic, the stack is gigantic.
+ */
 static void
 stackok(void)
 {
 	char dummy;
 
-	if(&dummy < (char*)up->kstack + 4*KiB)
-		panic("kernel stack overflow");
+	if(&dummy < (char*)up->kstack + 4*KiB){
+		print("tc kernel stack overflow, cpu%d stopped\n", m->machno);
+		DONE();
+	}
 }
 
 /*
@@ -989,7 +995,7 @@ addbroken(Proc *p)
 	broken.p[broken.n++] = p;
 	qunlock(&broken);
 
-	stopac(up);
+	stopac();
 	edfstop(up);
 	p->state = Broken;
 	p->psstate = 0;
@@ -1174,7 +1180,7 @@ pexit(char *exitstr, int freemem)
 	lock(&procalloc);
 	lock(&palloc);
 
-	stopac(up);
+	stopac();
 	edfstop(up);
 	up->state = Moribund;
 	sched();
@@ -1436,12 +1442,16 @@ procctl(Proc *p)
 		 * by moving to a core, but never returns (unless
 		 * the process gets moved back to a TC.)
 		 */
+		spllo();
 		runacore();
 		return;
 
 	case Proc_totc:
 		p->procctl = 0;
-		stopac(p);
+		if(p != up)
+			panic("procctl: stopac: p != up");
+		spllo();
+		stopac();
 		return;
 	}
 }

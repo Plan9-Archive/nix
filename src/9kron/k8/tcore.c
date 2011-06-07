@@ -12,7 +12,6 @@
 
 Lock nixaclock;	/* NIX AC lock; held while assigning procs to cores */
 
-
 /*
  * NIX support for the time sharing core.
  */
@@ -20,14 +19,15 @@ Lock nixaclock;	/* NIX AC lock; held while assigning procs to cores */
 extern void actrapret(void);
 extern void acsysret(void);
 
-int
-pickac(Proc *p, int core)
+Mach*
+getac(Proc *p, int core)
 {
 	int i;
 	Mach *mp;
 
+	mp = nil;
 	if(core == 0)
-		panic("can't pickac for a TC");
+		panic("can't getac for a TC");
 	lock(&nixaclock);
 	if(waserror()){
 		unlock(&nixaclock);
@@ -43,7 +43,6 @@ pickac(Proc *p, int core)
 			error("core is not an AC");
 	Found:
 		mp->proc = p;
-		p->ac = mp;
 	}else{
 		for(i = 1; i < MAXMACH; i++){
 			mp = sys->machptr[i];
@@ -55,7 +54,7 @@ pickac(Proc *p, int core)
 	}
 	unlock(&nixaclock);
 	poperror();
-	return core;
+	return mp;
 }
 
 /*
@@ -64,10 +63,9 @@ pickac(Proc *p, int core)
  * or we must be prepared for nesting them, which we are not.
  * This is important for note handling, because postnote()
  * assumes that it's ok to send an IPI to an AC, no matter its
- * state.
+ * state. The /proc interface also assumes that.
  * 
  */
-
 void
 intrac(Proc *p)
 {
@@ -86,23 +84,32 @@ intrac(Proc *p)
 }
 
 void
-stopac(Proc *p)
+putac(Mach *m)
+{
+	mfence();
+	m->proc = nil;
+}
+
+void
+stopac(void)
 {
 	Mach *mp;
 
-	mp = p->ac;
+	mp = up->ac;
 	if(mp == nil)
 		return;
-	if(mp->proc != p)
+	if(mp->proc != up)
 		panic("stopac");
 
 	lock(&nixaclock);
-	p->ac = nil;
+	up->ac = nil;
 	mp->proc = nil;
 	unlock(&nixaclock);
 
-//	send ipi to p->ac, it would rerun squidboy(), and
-//	wait for us to give it a function to run.
+	/* TODO:
+	 * send sipi to up->ac, it would rerun squidboy(), and
+	 * wait for us to give it a function to run.
+	 */
 }
 
 /*
@@ -232,26 +239,19 @@ runacore(void)
 		case ICCTRAP:
 			s = splhi();
 			m->cr2 = up->ac->cr2;
-iprint("runacore: entering icctrap %ulld cr2 %#ullx ureg %#p\n", ureg->type, m->cr2, ureg);
 			DBG("runacore: trap %ulld cr2 %#ullx ureg %#p\n",
 				ureg->type, m->cr2, ureg);
 			switch(ureg->type){
 			case IdtIPI:
 				if(up->procctl || up->nnote)
 					notify(up->dbgreg);
-				if(up->ac == nil){
-					/*
-					 *  to procctl, then syscall,  to 
-					 *  be back in the TC
-					 */
-iprint("runacore: returning, from icctrap ipi\n");
-					return;
-				}
+				if(up->ac == nil)
+					goto ToTC;
 				kexit(up->dbgreg);
 				break;
-			case IdtPF:
 			case IdtNM:
 			case IdtMF:
+			case IdtXF:
 				/* these are handled in the AC;
 				 * If we get here, they left in m->icc->data
 				 * a note to be posted to the process.
@@ -274,24 +274,23 @@ iprint("runacore: returning, from icctrap ipi\n");
 			DBG("runacore: syscall ax %#ullx ureg %#p\n",
 				ureg->ax, ureg);
 			cr3put(m->pml4->pa);
-iprint("runacore: syscall %#ullx \n", ureg->ax);
 			syscall(ureg->ax, ureg);
 			flush = 1;
 			fn = acsysret;
-			if(up->ac == nil){
-				/*
-				 *  to procctl, then syscall,  to 
-				 *  be back in the TC
-				 */
-iprint("runacore: returning, from syscall\n");
-				return;	
-			}
+			if(up->ac == nil)
+				goto ToTC;
 			break;
 		default:
 			panic("runacore: unexpected rc = %d", rc);
 		}
 		rc = runac(up->ac, fn, flush, nil, 0);
 	}
+ToTC:
+	/*
+	 *  to procctl, then syscall,  to 
+	 *  be back in the TC
+	 */
+	DBG("runacore: up %#p: return\n", up);
 }
 
 extern ACVctl *acvctl[];

@@ -61,7 +61,7 @@ syscallfmt(int syscallno, va_list list)
 	void *v;
 	vlong vl;
 	uintptr p;
-	int i[2], len;
+	int i[2], len, **ip;
 	char *a, **argv;
 
 	fmtstrinit(&fmt);
@@ -108,6 +108,22 @@ syscallfmt(int syscallno, va_list list)
 	case ALARM:
 		l = va_arg(list, unsigned long);
 		fmtprint(&fmt, "%#lud ", l);
+		break;
+	case EXECAC:
+		i[0] = va_arg(list, int);
+		fmtprint(&fmt, "%d", i[0]);
+		a = va_arg(list, char*);
+		fmtuserstring(&fmt, a, " ");
+		argv = va_arg(list, char**);
+		evenaddr(PTR2UINT(argv));
+		for(;;){
+			a = *(char**)validaddr(argv, sizeof(char**), 0);
+			if(a == nil)
+				break;
+			fmtprint(&fmt, " ");
+			fmtuserstring(&fmt, a, "");
+			argv++;
+		}
 		break;
 	case EXEC:
 		a = va_arg(list, char*);
@@ -230,6 +246,17 @@ syscallfmt(int syscallno, va_list list)
 		i[0] = va_arg(list, int);
 		fmtprint(&fmt, "%#p %d", v, i[0]);
 		break;
+	case SEMSLEEP:
+	case SEMWAKEUP:
+		v = va_arg(list, int*);
+		fmtprint(&fmt, "%#p", v);
+		break;
+	case SEMALT:
+		ip = va_arg(list, int**);
+		i[0] = va_arg(list, int);
+		validaddr(ip, sizeof(int*)*i[0], 0);
+		fmtprint(&fmt, "%#p %d", ip, i[0]);
+		break;
 	case SEEK:
 		v = va_arg(list, vlong*);
 		i[0] = va_arg(list, int);
@@ -327,6 +354,7 @@ sysretfmt(int syscallno, va_list list, Ar0* ar0, uvlong start, uvlong stop)
 		fmtprint(&fmt, " = %ld", ar0->l);
 		break;
 	case EXEC:
+	case EXECAC:
 	case SEGBRK:
 	case SEGATTACH:
 	case RENDEZVOUS:
