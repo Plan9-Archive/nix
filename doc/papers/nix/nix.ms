@@ -13,7 +13,9 @@ Ron Minnich
 Francisco J. Ballesteros
 Gorka Guardiola
 Enrique Soriano
-(want your name here? Just ask!)
+Jim McKie
+Charles Forsyth
+Noah Evans
 .AB
 This paper describes NIX, a prototype operating system for future
 manycore CPUs.  NIX features a heterogeneous CPU model and a change
@@ -52,7 +54,7 @@ all share this view.
 However, in the era of multi-core and many-core machines, we believe that
 we could get rid of the entire operating system kernel. We advocate for a
 null-kernel or zero-kernel approach, where applications are assigned to
-cores without no OS interference; that is, without an operating system kernel.
+cores with no OS interference; that is, without an operating system kernel.
 Following this idea, we have built NIX.
 .PP
 NIX is a new operating system, evolving from a traditional operating
@@ -74,7 +76,7 @@ this with the Cell which, while a failed effort, does point toward a
 possible future direction.
 .PP
 NIX uses a messaging protocol between cores based on shared-memory
-active messages. A active message sends not just references to data,
+active messages. An active message sends not just references to data,
 but also to code.
 The protocol uses a shared memory data structure,
 containing cache-aligned fields.  In particular, it contains
@@ -98,14 +100,14 @@ are trying to avoid the high risk of failure that comes with clean
 sheet designs.  NIX thus begins life with a working kernel and full
 set of userland code.
 .PP
-The idea to keep a standard time-sharing kernel as it is now, but be
+The idea is to keep a standard time-sharing kernel as it is now, but to be
 able to exploit other cores for either user or kernel intensive
 processes.  In the worst case, the time-sharing kernel will be able to
 work as it does now.  In the best case, applications will be able to
 run as fast as permitted by the raw hardware.
 .PP
 NIX derives from Plan 9 from Bell Labs.
-Source code, compiled for Plan 9, also work son NIX.  We make an even
+Source code, compiled for Plan 9, also works on NIX.  We make an even
 stronger guarantee: if a binary worked on Plan 9, it will work on NIX.
 .PP
 NIX partitions cores by function, hence implementing a type of
@@ -128,17 +130,17 @@ can be more than one TC, and in fact a system can consist of nothing
 but TCs, as determined by the needs of the user. When all the cores
 are TC cores, behaviour is not different from a SMP system.
 .IP 2
-The second, AC, is an Application Core: only APs can be Application
+The second, AC, is an application core: only APs can be Application
 Cores.  Application cores run applications, in a non-preemptive mode,
 and never field interrupts. In this case, applications run as if they
 had no operating system, but they can still make system calls and
 rely on OS services as provided by other cores. But for performance,
 running on ACs is transparent to applications, unless they want to
-take control of this.
+take control of this feature.
 .IP 3
-The third, KC, is a Kernel Core.  Kernel Cores can be created under
+The third, KC, is a kernel core.  Kernel cores can be created under
 control of the TC. KCs do nothing but run OS tasks for the TC. A KC
-might, for example, run a file system.  KCs never run user mode code.
+might, for example, run a file system call.  KCs never run user mode code.
 Typical usages for KCs are to service interrupts from device drivers and
 to perform system calls requested to, otherwise overloaded, TCs.
 .LP
@@ -199,7 +201,7 @@ Different cores have different roles. TCs are Time-Sharing cores; KCs are Kernel
 Application cores. The BSP (a TC) coordinates the roles for other cores, which may change
 during time.
 .F3
-.PP
+.LP
 Therefore, there are two different types of kernel in the system: TCs and KCs
 execute the standard time-sharing kernel. ACs execute almost without a kernel,
 but for a few exception handlers and their main scheduling loop,
@@ -212,7 +214,7 @@ if the architecture is compatible.
 Cores can change roles, again under the control of the TC. A core
 might be needed for applications, in which case NIX can direct the
 core to enter the AC command loop.  Later, the TC might instruct the core
-to exit the AC loop and re enter the group of
+to exit the AC loop and re-enter the group of
 TCs.  At present, only one core ­the BSP­ boots to become a TC; all
 other cores boot and enter the AC command loop.  This will be fixed soon.
 .NH 1
@@ -338,7 +340,7 @@ used for its kernel space. After moving to an AC, the user context
 is found on a different core, but the kernel part remains in the TC
 as a handler for system calls and traps.
 .F3
-.PP
+.LP
 Binary compatibility for processes is hence rather easy: old processes
 only run on a TC, unless the kernel decides otherwise.
 If a user makes a mistake and starts an old binary
@@ -357,12 +359,12 @@ communication wihout the help of the kernel if feasible. Besides the
 standard toolkit of IPC mechanisms in Plan 9, NIX includes
 two mechanisms for this purpose:
 .IP \(bu
-Optimistic user-level semaphores.
+Optimistic user-level semaphores, and
 .IP \(bu
-Tubes
+Tubes.
 .LP
 NIX semaphores use atomic increment and decrement operations,
-as found on AMD64 architectures, to update a semaphore value in
+as found on AMD64 and other architectures, to update a semaphore value in
 order to synchronize. If the operation performed in the semaphore
 may proceed without blocking (and without requiring to awake a peer
 process), it is performed by the user library without entering the kernel.
@@ -389,21 +391,22 @@ and
 .I semwakeup )
 to block or wake up another process, if required. Optionally, before blocking,
 .I downsem
-may spin, busy waiting for a chance to perform a down on the semaphore.
+may spin, busy waiting for a chance to perform a down on the semaphore
+without blocking.
 .PP
 .I Altsems
 is a novel operation, which tries to perform a
 .I downsem
 in one of the given semaphores. It is not known in advance in which
-semaphore will be the down operation performed. If more than one
-semaphores are ready for a down without blocking, one of them is elected
+semaphore will be the down operation performed. If several
+semaphores are ready for a down without blocking, one of them is selected
 and the down is performed; the function returns an index value indicating
 which one. If none of the downs may proceed, the operation calls the kernel
 and blocks.
 .PP
-Therefore, in the best case, a
-.I downsem
-is performed in user space, without entering the kernel, in a non-determinist way.
+Therefore, in the best case, 
+.I altsems
+performs a down in user space, without entering the kernel, in a non-determinist way.
 In the worst case, the kernel is used to await for a chance to down one of the
 semaphores. Before doing so, the operation may be configured to spin and
 busy wait for a while.
@@ -411,19 +414,17 @@ busy wait for a while.
 Optimistic semaphores, as described, are used in NIX to implement
 shared memory communication channels called
 .I tubes .
-.PP
-A tube is a buffered unidirectional channel where fixed-size messages can be
+A tube is a buffered unidirectional channel. Fixed-size messages can be
 sent and received from it (but different tubes may have different message sizes).
 .PP
 The implementation is a simple producer-consumer, but, because of the
-semaphores used, is able to run at user space without entering the kernel
+semaphores used, it is able to run at user space without entering the kernel
 when sends and receives may proceed.
 .PP
 It is feasible to try to perform multiple sends and receives at the same time,
-waiting for the chance to execute one of them. This operation exploits the
-semantics and implementation of
+waiting for the chance to execute one of them. This operation exploits 
 .I altsems
-to operate at user-level if possible, and call the kernel otherwise.
+to operate at user-level if possible, calling the kernel otherwise.
 It suffices to fill an array of semaphores with either the ones representing
 messages in a tube, or the ones representing empty slots in a tube, depending
 on whether a receive or a send operation is selected. Then, calling
@@ -447,9 +448,18 @@ We found that there seems to be no performance penalty for
 pre-paging, which is interesting on its own.
 .PP
 To dispatch a process for
-execution at one AC, we use the inter core call, active message,
-mechanism.
-The figure shows the inter-core-call or ICC mechanism.
+execution at one AC we use the inter-core-call, active message,
+mechanism. This figure explains how it works:
+.PS
+boxht=.5
+right
+box "runac"
+arrow <-> dotted
+box "acsched"
+box invis "TC" with .s at 1st box.n
+box invis "AC" with .s at 2nd box.n
+.PE
+.LP
 The function
 .I acsched
 runs on ACs, as part of its start-up sequence. It sits in a tight loop spinning
@@ -469,16 +479,7 @@ and calls
 .I ready
 on the process that scheduled the function for execution.
 You think of this as a soft IPI.
-.PS
-boxht=.5
-right
-box "runac"
-arrow <-> dotted
-box "acsched"
-box invis "TC" with .s at 1st box.n
-box invis "AC" with .s at 2nd box.n
-.PE
-.LP
+.PP
 While an AC is performing an action dictated by a process in the TC,
 its
 .I Mach

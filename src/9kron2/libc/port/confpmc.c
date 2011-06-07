@@ -2,12 +2,14 @@
 #include <libc.h>
 
 int
-confpmc(int index, int mode, char *desc)
+confpmc(int core, int index, int mode, char *desc)
 {
 	int fd;
 	char name[32];
 	
-	snprint(name, sizeof(name), "/dev/ctr%2.2udctl", index);
+	if(core < 0)
+		core = getcore(nil);
+	snprint(name, sizeof(name), "/dev/core%4.4d/ctr%2.2dctl", core, index);
 
 	fd = open(name, OWRITE);
 	if (fd < 0)
