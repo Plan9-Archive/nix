@@ -1,0 +1,556 @@
+These are the changes wrt to the 9kron/k8 kernel as of Thu Jun  2 16:18:03 CET 2011
+to make the kernel use 2M pages for user segments
+
+
+########################## K8 ##################################
+!diff -n /sys/src/9kron2/k8 /sys/src/9kron/k8 | grep -v '^(Only|binary)'
+
+diff -n /sys/src/9kron2/k8/k8cpu /sys/src/9kron/k8/k8cpu
+/sys/src/9kron2/k8/k8cpu:52 c /sys/src/9kron/k8/k8cpu:52
+< #	cache
+---
+> 	cache
+/sys/src/9kron2/k8/k8cpu:106,107 d /sys/src/9kron/k8/k8cpu:105
+< 	memory		'm'
+< 	page		'p'
+diff -n /sys/src/9kron2/k8/main.c /sys/src/9kron/k8/main.c
+/sys/src/9kron2/k8/main.c:245 c /sys/src/9kron/k8/main.c:245
+< 	print("\nNIX with 2M pages\n");
+---
+> 	print("\nNIX with 4K pages\n");
+/sys/src/9kron2/k8/main.c:304 a /sys/src/9kron/k8/main.c:305
+> 	print("\nNIX kernel with 4K pages\n\n");
+/sys/src/9kron2/k8/main.c:360 c /sys/src/9kron/k8/main.c:361
+< 	p = UINT2PTR(STACKALIGN(base + BIGPGSZ - sizeof(up->arg) - i));
+---
+> 	p = UINT2PTR(STACKALIGN(base + PGSZ - sizeof(up->arg) - i));
+/sys/src/9kron2/k8/main.c:373 c /sys/src/9kron/k8/main.c:374
+< 	ssize = base + BIGPGSZ - PTR2UINT(av);
+---
+> 	ssize = base + PGSZ - PTR2UINT(av);
+/sys/src/9kron2/k8/main.c:376 c /sys/src/9kron/k8/main.c:377
+< 		*av++ = (oargv[i] - oargb) + (p - base) + (USTKTOP - BIGPGSZ);
+---
+> 		*av++ = (oargv[i] - oargb) + (p - base) + (USTKTOP - PGSZ);
+/sys/src/9kron2/k8/main.c:422 c /sys/src/9kron/k8/main.c:423
+< 	s = newseg(SG_STACK, USTKTOP-USTKSIZE, USTKSIZE/BIGPGSZ);
+---
+> 	s = newseg(SG_STACK, USTKTOP-USTKSIZE, USTKSIZE/BY2PG);
+/sys/src/9kron2/k8/main.c:424,425 c /sys/src/9kron/k8/main.c:425
+< 
+< 	pg = newpage(1, 0, USTKTOP-BIGPGSZ, BIGPGSZ);
+---
+> 	pg = newpage(1, 0, USTKTOP-BY2PG);
+/sys/src/9kron2/k8/main.c:437 c /sys/src/9kron/k8/main.c:437
+< 	pg = newpage(1, 0, UTZERO, BIGPGSZ);
+---
+> 	pg = newpage(1, 0, UTZERO);
+/sys/src/9kron2/k8/main.c:459,460 d /sys/src/9kron/k8/main.c:458
+< userpcnt = 70;
+< 
+/sys/src/9kron2/k8/main.c:474,476 d /sys/src/9kron/k8/main.c:471
+< 	/*
+< 	 * BUG: specially with big pages, all this must go.
+< 	 */
+diff -n /sys/src/9kron2/k8/mem.h /sys/src/9kron/k8/mem.h
+/sys/src/9kron2/k8/mem.h:39 c /sys/src/9kron/k8/mem.h:39
+<  * 2M pages
+---
+>  * 2M pages (user segments alignment only)
+/sys/src/9kron2/k8/mem.h:42,45 d /sys/src/9kron/k8/mem.h:41
+< #define	BIGPGSHFT	21U
+< #define	BIGPGROUND(x)	ROUNDUP((x), BIGPGSZ)
+< #define	PGSPERBIG	(BIGPGSZ/PGSZ)
+< #define	BIGPPN(x)	((x)&~(BIGPGSZ-1))
+/sys/src/9kron2/k8/mem.h:47 d /sys/src/9kron/k8/mem.h:42
+< 
+/sys/src/9kron2/k8/mem.h:63 c /sys/src/9kron/k8/mem.h:58
+< #define USTKTOP		(0x00007ffffffff000ull & ~(BIGPGSZ-1))
+---
+> #define USTKTOP		0x00007ffffffff000ull
+/sys/src/9kron2/k8/mem.h:75,76 c /sys/src/9kron/k8/mem.h:70,71
+< #define PTEMAPMEM	(512*1024*1024)
+< #define PTEPERTAB	(PTEMAPMEM/BIGPGSZ)
+---
+> #define PTEMAPMEM	(1024*1024)
+> #define PTEPERTAB	(PTEMAPMEM/BY2PG)
+diff -n /sys/src/9kron2/k8/mmu.c /sys/src/9kron/k8/mmu.c
+/sys/src/9kron2/k8/mmu.c:36,40 c /sys/src/9kron/k8/mmu.c:36,41
+< 	iprint("%s = %#ullx = %#ullx:%#ullx:%#ullx:%#ullx", s, addr,
+< 			(addr >> (21+9+9)) & 0x1FF,
+< 			(addr >> (21+9)) & 0x1FF,
+< 			(addr >> 21) & 0x1FF,
+< 			addr & 0x1FFFFF);
+---
+> 	iprint("%s = %#ullx = %#ullx:%#ullx:%#ullx:%#ullx:%#ullx", s, addr,
+> 			(addr >> (12+9+9+9)) & 0x1FF,
+> 			(addr >> (12+9+9)) & 0x1FF,
+> 			(addr >> (12+9)) & 0x1FF,
+> 			(addr >> 12) & 0x1FF,
+> 			addr & 0xFFF);
+/sys/src/9kron2/k8/mmu.c:116 c /sys/src/9kron/k8/mmu.c:117
+< 			if(l <= 2 && clear)
+---
+> 			if(l == 1 && clear)
+/sys/src/9kron2/k8/mmu.c:157 c /sys/src/9kron/k8/mmu.c:158
+< 			if(lvl > 2)
+---
+> 			if(lvl > 2 || (lvl == 2 && (pte[i]&PtePS) == 0))
+/sys/src/9kron2/k8/mmu.c:233,236 d /sys/src/9kron/k8/mmu.c:233
+< /*
+<  * We assume that all user space is mapped using 2M pages.
+<  * In that case, we use three levels, not four.
+<  */
+/sys/src/9kron2/k8/mmu.c:238 c /sys/src/9kron/k8/mmu.c:235
+< mmuput(uintptr va, physaddr pa, Page *pg)
+---
+> mmuput(uintptr va, physaddr pa, Page*)
+/sys/src/9kron2/k8/mmu.c:240 c /sys/src/9kron/k8/mmu.c:237
+< 	int user, lvl, x;
+---
+> 	int l, x;
+/sys/src/9kron2/k8/mmu.c:244,246 d /sys/src/9kron/k8/mmu.c:240
+< 	DBG("up %#p mmuput %#ullx %#ullx\n", up, va, pa);
+< 
+< 	user = (va < KZERO);
+/sys/src/9kron2/k8/mmu.c:251,254 c /sys/src/9kron/k8/mmu.c:245,246
+< 	for(lvl = 3; lvl > 0; lvl--){
+< 		if(user && lvl == 1)	/* use 2M entry */
+< 			break;
+< 		for(page = up->mmuptp[lvl]; page != nil; page = page->next){
+---
+> 	for(l = 3; l > 0; l--){
+> 		for(page = up->mmuptp[l]; page != nil; page = page->next){
+/sys/src/9kron2/k8/mmu.c:260 c /sys/src/9kron/k8/mmu.c:252
+< 				page = newpage(1, 0, 0, PTPGSZ);
+---
+> 				page = newpage(1, 0, 0);
+/sys/src/9kron2/k8/mmu.c:268,269 c /sys/src/9kron/k8/mmu.c:260,261
+< 			page->next = up->mmuptp[lvl];
+< 			up->mmuptp[lvl] = page;
+---
+> 			page->next = up->mmuptp[l];
+> 			up->mmuptp[l] = page;
+/sys/src/9kron2/k8/mmu.c:272 c /sys/src/9kron/k8/mmu.c:264
+< 			if(lvl == 3 && x >= m->pml4->daddr)
+---
+> 			if(l == 3 && x >= m->pml4->daddr)
+/sys/src/9kron2/k8/mmu.c:276 c /sys/src/9kron/k8/mmu.c:268
+< 		x = PTEX(va, lvl);
+---
+> 		x = PTEX(va, l);
+/sys/src/9kron2/k8/mmu.c:283,289 c /sys/src/9kron/k8/mmu.c:275,276
+< 	if(user){
+< 		if(pg->lgsize == 12)
+< 			panic("mmuput: using 4K page for user page");
+< 		*pte |= PtePS;
+< 	}
+< 	DBG("up %#p new pte %#p = %#ullx\n", up, pte, *pte);
+< 
+---
+> //if(pa & PteRW)
+> //  *pte |= PteNX;
+/sys/src/9kron2/k8/mmu.c:296 c /sys/src/9kron/k8/mmu.c:283
+< 	int l, user;
+---
+> 	int l;
+/sys/src/9kron2/k8/mmu.c:300,302 d /sys/src/9kron/k8/mmu.c:286
+< 	user = (va < KZERO);
+< 	if(user && level == 1)	/* we now use 2M entries */
+< 		level = 2;
+/sys/src/9kron2/k8/mmu.c:307 c /sys/src/9kron/k8/mmu.c:291
+< 		if(l == 2 && (*pte & PtePS))	/* 2M entry */
+---
+> 		if(l == 2 && (*pte & PtePS))
+/sys/src/9kron2/k8/mmu.c:385,386 d /sys/src/9kron/k8/mmu.c:368
+< 	if(va < KZERO)
+< 		panic("mmukmap: can't do va %#ullx; it is 2M now\n", va);
+Common subdirectories: /sys/src/9kron2/k8/root and /sys/src/9kron/k8/root
+diff -n /sys/src/9kron2/k8/syscall.c /sys/src/9kron/k8/syscall.c
+/sys/src/9kron2/k8/syscall.c:263 c /sys/src/9kron/k8/syscall.c:263
+< 		if(sp < (USTKTOP-BIGPGSZ) || sp > (USTKTOP-sizeof(up->arg)-BY2SE))
+---
+> 		if(sp < (USTKTOP-BY2PG) || sp > (USTKTOP-sizeof(up->arg)-BY2SE))
+
+########################## PORT ##################################
+!diff -n /sys/src/9kron2/port /sys/src/9kron/port
+
+
+diff -n /sys/src/9kron2/port/cache.c /sys/src/9kron/port/cache.c
+/sys/src/9kron2/port/cache.c:369,370 c /sys/src/9kron/port/cache.c:369,370
+< 		if(l > BIGPGSZ)
+< 			l = BIGPGSZ;
+---
+> 		if(l > BY2PG)
+> 			l = BY2PG;
+/sys/src/9kron2/port/cache.c:378 c /sys/src/9kron/port/cache.c:378
+< 		cache.pgno += BIGPGSZ;
+---
+> 		cache.pgno += BY2PG;
+/sys/src/9kron2/port/cache.c:380,381 c /sys/src/9kron/port/cache.c:380,381
+< 		if((cache.pgno & ~(BIGPGSZ-1)) == 0){
+< 			if(cache.pgno == BIGPGSZ-1){
+---
+> 		if((cache.pgno & ~(BY2PG-1)) == 0){
+> 			if(cache.pgno == BY2PG-1){
+/sys/src/9kron2/port/cache.c:505 c /sys/src/9kron/port/cache.c:505
+< 	if(offset == ee && p->len < BIGPGSZ) {
+---
+> 	if(offset == ee && p->len < BY2PG) {
+/sys/src/9kron2/port/cache.c:507,508 c /sys/src/9kron/port/cache.c:507,508
+< 		if(o > BIGPGSZ - p->len)
+< 			o = BIGPGSZ - p->len;
+---
+> 		if(o > BY2PG - p->len)
+> 			o = BY2PG - p->len;
+/sys/src/9kron2/port/cache.c:567 c /sys/src/9kron/port/cache.c:567
+< 		if(offset <= ee && eo < BIGPGSZ) {
+---
+> 		if(offset <= ee && eo < BY2PG) {
+/sys/src/9kron2/port/cache.c:569,570 c /sys/src/9kron/port/cache.c:569,570
+< 			if(o > BIGPGSZ - eo)
+< 				o = BIGPGSZ - eo;
+---
+> 			if(o > BY2PG - eo)
+> 				o = BY2PG - eo;
+diff -n /sys/src/9kron2/port/devproc.c /sys/src/9kron/port/devproc.c
+/sys/src/9kron2/port/devproc.c:1618 c /sys/src/9kron/port/devproc.c:1618
+< 	pg = pte->pages[(soff&(PTEMAPMEM-1))/BIGPGSZ];
+---
+> 	pg = pte->pages[(soff&(PTEMAPMEM-1))/BY2PG];
+/sys/src/9kron2/port/devproc.c:1622 c /sys/src/9kron/port/devproc.c:1622
+< 	l = BIGPGSZ - (offset&(BIGPGSZ-1));
+---
+> 	l = BY2PG - (offset&(BY2PG-1));
+/sys/src/9kron2/port/devproc.c:1633 c /sys/src/9kron/port/devproc.c:1633
+< 	b += offset&(BIGPGSZ-1);
+---
+> 	b += offset&(BY2PG-1);
+diff -n /sys/src/9kron2/port/devsegment.c /sys/src/9kron/port/devsegment.c
+/sys/src/9kron2/port/devsegment.c:396 c /sys/src/9kron/port/devsegment.c:396
+< 	len += BIGPGSZ;	/* so we fault upon overflows */
+---
+> 	len += PGSIZE;	/* so we fault upon overflows */
+/sys/src/9kron2/port/devsegment.c:398 c /sys/src/9kron/port/devsegment.c:398
+< 	len = BIGPGROUND(len);
+---
+> 	len = PGROUND(len);
+/sys/src/9kron2/port/devsegment.c:429,431 c /sys/src/9kron/port/devsegment.c:429,431
+< 			top = BIGPGROUND(va + len);
+< 			va = va&~(BIGPGSZ-1);
+< 			len = (top - va) / BIGPGSZ;
+---
+> 			top = PGROUND(va + len);
+> 			va = va&~(BY2PG-1);
+> 			len = (top - va) / BY2PG;
+diff -n /sys/src/9kron2/port/fault.c /sys/src/9kron/port/fault.c
+/sys/src/9kron2/port/fault.c:74 c /sys/src/9kron/port/fault.c:74
+< 	addr &= ~(BIGPGSZ-1);
+---
+> 	addr &= ~(BY2PG-1);
+/sys/src/9kron2/port/fault.c:81 c /sys/src/9kron/port/fault.c:81
+< 	pg = &etp->pages[(soff&(PTEMAPMEM-1))/BIGPGSZ];
+---
+> 	pg = &etp->pages[(soff&(PTEMAPMEM-1))/BY2PG];
+/sys/src/9kron2/port/fault.c:99 c /sys/src/9kron/port/fault.c:99
+< 		mmuphys = BIGPPN((*pg)->pa) | PTERONLY|PTEVALID;
+---
+> 		mmuphys = PPN((*pg)->pa) | PTERONLY|PTEVALID;
+/sys/src/9kron2/port/fault.c:107 c /sys/src/9kron/port/fault.c:107
+< 			new = newpage(1, &s, addr, BIGPGSZ);
+---
+> 			new = newpage(1, &s, addr);
+/sys/src/9kron2/port/fault.c:125 c /sys/src/9kron/port/fault.c:125
+< 			mmuphys = BIGPPN((*pg)->pa)|PTERONLY|PTEVALID;
+---
+> 			mmuphys = PPN((*pg)->pa)|PTERONLY|PTEVALID;
+/sys/src/9kron2/port/fault.c:140 c /sys/src/9kron/port/fault.c:140
+< 			new = newpage(0, &s, addr, BIGPGSZ);
+---
+> 			new = newpage(0, &s, addr);
+/sys/src/9kron2/port/fault.c:154 c /sys/src/9kron/port/fault.c:154
+< 		mmuphys = BIGPPN((*pg)->pa) | PTEWRITE | PTEVALID;
+---
+> 		mmuphys = PPN((*pg)->pa) | PTEWRITE | PTEVALID;
+/sys/src/9kron2/port/fault.c:173 c /sys/src/9kron/port/fault.c:173
+< 		mmuphys = BIGPPN((*pg)->pa) |PTEVALID;
+---
+> 		mmuphys = PPN((*pg)->pa) |PTEVALID;
+/sys/src/9kron2/port/fault.c:212,213 c /sys/src/9kron/port/fault.c:212,213
+< 		if(ask > BIGPGSZ)
+< 			ask = BIGPGSZ;
+---
+> 		if(ask > BY2PG)
+> 			ask = BY2PG;
+/sys/src/9kron2/port/fault.c:225 c /sys/src/9kron/port/fault.c:225
+< 		ask = BIGPGSZ;
+---
+> 		ask = BY2PG;
+/sys/src/9kron2/port/fault.c:229 c /sys/src/9kron/port/fault.c:229
+< 	new = newpage(0, 0, addr, BIGPGSZ);
+---
+> 	new = newpage(0, 0, addr);
+/sys/src/9kron2/port/fault.c:244,245 c /sys/src/9kron/port/fault.c:244,245
+< 	if(ask < BIGPGSZ)
+< 		memset(kaddr+ask, 0, BIGPGSZ-ask);
+---
+> 	if(ask < BY2PG)
+> 		memset(kaddr+ask, 0, BY2PG-ask);
+/sys/src/9kron2/port/fault.c:332 d /sys/src/9kron/port/fault.c:331
+<  * Assume 4K pages, so it works for both 4K and 2M pages.
+/sys/src/9kron2/port/fault.c:344 c /sys/src/9kron/port/fault.c:343
+< 		m = PGSZ - (a & (PGSZ-1));
+---
+> 		m = BY2PG - (a & (BY2PG-1));
+diff -n /sys/src/9kron2/port/page.c /sys/src/9kron/port/page.c
+/sys/src/9kron2/port/page.c:7,16 d /sys/src/9kron/port/page.c:6
+< /*
+<  * Changes for 2M pages:
+<  *
+<  * A new allocator, bigpalloc contains all 2M pages and divides
+<  * them into 4K pages as needed.
+<  *
+<  * Segment sizes are still in 2K pages.
+<  * The first page to attach to a segment fixes the segment pg sz.
+<  */
+< 
+/sys/src/9kron2/port/page.c:28 a /sys/src/9kron/port/page.c:19,22
+> #define	BIGPGSHFT	21U
+> #define	BIGPGROUND(x)	ROUNDUP((x), BIGPGSZ)
+> #define	PGSPERBIG	(BIGPGSZ/PGSZ)
+> 
+/sys/src/9kron2/port/page.c:80 c /sys/src/9kron/port/page.c:74,77
+< 
+---
+> if(1){
+> USED(bigp);
+> USED(pmp0);
+> }else
+/sys/src/9kron2/port/page.c:122 d /sys/src/9kron/port/page.c:118
+< 	print("bigpalloc %#p big0 %#p\n", &bigpalloc, bigpalloc.head);
+/sys/src/9kron2/port/page.c:130,132 d /sys/src/9kron/port/page.c:125
+< 	if(bigpalloc.freecount > 10)
+< 		swapalloc.highwater = 5;	/* can't be too high for 2M pages */
+< 
+/sys/src/9kron2/port/page.c:152,153 d /sys/src/9kron/port/page.c:144
+< 	if(p->lgsize != BIGPGSHFT)
+< 		panic("getalloc");
+/sys/src/9kron2/port/page.c:242 d /sys/src/9kron/port/page.c:232
+< 	bigpalloc.freecount--;
+/sys/src/9kron2/port/page.c:252 c /sys/src/9kron/port/page.c:242
+< newpage(int clear, Segment **s, uintptr va, uintptr pgsz)
+---
+> newpage(int clear, Segment **s, uintptr va)
+/sys/src/9kron2/port/page.c:257 c /sys/src/9kron/port/page.c:247
+< 	int i, color;
+---
+> 	int i, hw, dontalloc, color;
+/sys/src/9kron2/port/page.c:259 d /sys/src/9kron/port/page.c:248
+< 	static int once;
+/sys/src/9kron2/port/page.c:261,263 c /sys/src/9kron/port/page.c:250
+< 	pp=&palloc;
+< 	if(pgsz == BIGPGSZ)
+< 		pp = &bigpalloc;
+---
+> pp=&palloc;
+/sys/src/9kron2/port/page.c:265 a /sys/src/9kron/port/page.c:253,258
+> 	hw = swapalloc.highwater;
+> 	for(;;) {
+> 		if(pp->freecount <= hw)
+> 			splitbigpage();
+> 		if(pp->freecount > hw)
+> 			break;
+/sys/src/9kron2/port/page.c:267 c /sys/src/9kron/port/page.c:260,261
+< 	DBG("newpage va %#ullx pgsz %#ullx\n", va, pgsz);
+---
+> 		if(up == nil)
+> 			panic("newpage: no up: can't sleep a kernel");
+/sys/src/9kron2/port/page.c:269,272 c /sys/src/9kron/port/page.c:263,264
+< 	if(pp == &palloc && (pp->freecount % 100) == 0)
+< 		print("newpage: %uld free 4K pages\n", palloc.freecount);
+< 	if(pp == &bigpalloc)
+< 		print("newpage: %uld free 2M pages\n", bigpalloc.freecount);
+---
+> 		if(up->kp && pp->freecount > 0)
+> 			break;
+/sys/src/9kron2/port/page.c:274,275 c /sys/src/9kron/port/page.c:266,273
+< 	if(pp == &palloc && pp->freecount < 30)
+< 		splitbigpage();
+---
+> 		unlock(&palloc);
+> 		dontalloc = 0;
+> 		if(s && *s) {
+> 			qunlock(&((*s)->lk));
+> 			*s = 0;
+> 			dontalloc = 1;
+> 		}
+> 		qlock(&palloc.pwait);	/* Hold memory requesters here */
+/sys/src/9kron2/port/page.c:276 a /sys/src/9kron/port/page.c:275,276
+> 		while(waserror())	/* Ignore interrupts */
+> 			;
+/sys/src/9kron2/port/page.c:278,282 c /sys/src/9kron/port/page.c:278,294
+< 	/* If out of memory, don't kick pager; just panic */
+< 	if(pp->freecount == 0){
+< 		print("newpage: no memory. (%uld 4K, %uld 2M)\n",
+< 			palloc.freecount, bigpalloc.freecount);
+< 		for(;;);
+---
+> 		kickpager();
+> 		tsleep(&palloc.r, ispages, 0, 1000);
+> 
+> 		poperror();
+> 
+> 		qunlock(&palloc.pwait);
+> 
+> 		/*
+> 		 * If called from fault and we lost the segment from
+> 		 * underneath don't waste time allocating and freeing
+> 		 * a page. Fault will call newpage again when it has
+> 		 * reacquired the segment locks
+> 		 */
+> 		if(dontalloc)
+> 			return 0;
+> 
+> 		lock(&palloc);
+diff -n /sys/src/9kron2/port/portdat.h /sys/src/9kron/port/portdat.h
+/sys/src/9kron2/port/portdat.h:834 c /sys/src/9kron/port/portdat.h:834
+< extern	Palloc	palloc, bigpalloc;
+---
+> extern	Palloc	palloc;
+diff -n /sys/src/9kron2/port/portfns.h /sys/src/9kron/port/portfns.h
+/sys/src/9kron2/port/portfns.h:191 c /sys/src/9kron/port/portfns.h:191
+< Page*		newpage(int, Segment **, uintptr, uintptr);
+---
+> Page*		newpage(int, Segment **, uintptr);
+diff -n /sys/src/9kron2/port/proc.c /sys/src/9kron/port/proc.c
+/sys/src/9kron2/port/proc.c:1528 c /sys/src/9kron/port/proc.c:1528
+< 			mfreeseg(s, s->base, (s->top - s->base)/BIGPGSZ);
+---
+> 			mfreeseg(s, s->base, (s->top - s->base)/BY2PG);
+diff -n /sys/src/9kron2/port/rebootcmd.c /sys/src/9kron/port/rebootcmd.c
+/sys/src/9kron2/port/rebootcmd.c:81 c /sys/src/9kron/port/rebootcmd.c:81
+< 	rtext = BIGPGROUND(entry+text)-entry;
+---
+> 	rtext = PGROUND(entry+text)-entry;
+diff -n /sys/src/9kron2/port/segment.c /sys/src/9kron/port/segment.c
+/sys/src/9kron2/port/segment.c:21 c /sys/src/9kron/port/segment.c:21
+< 	s->top = base+(size*BIGPGSZ);
+---
+> 	s->top = base+(size*BY2PG);
+/sys/src/9kron2/port/segment.c:23 c /sys/src/9kron/port/segment.c:23
+< 	s->lgpgsize = 0;
+---
+> 	s->lgpgsize = PGSHIFT;	/* TO DO */
+/sys/src/9kron2/port/segment.c:204,208 d /sys/src/9kron/port/segment.c:203
+< 	if(s->lgpgsize == 0)
+< 		s->lgpgsize = p->lgsize;
+< 	if(s->lgpgsize != p->lgsize)
+< 		panic("segpage: s->lgpgsize != p->lgsize");
+< 
+/sys/src/9kron2/port/segment.c:217 c /sys/src/9kron/port/segment.c:212
+< 	pg = &(*pte)->pages[(soff&(PTEMAPMEM-1))/BIGPGSZ];
+---
+> 	pg = &(*pte)->pages[(soff&(PTEMAPMEM-1))/BY2PG];
+/sys/src/9kron2/port/segment.c:237 c /sys/src/9kron/port/segment.c:232
+< 	j = (soff&(PTEMAPMEM-1))/BIGPGSZ;
+---
+> 	j = (soff&(PTEMAPMEM-1))/BY2PG;
+/sys/src/9kron2/port/segment.c:334 c /sys/src/9kron/port/segment.c:329
+< 	for(addr = s->base; addr < s->top; addr += BIGPGSZ)
+---
+> 	for(addr = s->base; addr < s->top; addr += BY2PG)
+diff -n /sys/src/9kron2/port/swap.c /sys/src/9kron/port/swap.c
+/sys/src/9kron2/port/swap.c:379,383 c /sys/src/9kron/port/swap.c:379
+< 	if(palloc.freecount < swapalloc.headroom || bigpalloc.freecount < 2){				print("swap: needpages: 4K free = %uld 2M free = %uld\n",
+< 			palloc.freecount, bigpalloc.freecount);
+< 		return 1;
+< 	}
+< 	return 0;
+---
+> 	return palloc.freecount < swapalloc.headroom;
+diff -n /sys/src/9kron2/port/sysproc.c /sys/src/9kron/port/sysproc.c
+/sys/src/9kron2/port/sysproc.c:362,363 c /sys/src/9kron/port/sysproc.c:362,363
+< 	datalim = BIGPGROUND(textlim+datasz);
+< 	bsslim = BIGPGROUND(textlim+datasz+bsssz);
+---
+> 	datalim = PGROUND(textlim+datasz);
+> 	bsslim = PGROUND(textlim+datasz+bsssz);
+/sys/src/9kron2/port/sysproc.c:365 d /sys/src/9kron/port/sysproc.c:364
+< 
+/sys/src/9kron2/port/sysproc.c:400 c /sys/src/9kron/port/sysproc.c:399
+< 	up->seg[ESEG] = newseg(SG_STACK, TSTKTOP-USTKSIZE, USTKSIZE/BIGPGSZ);
+---
+> 	up->seg[ESEG] = newseg(SG_STACK, TSTKTOP-USTKSIZE, USTKSIZE/BY2PG);
+/sys/src/9kron2/port/sysproc.c:477 c /sys/src/9kron/port/sysproc.c:476
+< 	if(stack-(argc+1)*sizeof(char**)-BIGPGSZ < TSTKTOP-USTKSIZE)
+---
+> 	if(stack-(argc+1)*sizeof(char**)-BY2PG < TSTKTOP-USTKSIZE)
+/sys/src/9kron2/port/sysproc.c:548 c /sys/src/9kron/port/sysproc.c:547
+< 	img = attachimage(SG_TEXT|SG_RONLY, chan, UTZERO, (textlim-UTZERO)/BIGPGSZ);
+---
+> 	img = attachimage(SG_TEXT|SG_RONLY, chan, UTZERO, (PGROUND(UTZERO+hdrsz+textsz)-UTZERO)>>PGSHIFT);
+/sys/src/9kron2/port/sysproc.c:557 c /sys/src/9kron/port/sysproc.c:556
+< 	s = newseg(SG_DATA, textlim, (datalim-textlim)/BIGPGSZ);
+---
+> 	s = newseg(SG_DATA, textlim, (datalim-textlim)>>PGSHIFT);
+/sys/src/9kron2/port/sysproc.c:567 c /sys/src/9kron/port/sysproc.c:566
+< 	up->seg[BSEG] = newseg(SG_BSS, datalim, (bsslim-datalim)/BIGPGSZ);
+---
+> 	up->seg[BSEG] = newseg(SG_BSS, datalim, (bsslim-datalim)>>PGSHIFT);
+/sys/src/9kron2/port/sysproc.c:727 d /sys/src/9kron/port/sysproc.c:725
+< 
+diff -n /sys/src/9kron2/port/sysseg.c /sys/src/9kron/port/sysseg.c
+/sys/src/9kron2/port/sysseg.c:34 c /sys/src/9kron/port/sysseg.c:34
+< 		new->lgpgsize = BIGPGSHFT;
+---
+> 		new->lgpgsize = PGSHIFT;
+/sys/src/9kron2/port/sysseg.c:88,89 c /sys/src/9kron/port/sysseg.c:88,89
+< 	newtop = BIGPGROUND(addr);
+< 	newsize = (newtop-s->base)/BIGPGSZ;
+---
+> 	newtop = PGROUND(addr);
+> 	newsize = (newtop-s->base)/BY2PG;
+/sys/src/9kron2/port/sysseg.c:91 c /sys/src/9kron/port/sysseg.c:91
+< 		mfreeseg(s, newtop, (s->top-newtop)/BIGPGSZ);
+---
+> 		mfreeseg(s, newtop, (s->top-newtop)/BY2PG);
+/sys/src/9kron2/port/sysseg.c:219 c /sys/src/9kron/port/sysseg.c:219
+< 			len = ps->size*BIGPGSZ;
+---
+> 			len = ps->size*BY2PG;
+/sys/src/9kron2/port/sysseg.c:225 c /sys/src/9kron/port/sysseg.c:225
+< 	len = BIGPGROUND(len);
+---
+> 	len = PGROUND(len);
+/sys/src/9kron2/port/sysseg.c:249 c /sys/src/9kron/port/sysseg.c:249
+< 	va = va&~(BIGPGSZ-1);
+---
+> 	va = va&~(BY2PG-1);
+/sys/src/9kron2/port/sysseg.c:253 c /sys/src/9kron/port/sysseg.c:253
+< 	if((len/BIGPGSZ) > ps->size)
+---
+> 	if((len/BY2PG) > ps->size)
+/sys/src/9kron2/port/sysseg.c:259 c /sys/src/9kron/port/sysseg.c:259
+< 	s = newseg(attr, va, len/BIGPGSZ);
+---
+> 	s = newseg(attr, va, len/BY2PG);
+/sys/src/9kron2/port/sysseg.c:359 c /sys/src/9kron/port/sysseg.c:359
+< 	to = (from + len) & ~(BIGPGSZ-1);
+---
+> 	to = (from + len) & ~(BY2PG-1);
+/sys/src/9kron2/port/sysseg.c:364 c /sys/src/9kron/port/sysseg.c:364
+< 	from = BIGPGROUND(from);
+---
+> 	from = PGROUND(from);
+/sys/src/9kron2/port/sysseg.c:366 c /sys/src/9kron/port/sysseg.c:366
+< 	mfreeseg(s, from, (to - from) / BIGPGSZ);
+---
+> 	mfreeseg(s, from, (to - from) / BY2PG);
+/sys/src/9kron2/port/sysseg.c:419 c /sys/src/9kron/port/sysseg.c:419
+< 			pe = (pe+BIGPGSZ-1)&~(BIGPGSZ-1);
+---
+> 			pe = (pe+BY2PG-1)&~(BY2PG-1);
+/sys/src/9kron2/port/sysseg.c:427 c /sys/src/9kron/port/sysseg.c:427
+< 			pteflush(pte, ps/BIGPGSZ, pe/BIGPGSZ);
+---
+> 			pteflush(pte, ps/BY2PG, pe/BY2PG);
