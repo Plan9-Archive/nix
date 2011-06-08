@@ -12,7 +12,7 @@ dev +dev
 	ssl
 	cap
 	kprof
-#	pmc
+	pmc
 	segment
 
 # add to get cec in the kernel
@@ -26,8 +26,9 @@ dev +dev
 uart +dev
 	uarti8250
 	uartpci		pci
-#pmc +dev
-#	pmcio
+pmc +dev
+	pmcio
+
 
 ip +dev
 	tcp
@@ -80,6 +81,7 @@ rootdir
 	/amd64/bin/auth/factotum factotum
 	/amd64/bin/ip/ipconfig ipconfig
 	../root/nvram nvram
+	./strid3
 
 conf
 	int cpuserver = 1;

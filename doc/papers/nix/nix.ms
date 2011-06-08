@@ -774,6 +774,25 @@ draw solid
 copy "results/rat.cycles.core.amd64.grap"
 .G2
 .NH 2
+Two megabyte pages
+.HP
+We tested strid3 on a kernel built to support two Mbyte pages. 
+We show the results on tc and ac below. 
+.G1
+frame wid 5 top invis right invis
+label bot "Strid3 on a tc" "Stride of 1 to 1024 by 1" "2 Mbyte pages"
+label left "Slowdown over stride of 1" "Smaller is better"
+draw solid
+copy "results/strid3.2M.tc.grap"
+.G2
+.G1
+frame wid 5 top invis right invis
+label bot "Strid3 on an AC" "Stride of 1 to 1024 by 1" "2 Mbyte pages"
+label left "Slowdown over stride of 1" "Smaller is better"
+draw solid
+copy "results/strid3.2M.ac.grap"
+.G2
+.NH 2
 ftq
 .HP
 FTQ, or Fixed Time Quantum, is a test designed to provide quantitative characterization of OS noise[4].

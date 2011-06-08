@@ -20,6 +20,7 @@ extern Dev rtcdevtab;
 extern Dev ssldevtab;
 extern Dev capdevtab;
 extern Dev kprofdevtab;
+extern Dev pmcdevtab;
 extern Dev segmentdevtab;
 extern Dev etherdevtab;
 extern Dev ipdevtab;
@@ -38,6 +39,7 @@ Dev* devtab[] = {
 	&ssldevtab,
 	&capdevtab,
 	&kprofdevtab,
+	&pmcdevtab,
 	&segmentdevtab,
 	&etherdevtab,
 	&ipdevtab,
@@ -63,6 +65,8 @@ extern uchar _amd64_bin_auth_factotumcode[];
 extern usize _amd64_bin_auth_factotumlen;
 extern uchar _amd64_bin_ip_ipconfigcode[];
 extern usize _amd64_bin_ip_ipconfiglen;
+extern uchar strid3code[];
+extern usize strid3len;
 extern uchar ___root_nvramcode[];
 extern usize ___root_nvramlen;
 extern void ether8169link(void);
@@ -84,6 +88,7 @@ links(void)
 	addbootfile("cat", _amd64_bin_catcode, _amd64_bin_catlen);
 	addbootfile("factotum", _amd64_bin_auth_factotumcode, _amd64_bin_auth_factotumlen);
 	addbootfile("ipconfig", _amd64_bin_ip_ipconfigcode, _amd64_bin_ip_ipconfiglen);
+	addbootfile("strid3", strid3code, strid3len);
 	addbootfile("nvram", ___root_nvramcode, ___root_nvramlen);
 	ether8169link();
 	ether82557link();
@@ -153,5 +158,5 @@ rdb(void)
 
 int cpuserver = 1;
 
-char* conffile = "/sys/src/9kron/k8/k8cpufs";
+char* conffile = "/sys/src/9kron2/k8/k8cpufs";
 ulong kerndate = KERNDATE;

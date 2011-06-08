@@ -20,6 +20,7 @@ extern Dev rtcdevtab;
 extern Dev ssldevtab;
 extern Dev capdevtab;
 extern Dev kprofdevtab;
+extern Dev pmcdevtab;
 extern Dev segmentdevtab;
 extern Dev etherdevtab;
 extern Dev ipdevtab;
@@ -38,6 +39,7 @@ Dev* devtab[] = {
 	&ssldevtab,
 	&capdevtab,
 	&kprofdevtab,
+	&pmcdevtab,
 	&segmentdevtab,
 	&etherdevtab,
 	&ipdevtab,
@@ -65,6 +67,8 @@ extern uchar _amd64_bin_ip_ipconfigcode[];
 extern usize _amd64_bin_ip_ipconfiglen;
 extern uchar ___root_nvramcode[];
 extern usize ___root_nvramlen;
+extern uchar __strid3code[];
+extern usize __strid3len;
 extern void ether8169link(void);
 extern void ether82557link(void);
 extern void ether82563link(void);
@@ -85,6 +89,7 @@ links(void)
 	addbootfile("factotum", _amd64_bin_auth_factotumcode, _amd64_bin_auth_factotumlen);
 	addbootfile("ipconfig", _amd64_bin_ip_ipconfigcode, _amd64_bin_ip_ipconfiglen);
 	addbootfile("nvram", ___root_nvramcode, ___root_nvramlen);
+	addbootfile("strid3", __strid3code, __strid3len);
 	ether8169link();
 	ether82557link();
 	ether82563link();
