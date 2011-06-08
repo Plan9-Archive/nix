@@ -163,6 +163,7 @@ actrap(Ureg *u)
 		/* this case is here for debug only */
 		m->pfault++;
 		DBG("actrap: cpu%d: PF\n", m->machno);
+print("actrap: cpu%d: PF\n", m->machno);
 		break;
 	default:
 		print("actrap: cpu%d: %ulld\n", m->machno, u->type);

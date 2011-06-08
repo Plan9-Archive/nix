@@ -77,8 +77,10 @@ sysrfork(Ar0* ar0, va_list list)
 		}
 		if(flag & RFNOTEG)
 			up->noteid = incref(&noteidalloc);
-		if(flag & (RFPREPAGE|RFCPREPAGE))
+		if(flag & (RFPREPAGE|RFCPREPAGE)){
 			up->prepagemem = flag&RFPREPAGE;
+			nixprepage(-1);
+		}
 		if(flag & RFCORE){
 			up->ac = getac(up, -1);
 			up->procctl = Proc_toac;
@@ -205,8 +207,15 @@ sysrfork(Ar0* ar0, va_list list)
 	memset(p->time, 0, sizeof(p->time));
 	p->time[TReal] = MACHP(0)->ticks;
 
-	if(flag & (RFPREPAGE|RFCPREPAGE))
+	if(flag & (RFPREPAGE|RFCPREPAGE)){
 		p->prepagemem = flag&RFPREPAGE;
+		/*
+		 * BUG: this is prepaging our memory, not
+		 * that of the child, but at least we
+		 * will do the copy on write.
+		 */
+		nixprepage(-1);
+	}
 
 	kstrdup(&p->text, up->text);
 	kstrdup(&p->user, up->user);
