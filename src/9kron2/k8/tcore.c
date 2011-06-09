@@ -224,6 +224,7 @@ runacore(void)
 	void (*fn)(void);
 	int rc, flush, s;
 	char *n;
+	uvlong t1;
 
 	if(waserror())
 		panic("runacore: error: %s\n", up->errstr);
@@ -233,6 +234,7 @@ runacore(void)
 
 	rc = runac(up->ac, actouser, 1, nil, 0);
 	for(;;){
+		t1 = fastticks(nil);
 		flush = 0;
 		fn = nil;
 		switch(rc){
@@ -283,6 +285,7 @@ runacore(void)
 		default:
 			panic("runacore: unexpected rc = %d", rc);
 		}
+		up->tctime += fastticks2us(fastticks(nil) - t1);
 		rc = runac(up->ac, fn, flush, nil, 0);
 	}
 ToTC:

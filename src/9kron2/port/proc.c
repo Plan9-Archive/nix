@@ -436,6 +436,8 @@ ready(Proc *p)
 		return;
 	}
 
+	if(p->ac == m)
+		MACHP(0)->readied = p;
 	if(up != p)
 		m->readied = p;	/* group scheduling */
 
@@ -551,7 +553,11 @@ loop:
 		}
 
 		/* waste time or halt the CPU */
+		/* But not on NIX. We need the TC to be alert in
+		 * case the AC issues a syscall and makes its
+		 * handler process ready.
 		idlehands();
+		 */
 
 		/* remember how much time we're here */
 		now = perfticks();
@@ -658,8 +664,13 @@ newproc(void)
 	p->edf = nil;
 
 	p->ntrap = 0;
+	p->nintr = 0;
 	p->nsyscall = 0;
+	p->nactrap = 0;
+	p->nacsyscall = 0;
 	p->nicc = 0;
+	p->actime = 0ULL;
+	p->tctime = 0ULL;
 	p->ac = nil;
 	return p;
 }

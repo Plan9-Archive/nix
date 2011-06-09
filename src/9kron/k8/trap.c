@@ -318,8 +318,6 @@ trap(Ureg* ureg)
 
 	clockintr = 0;
 
-	if(up != nil)
-		up->ntrap++;	/* stats only, races ok */
 
 	pmcupdate(m);
 
@@ -327,9 +325,12 @@ trap(Ureg* ureg)
 	if(ctl = vctl[vno]){
 		if(ctl->isintr){
 			m->intr++;
+			if(up != nil)
+				up->nintr++;
 			if(vno >= VectorPIC && vno != VectorSYSCALL)
 				m->lastintr = ctl->irq;
-		}
+		}else if(up != nil)
+			up->ntrap++;
 
 		if(ctl->isr)
 			ctl->isr(vno);
@@ -350,11 +351,15 @@ trap(Ureg* ureg)
 		}
 	}
 	else if(vno <= nelem(excname) && user){
+		if(up != nil)
+			up->ntrap++;
 		spllo();
 		sprint(buf, "sys: trap: %s", excname[vno]);
 		postnote(up, 1, buf, NDebug);
 	}
 	else{
+		if(up != nil)
+			up->ntrap++;
 		if(vno == VectorNMI){
 			nmienable();
 			if(m->machno != 0){

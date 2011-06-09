@@ -19,10 +19,10 @@ enum
 
 struct Tube
 {
-	int	msz;
-	int	tsz;
-	int	nmsg;
-	int	nhole;
+	int	msz;	/* message size */
+	int	tsz;	/* tube size (# of messages) */
+	int	nmsg;	/* semaphore: # of messages in tube */
+	int	nhole;	/* semaphore: # of free slots in tube */
 	int	hd;
 	int	tl;
 };

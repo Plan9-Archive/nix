@@ -791,8 +791,14 @@ struct Proc
 	int	prepagemem;
 
 	uint	ntrap;		/* # of traps while in this process */
+	uint	nintr;		/* # of intrs while in this process */
 	uint	nsyscall;	/* # of syscalls made by the process */
+	uint	nactrap;	/* # of traps in the AC for this process */
+	uint	nacsyscall;	/* # of syscalls in the AC for this process */
 	uint	nicc;		/* # of ICCs for the process */
+	uvlong	actime1;		/* ticks as of last call in AC */
+	uvlong	actime;		/* ∑time from call in AC to ret to AC, and... */
+	uvlong	tctime;		/* ∑time from call received to call handled */
 
 	/*
 	 *  machine specific fpu, mmu and notify

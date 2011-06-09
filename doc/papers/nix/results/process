@@ -28,3 +28,7 @@ echo "Plan 9, amd64 core Purple" >> mf.strid3.2M.tc
 
 { awk '{print $1 "  " $4}' < strid3.2M.ac  } > strid3.2M.ac.grap
 
+{ awk '{print $1 "  " $4}' < strid3.ac.ppfix.out  } > strid3.ac.ppfix.out.grap
+
+{ awk '{print $1 "  " $4}' < strid3.tc.ppfix.out  } > strid3.tc.ppfix.out.grap
+

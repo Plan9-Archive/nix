@@ -13,6 +13,9 @@ Ron Minnich
 Francisco J. Ballesteros
 Gorka Guardiola
 Enrique Soriano
+Jim McKie
+Charles Forsyth
+Noah Evans
 (want your name here? Just ask!)
 .AB
 This paper describes NIX, a prototype operating system for future
@@ -414,10 +417,42 @@ shared memory communication channels called
 .I tubes .
 A tube is a buffered unidirectional channel. Fixed-size messages can be
 sent and received from it (but different tubes may have different message sizes).
+The interface is similar to that for Channels in the Plan 9 thread library:
+.P1
+	Tube*	newtube(ulong msz, ulong n);
+	void	freetube(Tube *t);
+	int		nbtrecv(Tube *t, void *p);
+	int		nbtsend(Tube *t, void *p);
+	void	trecv(Tube *t, void *p);
+	void	tsend(Tube *t, void *p);
+	int		talt(Talt a[], int na);
+.P2
+.LP
+.I Newtube
+creates a tube for the given message size and number of messages in the
+tube buffer.
+.I Tsend
+and
+.I trecv
+can be used to send and receive. There are non-blocking variants, which
+fail instead of blocking if the operation cannot proceed. And there is a
+.I talt
+request to perform alternative sends and/or receives on multiple tubes.
 .PP
 The implementation is a simple producer-consumer, but, because of the
 semaphores used, it is able to run at user space without entering the kernel
-when sends and receives may proceed.
+when sends and receives may proceed:
+.P1
+struct Tube
+{
+	int	msz;	/* message size */
+	int	tsz;	/* tube size (# of messages) */
+	int	nmsg;	/* semaphore: # of messages in tube */
+	int	nhole;	/* semaphore: # of free slots in tube */
+	int	hd;
+	int	tl;
+};
+.P2
 .PP
 It is feasible to try to perform multiple sends and receives at the same time,
 waiting for the chance to execute one of them. This operation exploits 
@@ -671,23 +706,33 @@ the queued system calls and placing replies for them in the reply queue.
 .PP
 With this implementation, we made several performance measurements before
 proceeding further. In particular, we measured how long it takes for a program with
-50 threads to execute 5000 system calls in each thread. For the experiment,
-the system call used does not block and does nothing.
+50 threads to execute 500 system calls in each thread. For the experiment,
+the system call used does not block and does nothing. The table shows the result:
+.TS
+center, allbox;
+cfB cfB cfB
+cfB cfCW c.
+Core	System Call	Queue Call
+TC	0.02s	0.06s
+AC	0.20s	0.04s
+.TE
 .PP
-It takes this program 0.17 seconds to complete when run on the TC using the
-queue based mechanism. However, it takes only 0.06 seconds to complete
+It takes this program 0.06 seconds (of elapsed, real time)
+to complete when run on the TC using the
+queue based mechanism. However, it takes only 0.02 seconds to complete
 when using the standard system call mechanism. Therefore, at least for this program,
-the mechanism is more an overhead than a benefit. It is likely that the total number of
+the mechanism is more an overhead than a benefit in the TC. It is likely that the total number of
 system calls per second that could be performed in the machine might increase
 due to the smaller number of domain crossings. However, for a single program,
 that does not seem to be the case.
 .PP
 As another experiment, running the same program on the AC takes
-240.3 seconds when using the standard system call mechanism, and 0.17 seconds
+0.20 seconds when using the standard system call mechanism, and 0.04 seconds
 when using queue-based system calls. The AC is not meant to perform system calls.
 A system call made while running on it implies a trip to the TC and another trip back
-to the AC. As a result, issuing system calls from the AC is utterly expensive.
-Looking at the second time, it is similar to one for running in the TC. Therefore,
+to the AC. As a result, issuing system calls from the AC is expensive.
+Looking at the time when using queue-based calls, it is similar to one for running in the TC
+(but more expensive). Therefore,
 we may conclude that queue based system calls may make system calls affordable
 even for ACs.
 .PP
@@ -695,6 +740,16 @@ However, a more simple mechanism is to keep in the TC those processes
 that did not consume all its quantum at user level, and move to ACs only those
 processes that do so. As a result, we have decided not to include queue based
 system calls (although tubes can still be used for IPC).
+.PP
+During the experiment, we found an interesting bug in the implementation of NIX.
+Usually, when a processor has no ready process, the scheduler calls
+.I idlehands
+to halt the processor. It will wake up on the next interrupt. However, it can now
+be the case than an AC replies to a previous request made by the TC (e.g., to
+run a user program). By that time, the TC might be idle and it would miss the
+reply until the next external interrupt. The temporary fix was not to call
+.I idlehands
+on the coordinating TC (the BSP).
 .NH 1
 Things not done yet
 .HP
@@ -702,10 +757,8 @@ There are a few other things that have to be done. To name a few:
 Including more statistics in the
 .CW /proc
 interface to reflect the state of the system, considering the different kind of cores in it;
-adding an interface to let the user code (or the kernel) request that a process should
-continue in the TC node (the transfer has been implemented and tested, but there is no
-interface yet to trigger it); deciding which interface to adopt for the user to
-call the new service, and to what extent the mechanism has to be its own policy;
+deciding if the current interface for
+the new service is the right one, and to what extent the mechanism has to be its own policy;
 implementing KCs (which should not require any code, because they must execute
 the standard kernel); testing and debugging note handling for AC processes;
 more testing and fine tuning.
@@ -791,6 +844,26 @@ label bot "Strid3 on an AC" "Stride of 1 to 1024 by 1" "2 Mbyte pages"
 label left "Slowdown over stride of 1" "Smaller is better"
 draw solid
 copy "results/strid3.2M.ac.grap"
+.G2
+.NH 3
+The importance of pre-faulting
+.HP
+As the results show,the time sharing core wins in this case. It turned out 
+there was a bug in the prepaging code. Once the bug was fixed, performance improved
+as shown below. 
+.G1
+frame wid 5 top invis right invis
+label bot "Strid3 on a tc" "Stride of 1 to 1024 by 1" "2 Mbyte pages" "pre-paging fixed"
+label left "Slowdown over stride of 1" "Smaller is better"
+draw solid
+copy "results/strid3.tc.ppfix.out.grap"
+.G2
+.G1
+frame wid 5 top invis right invis
+label bot "Strid3 on an AC" "Stride of 1 to 1024 by 1" "2 Mbyte pages" "pre-paging fixed"
+label left "Slowdown over stride of 1" "Smaller is better"
+draw solid
+copy "results/strid3.ac.ppfix.out.grap"
 .G2
 .NH 2
 ftq

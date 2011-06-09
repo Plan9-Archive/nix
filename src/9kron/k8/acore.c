@@ -66,7 +66,6 @@ acstackok(void)
  * We loop because some functions may return and we should
  * wait for another call.
  */
-
 void
 acsched(void)
 {
@@ -138,7 +137,10 @@ actrap(Ureg *u)
 	n = nil;
 
 	pmcupdate(m);
-
+	if(m->proc != nil){
+		m->proc->nactrap++;
+		m->proc->actime1 = fastticks(nil);
+	}
 	if(u->type < nelem(acvctl)){
 		v = acvctl[u->type];
 		if(v != nil){
@@ -164,6 +166,7 @@ actrap(Ureg *u)
 		/* this case is here for debug only */
 		m->pfault++;
 		DBG("actrap: cpu%d: PF\n", m->machno);
+print("actrap: cpu%d: PF\n", m->machno);
 		break;
 	default:
 		print("actrap: cpu%d: %ulld\n", m->machno, u->type);
@@ -190,24 +193,30 @@ Post:
 	if(m->icc->fn != actrapret)
 		acsched();
 	memmove(u, m->proc->dbgreg, sizeof *u);
+	if(m->proc)
+		m->proc->actime += fastticks2us(fastticks(nil) - m->proc->actime1);
 }
 
 void
 acsyscall(void)
 {
+	Proc *p;
+
 	/*
 	 * If we saved the Ureg into m->proc->dbgregs,
 	 * There's nothing else we have to do.
 	 * Otherwise, we should m->proc->dbgregs = u;
 	 */
 	DBG("acsyscall: cpu%d\n", m->machno);
-	m->syscall++;	/* would also count it in the TS core */
+	p = m->proc;
+	p->actime1 = fastticks(nil);
+	p->nacsyscall++;
 	m->icc->rc = ICCSYSCALL;
 	m->cr2 = cr2get();
-	fpuprocsave(m->proc);
+	fpuprocsave(p);
 	mfence();
 	m->icc->fn = nil;
-	ready(m->proc);
+	ready(p);
 	m->load = 0;
 	/*
 	 * The next call is probably going to make us jmp
@@ -225,6 +234,8 @@ void
 acsysret(void)
 {
 	DBG("acsysret\n");
+	if(m->proc != nil)
+		m->proc->actime += fastticks2us(fastticks(nil) - m->proc->actime1);
 	_acsysret();
 }
 

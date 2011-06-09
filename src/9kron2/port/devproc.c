@@ -72,7 +72,9 @@ enum{
 	Emask = Nevents - 1,
 };
 
-#define STATSIZE	(2*KNAMELEN+12+9*12 +3*12)
+/* + 6 * 12 for extra NIX counters. */
+#define STATSIZE	(2*KNAMELEN+12+9*12 +6*12)
+
 /*
  * Status, fd, and ns are left fully readable (0444) because of their use in debugging,
  * particularly on shared servers.
@@ -924,8 +926,11 @@ procread(Chan *c, void *va, long n, vlong off)
 		 * NIX: added # of traps, syscalls, and iccs
 		 */
 		readnum(0, statbuf+j+NUMSIZE*9, NUMSIZE, p->ntrap, NUMSIZE);
-		readnum(0, statbuf+j+NUMSIZE*10, NUMSIZE, p->nsyscall, NUMSIZE);
-		readnum(0, statbuf+j+NUMSIZE*11, NUMSIZE, p->nicc, NUMSIZE);
+		readnum(0, statbuf+j+NUMSIZE*10, NUMSIZE, p->nintr, NUMSIZE);
+		readnum(0, statbuf+j+NUMSIZE*11, NUMSIZE, p->nsyscall, NUMSIZE);
+		readnum(0, statbuf+j+NUMSIZE*12, NUMSIZE, p->nicc, NUMSIZE);
+		readnum(0, statbuf+j+NUMSIZE*13, NUMSIZE, p->nactrap, NUMSIZE);
+		readnum(0, statbuf+j+NUMSIZE*14, NUMSIZE, p->nacsyscall, NUMSIZE);
 		memmove(va, statbuf+offset, n);
 		psdecref(p);
 		return n;
