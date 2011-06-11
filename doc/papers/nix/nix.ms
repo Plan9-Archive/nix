@@ -482,7 +482,8 @@ pre-paging, which is interesting on its own.
 .PP
 To dispatch a process for
 execution at one AC we use the inter-core-call, active message,
-mechanism. This figure explains how it works:
+mechanism. Figure 3 explains how it works:
+.F1
 .PS
 boxht=.5
 right
@@ -492,6 +493,10 @@ box "acsched"
 box invis "TC" with .s at 1st box.n
 box invis "AC" with .s at 2nd box.n
 .PE
+.F2
+Inter-core calls. The scheduller in the AC is waiting for pointers to functions to
+be called in the AC context.
+.F3
 .LP
 The function
 .I acsched
@@ -529,7 +534,8 @@ This mechanism is kind of like a vm_exit().  While we could think
 about implementing this with vm_enter(), it's not quite clear we
 should take that step.  VMs have overhead, at least when compared to the
 mechanism we use.
-This mechanism is used by NIX to dispatch processes to ACs, as shown:
+This mechanism is used by NIX to dispatch processes to ACs, as shown in figure 4:
+.F1
 .PS
 down
 box "user code"
@@ -542,6 +548,9 @@ box "actouser"
 arrow from last box.n up
 box "user code"
 .PE
+.F2
+Migration of a user process to an AC using execac.
+.F3
 .LP
 A process that calls the new system call,
 .I execac
@@ -577,6 +586,7 @@ AP takes a
 fault, the AP transfers control of the process back to the TC, by finishing the ICC,
 and then waits
 for directions. That is, the AP spins on the ICC structure waiting for a new call.
+.F1
 .PS
 down
 box "user code"
@@ -585,11 +595,15 @@ box "actrap"
 arrow left from last box.w dotted
 box "runacore"
 .PE
+.F2
+Call path for trap handling in AC context
+.F3
 The handling process, running
 .I runacore ,
 handles the fault and issues a new ICC to make the AP return from the trap,
 so that the process continues execution in its core. The trap might kill the
 process, in which case the AC is released and becomes idle.
+.F1
 .PS
 right
 box "runacore"
@@ -600,6 +614,9 @@ box "user code"
 arrow <-> from 1st box.s down
 box "trap()"
 .PE
+.F2
+Return path for trap handling in AC context
+.F3
 .LP
 Handling page faults requires the handling process to get access to the
 .I "faulting address" ,
@@ -707,7 +724,8 @@ the queued system calls and placing replies for them in the reply queue.
 With this implementation, we made several performance measurements before
 proceeding further. In particular, we measured how long it takes for a program with
 50 threads to execute 500 system calls in each thread. For the experiment,
-the system call used does not block and does nothing. The table shows the result:
+the system call used does not block and does nothing. Table 1 shows the result.
+.T1
 .TS
 center, allbox;
 cfB cfB cfB
@@ -716,7 +734,11 @@ Core	System Call	Queue Call
 TC	0.02s	0.06s
 AC	0.20s	0.04s
 .TE
-.PP
+.T2
+Times in seconds, of elapsed real time, for a series of syscall calls and queue-based
+system calls from the TC and the AC.
+.T3
+.LP
 It takes this program 0.06 seconds (of elapsed, real time)
 to complete when run on the TC using the
 queue based mechanism. However, it takes only 0.02 seconds to complete
