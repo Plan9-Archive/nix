@@ -18,8 +18,8 @@ user with the appearance of having a private system of their choosing
 running on dedicated hardware.  Virtualisation enables the dynamic
 provisioning of resources with demand, and the possibilities of entire
 system backup, migration, and persistence; for many tasks, the
-flexibility of this approach, coupled with its cost, management, and
-energy reductions, are compelling.
+flexibility of this approach, coupled with savings in cost, management,
+and energy, are compelling.
 .PP
 However, certain types of tasks — such as compute-intensive parallel
 computations — are not trivial to implement as cloud applications.
@@ -27,7 +27,7 @@ For instance HPC tasks consist of highly interrelated subproblems
 where synchronization and work allocation happen at fixed intervals.
 Interrupts from the hypervisor and the operating system add “noise”
 and, thereby, random latency to tasks, slowing down all the other
-tasks by making them wait such slowed-down tasks finish.  The effect
+tasks by making them wait for such slowed-down tasks to finish.  The effect
 may cascade and seriously disrupt the regular flow of a computation.
 .PP
 To avoid latency issues, HPC tasks are performed on heavily customized
