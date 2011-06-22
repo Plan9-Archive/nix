@@ -248,6 +248,13 @@ intrtime(Mach*, int vno)
 	intrtimes[vno][diff]++;
 }
 
+static void
+pmcnop(Mach *)
+{
+}
+
+void (*_pmcupdate)(Mach *m) = pmcnop;
+
 /* go to user space */
 void
 kexit(Ureg*)
@@ -271,7 +278,7 @@ kexit(Ureg*)
 		mp = m;
 	tos->core = mp->machno;	
 	tos->nixtype = mp->nixtype;
-	pmcupdate(m);	
+	_pmcupdate(m);	
 	/*
 	 * The process may change its core.
 	 * Be sure it has the right cyclefreq.
@@ -319,7 +326,7 @@ trap(Ureg* ureg)
 	clockintr = 0;
 
 
-	pmcupdate(m);
+	_pmcupdate(m);
 
 	vno = ureg->type;
 	if(ctl = vctl[vno]){

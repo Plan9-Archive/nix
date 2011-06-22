@@ -111,6 +111,7 @@ pmcinit(void)
 	int i, j, ncores, nr;
 	Mach *mp;
 
+	_pmcupdate = pmcupdate;
 	ncores = 0;
 	nr = pmcnregs();
 	for(i = 0; i < MACHMAX; i++) {

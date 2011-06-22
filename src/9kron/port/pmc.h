@@ -21,3 +21,4 @@ u64int	pmcgetctr(u32int coreno, u32int regno);
 int		pmcsetctr(u32int coreno, u64int v, u32int regno);
 
 void		pmcupdate(Mach *m);
+extern	void (*_pmcupdate)(Mach *m);

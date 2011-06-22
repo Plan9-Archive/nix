@@ -136,7 +136,7 @@ actrap(Ureg *u)
 
 	n = nil;
 
-	pmcupdate(m);
+	_pmcupdate(m);
 	if(m->proc != nil){
 		m->proc->nactrap++;
 		m->proc->actime1 = fastticks(nil);
@@ -177,7 +177,7 @@ Post:
 	memmove(m->proc->dbgreg, u, sizeof *u);
 	m->icc->note = n;
 	fpuprocsave(m->proc);
-	pmcupdate(m);
+	_pmcupdate(m);
 	mfence();
 	m->icc->fn = nil;
 	ready(m->proc);
