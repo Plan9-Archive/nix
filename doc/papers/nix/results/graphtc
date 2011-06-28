@@ -1,6 +1,0 @@
-.G1
-frame wid 5 top invis right invis
-label bot "Strid3 on a tc" "Stride of 1 to 1024 by 1"
-label left "Slowdown over stride of 1" "Smaller is better"
-draw solid
-
